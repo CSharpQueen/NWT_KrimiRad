@@ -1,4 +1,35 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Krimi rad";
 }
 
+<script>
+        var app = angular.module("KrimiRadHome", ["ngRoute"])
+                     .config(function ($routeProvider) {
+                         $routeProvider.when("/prijave", {
+                             templateUrl: "/GetViews/GetPrijave",
+                             controller: "prijaveController"
+                         })
+                     })
+                    .controller("prijaveController", function ($scope, $http) {
+                        $http.get("/api/Prijava").then(function (response) {
+                            $scope.prijave = response.data;
+                        })
+                    });
+</script>
+
+<div ng-app="KrimiRadHome">
+
+    <a href="#/prijave">Prijave</a>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+</script>
