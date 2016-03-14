@@ -29,11 +29,17 @@ namespace DataAccess.Entity {
 
         public string Adresa { get; set; }
 
+        public bool Rijesen { get; set; }
+
         public int? AlbumId { get; set; }
         [ForeignKey("AlbumId")]
         public virtual Album Album { get; set; }
 
         public virtual int TipDjelaId { get; set; }
         public virtual TipDjela TipDjela { get; set; }
+
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

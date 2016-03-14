@@ -1,1 +1,7 @@
 /packages/
+/DataAccess/bin/
+/DataAccess/obj/
+/KrimiRad/bin/
+/KrimiRad/obj/
+/KirmiRadWebApi/bin/
+/KrimiRadWebApi/obj/

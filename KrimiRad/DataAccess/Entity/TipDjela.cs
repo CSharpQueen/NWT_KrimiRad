@@ -12,6 +12,10 @@ namespace DataAccess.Entity {
         [Required]
         [StringLength(100)]
         public string Naziv { get; set; }
+        
+        [Required]
+        [StringLength(100)]
+        public string StrucniNaziv { get; set; }
 
         [Required]        
         public string VrstaDjela { get; set; }

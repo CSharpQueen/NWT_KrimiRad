@@ -28,6 +28,7 @@ namespace DataAccess {
 
         public static AppDbContext Create() {
             return new AppDbContext();
+            
         }
 
         public DbSet<Prijava> Prijava { get; set; }
