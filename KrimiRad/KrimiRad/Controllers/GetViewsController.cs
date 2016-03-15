@@ -9,7 +9,16 @@ namespace KrimiRad.Controllers
     public class GetViewsController : Controller
     {
         // GET: GetViews
-        public PartialViewResult GetMap()
+        
+        public PartialViewResult GetPrijave() {
+            return PartialView();
+        }
+
+        public PartialViewResult GetStatistika() {
+            return PartialView();
+        }
+
+        public PartialViewResult GetAdministracija()
         {
             return PartialView();
         }

@@ -5,3 +5,5 @@
 /KrimiRad/obj/
 /KirmiRadWebApi/bin/
 /KrimiRadWebApi/obj/
+/PublicKrimiRad/bin/
+/PublicKrimiRad/obj/

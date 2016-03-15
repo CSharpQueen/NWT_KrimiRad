@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrimiRadWebApi", "KrimiRadW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5AC14AAF-5768-4654-99D5-19D2F2C511D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicKrimiRad", "PublicKrimiRad\PublicKrimiRad.csproj", "{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

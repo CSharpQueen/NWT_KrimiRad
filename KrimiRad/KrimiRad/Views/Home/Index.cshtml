@@ -3,27 +3,45 @@
 }
 
 <script>
-        var app = angular.module("KrimiRadHome", ["ngRoute"])
-                     .config(function ($routeProvider) {
-                         $routeProvider.when("/prijave", {
-                             templateUrl: "/GetViews/GetPrijave",
-                             controller: "prijaveController"
+    var app = angular.module("KrimiRadHome", ["ngRoute"])
+                 .config(function ($routeProvider) {
+                     $routeProvider
+                         .when("/administracija", {
+                             templateUrl: "/GetViews/GetAdministracija",
+                             controller: "administracijaController"
                          })
-                     })
-                    .controller("prijaveController", function ($scope, $http) {
-                        $http.get("/api/Prijava").then(function (response) {
-                            $scope.prijave = response.data;
+                        .when("/prijave", {
+                            templateUrl: "/GetViews/GetPrijave",
+                            controller: "prijaveController"
                         })
-                    });
+                        .when("/statistika", {
+                            templateUrl: "/GetViews/GetStatistika",
+                            controller: "statistikaController"
+                        })                        
+                     
+                 })
+                .controller("administracijaController", function ($scope, $http) {
+                    //$http.get("/api/Prijava").then(function (response) {
+                    //    $scope.prijave = response.data;
+                    //})
+                })
+                .controller("prijaveController", function ($scope, $http) {
+                    //$http.get("/api/Prijava").then(function (response) {
+                    //    $scope.prijave = response.data;
+                    //})
+                })
+                .controller("statistikaController", function ($scope, $http) {
+                    //$http.get("/api/Prijava").then(function (response) {
+                    //    $scope.prijave = response.data;
+                    //})
+                })
+    
 </script>
 
 <div ng-app="KrimiRadHome">
-
-    <a href="#/prijave">Prijave</a>
-    <br />
     <div class="row">
         <div class="col-md-12">
-            <ng-view></ng-view>
+            <ng-view>Home</ng-view>
         </div>
     </div>
 </div>
