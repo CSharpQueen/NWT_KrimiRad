@@ -3,7 +3,7 @@
 /DataAccess/obj/
 /KrimiRad/bin/
 /KrimiRad/obj/
-/KirmiRadWebApi/bin/
-/KrimiRadWebApi/obj/
+/KirmiRadServis/bin/
+/KirmiRadServis/obj/
 /PublicKrimiRad/bin/
 /PublicKrimiRad/obj/

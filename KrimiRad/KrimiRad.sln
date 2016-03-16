@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrimiRad", "KrimiRad\KrimiRad.csproj", "{2391F6F8-BC02-4AF1-9171-EB369323BF27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrimiRadWebApi", "KrimiRadWebApi\KrimiRadWebApi.csproj", "{87300B2C-6F11-4ED5-A80F-8E4860DC1FD9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5AC14AAF-5768-4654-99D5-19D2F2C511D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicKrimiRad", "PublicKrimiRad\PublicKrimiRad.csproj", "{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrimiRadServis", "KrimiRadServis\KrimiRadServis.csproj", "{DDBE8288-5447-4EBA-8FF9-F4D02575BEC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{2391F6F8-BC02-4AF1-9171-EB369323BF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2391F6F8-BC02-4AF1-9171-EB369323BF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2391F6F8-BC02-4AF1-9171-EB369323BF27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87300B2C-6F11-4ED5-A80F-8E4860DC1FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87300B2C-6F11-4ED5-A80F-8E4860DC1FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87300B2C-6F11-4ED5-A80F-8E4860DC1FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87300B2C-6F11-4ED5-A80F-8E4860DC1FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC14AAF-5768-4654-99D5-19D2F2C511D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F0CE5A0-ED32-4ED4-81B1-AFA9208751DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBE8288-5447-4EBA-8FF9-F4D02575BEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBE8288-5447-4EBA-8FF9-F4D02575BEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBE8288-5447-4EBA-8FF9-F4D02575BEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBE8288-5447-4EBA-8FF9-F4D02575BEC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

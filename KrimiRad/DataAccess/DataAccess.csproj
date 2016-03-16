@@ -63,9 +63,9 @@
     <Compile Include="Entity\Medij.cs" />
     <Compile Include="Entity\Prijava.cs" />
     <Compile Include="Entity\TipDjela.cs" />
-    <Compile Include="Migrations\201603042041467_init.cs" />
-    <Compile Include="Migrations\201603042041467_init.Designer.cs">
-      <DependentUpon>201603042041467_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603162121258_IASDaafsd.cs" />
+    <Compile Include="Migrations\201603162121258_IASDaafsd.Designer.cs">
+      <DependentUpon>201603162121258_IASDaafsd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603042041467_init.resx">
-      <DependentUpon>201603042041467_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603162121258_IASDaafsd.resx">
+      <DependentUpon>201603162121258_IASDaafsd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
