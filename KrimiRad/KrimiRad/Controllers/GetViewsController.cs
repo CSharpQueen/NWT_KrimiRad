@@ -18,9 +18,9 @@ namespace KrimiRad.Controllers
             return PartialView();
         }
 
-        public PartialViewResult GetAdministracija()
-        {
+        public PartialViewResult GetAdministracija() {
             return PartialView();
-        }
+        } 
+        
     }
 }

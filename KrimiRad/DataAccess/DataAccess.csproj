@@ -63,9 +63,9 @@
     <Compile Include="Entity\Medij.cs" />
     <Compile Include="Entity\Prijava.cs" />
     <Compile Include="Entity\TipDjela.cs" />
-    <Compile Include="Migrations\201603162121258_IASDaafsd.cs" />
-    <Compile Include="Migrations\201603162121258_IASDaafsd.Designer.cs">
-      <DependentUpon>201603162121258_IASDaafsd.cs</DependentUpon>
+    <Compile Include="Migrations\201603201308071_InitOnAzure.cs" />
+    <Compile Include="Migrations\201603201308071_InitOnAzure.Designer.cs">
+      <DependentUpon>201603201308071_InitOnAzure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603162121258_IASDaafsd.resx">
-      <DependentUpon>201603162121258_IASDaafsd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603201308071_InitOnAzure.resx">
+      <DependentUpon>201603201308071_InitOnAzure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

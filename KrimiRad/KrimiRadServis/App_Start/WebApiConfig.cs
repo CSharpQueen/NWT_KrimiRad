@@ -16,9 +16,14 @@ namespace KrimiRadServis
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -2,6 +2,16 @@
     ViewBag.Title = "Krimi rad";
 }
 
+
+
+<div ng-app="KrimiRadHome">
+    <div class="row">
+        <div class="col-md-12">
+            <ng-view>Home</ng-view>
+        </div>
+    </div>
+</div>
+
 <script>
     var app = angular.module("KrimiRadHome", ["ngRoute"])
                  .config(function ($routeProvider) {
@@ -17,8 +27,12 @@
                         .when("/statistika", {
                             templateUrl: "/GetViews/GetStatistika",
                             controller: "statistikaController"
-                        })                        
-                     
+                        })
+                        .when("/administracija/tipovidjela", {
+                             templateUrl: "/Administracija/TipDjela/Index",
+                             controller: "tipoviDjelaController"
+                        })
+
                  })
                 .controller("administracijaController", function ($scope, $http) {
                     //$http.get("/api/Prijava").then(function (response) {
@@ -35,19 +49,9 @@
                     //    $scope.prijave = response.data;
                     //})
                 })
-    
-</script>
-
-<div ng-app="KrimiRadHome">
-    <div class="row">
-        <div class="col-md-12">
-            <ng-view>Home</ng-view>
-        </div>
-    </div>
-</div>
-
-
-
-<script>
-
+                 .controller("tipoviDjelaController", function ($scope, $http) {
+                     $http.get("http://localhost:58808/api/TipDjela").then(function (response) {
+                         $scope.tipoviDjela = response.data;
+                     })
+                 })
 </script>

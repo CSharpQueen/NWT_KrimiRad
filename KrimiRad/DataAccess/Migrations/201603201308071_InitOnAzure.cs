@@ -3,7 +3,7 @@ namespace DataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class IASDaafsd : DbMigration
+    public partial class InitOnAzure : DbMigration
     {
         public override void Up()
         {

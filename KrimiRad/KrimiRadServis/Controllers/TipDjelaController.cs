@@ -11,17 +11,21 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccess;
 using DataAccess.Entity;
+using System.Web.Http.Cors;
+using Newtonsoft.Json;
 
 namespace KrimiRadServis.Controllers
 {
+    //[EnableCors("*", "*", "*")]
     public class TipDjelaController : ApiController
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: api/TipDjela
-        public IQueryable<TipDjela> GetTipDjela()
+        [ResponseType(typeof(List<TipDjela>))]
+        public IHttpActionResult GetTipDjela()
         {
-            return db.TipDjela;
+            return Json<List<TipDjela>>(db.TipDjela.ToList());
         }
 
         // GET: api/TipDjela/5

@@ -7,13 +7,13 @@ namespace DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class IASDaafsd : IMigrationMetadata
+    public sealed partial class InitOnAzure : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IASDaafsd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitOnAzure));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603162121258_IASDaafsd"; }
+            get { return "201603201308071_InitOnAzure"; }
         }
         
         string IMigrationMetadata.Source

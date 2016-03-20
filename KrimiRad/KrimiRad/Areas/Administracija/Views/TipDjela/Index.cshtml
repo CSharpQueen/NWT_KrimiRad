@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DataAccess.Entity.TipDjela>
+
+
+@Ajax.ActionLink("Dodaj novi", "Create", "TipDjela", new AjaxOptions() { UpdateTargetId = "modalBody", OnSuccess= "$('#myModal').modal('show');" }, new { @class = "btn btn-primary" } )
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StrucniNaziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VrstaDjela)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="tip in tipoviDjela">
+        <td>
+            {{ tip.Naziv }}
+        </td>
+        <td>
+            {{ tip.StrucniNaziv }}
+        </td>
+        <td>
+            {{ tip.VrstaDjela }}
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit") |
+            @Html.ActionLink("Details", "Details") |
+            @Html.ActionLink("Delete", "Delete")
+        </td>
+    </tr>
+    }
+
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div id="modalBody" class="modal-body">                
+            </div>            
+        </div>
+    </div>
+</div>
