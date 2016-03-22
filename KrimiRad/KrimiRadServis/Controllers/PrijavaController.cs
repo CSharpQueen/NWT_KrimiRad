@@ -82,7 +82,7 @@ namespace KrimiRadServis.Controllers
 
         // DELETE api/prijava/5
         [ResponseType(typeof(Prijava))]
-        public async Task<IHttpActionResult> DeleteTipDjela(int id)
+        public async Task<IHttpActionResult> DeletePrijava(int id)
         {
             Prijava prijava = await db.Prijava.FindAsync(id);
             if (prijava == null)
