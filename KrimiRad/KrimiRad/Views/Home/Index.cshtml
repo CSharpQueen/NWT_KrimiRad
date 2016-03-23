@@ -2,56 +2,10 @@
     ViewBag.Title = "Krimi rad";
 }
 
-
-
-<div ng-app="KrimiRadHome">
+<div ng-app="app">
     <div class="row">
         <div class="col-md-12">
             <ng-view>Home</ng-view>
         </div>
     </div>
 </div>
-
-<script>
-    var app = angular.module("KrimiRadHome", ["ngRoute"])
-                 .config(function ($routeProvider) {
-                     $routeProvider
-                         .when("/administracija", {
-                             templateUrl: "/GetViews/GetAdministracija",
-                             controller: "administracijaController"
-                         })
-                        .when("/prijave", {
-                            templateUrl: "/GetViews/GetPrijave",
-                            controller: "prijaveController"
-                        })
-                        .when("/statistika", {
-                            templateUrl: "/GetViews/GetStatistika",
-                            controller: "statistikaController"
-                        })
-                        .when("/administracija/tipovidjela", {
-                             templateUrl: "/Administracija/TipDjela/Index",
-                             controller: "tipoviDjelaController"
-                        })
-
-                 })
-                .controller("administracijaController", function ($scope, $http) {
-                    //$http.get("/api/Prijava").then(function (response) {
-                    //    $scope.prijave = response.data;
-                    //})
-                })
-                .controller("prijaveController", function ($scope, $http) {
-                    //$http.get("/api/Prijava").then(function (response) {
-                    //    $scope.prijave = response.data;
-                    //})
-                })
-                .controller("statistikaController", function ($scope, $http) {
-                    //$http.get("/api/Prijava").then(function (response) {
-                    //    $scope.prijave = response.data;
-                    //})
-                })
-                 .controller("tipoviDjelaController", function ($scope, $http) {
-                     $http.get("http://localhost:58808/api/TipDjela").then(function (response) {
-                         $scope.tipoviDjela = response.data;
-                     })
-                 })
-</script>

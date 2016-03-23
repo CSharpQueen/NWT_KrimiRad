@@ -13,6 +13,9 @@ namespace KrimiRad {
                        "~/Scripts/angular.min.js"
                      , "~/Scripts/angular-route.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularCustom").IncludeDirectory(
+                "~/app", "*.js", true));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 

@@ -7,4 +7,4 @@
 /KirmiRadServis/obj/
 /PublicKrimiRad/bin/
 /PublicKrimiRad/obj/
-/KrimiRad/.vs/
+/.vs/
