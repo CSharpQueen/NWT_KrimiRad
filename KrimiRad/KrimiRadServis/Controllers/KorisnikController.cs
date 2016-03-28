@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using KrimiRadServis.Models;
+using System.Web.Http.Cors;
 
 namespace KrimiRadServis.Controllers
 {
