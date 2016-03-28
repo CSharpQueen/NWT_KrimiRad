@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using KrimiRad.Models;
 using DataAccess.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace KrimiRad.Controllers
 {
@@ -152,7 +153,10 @@ namespace KrimiRad.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);                                
+                var result = await UserManager.CreateAsync(user, model.Password);
+                
+
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

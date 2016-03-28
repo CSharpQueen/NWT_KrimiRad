@@ -1,5 +1,4 @@
-﻿@model IEnumerable<DataAccess.Entity.TipDjela>
-
+﻿
 <div ng-controller="TipDjelaCtrl">
 
     <a ng-click="prikaziFormu()" class="btn btn-primary">Dodaj novi</a>
@@ -30,7 +29,7 @@
             </td>
             <td>
                 <button class="btn btn-success" ng-click="prikaziFormuZaEdit(tip)">Uredi</button> |
-                <button class="btn btn-danger" ng-click="obrisiTipDjela(tip)">Obriši</button>
+                <button class="btn btn-danger" ng-click="obrisiTipDjela(tip,$index)">Obriši</button>
             </td>
         </tr>
         }
@@ -47,7 +46,7 @@
                     <h4 class="modal-title" id="myModal-label">Tip djela</h4>
                 </div>
                 <div class="modal-body">
-                    <form ng-submit="dodajTipDjela()">
+                    <form>
 
                         <div class="row">
                             <div class="col-md-6">

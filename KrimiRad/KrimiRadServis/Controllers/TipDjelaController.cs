@@ -16,7 +16,8 @@ using Newtonsoft.Json;
 
 namespace KrimiRadServis.Controllers
 {
-    //[EnableCors("*", "*", "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]  
+    [Authorize] 
     public class TipDjelaController : ApiController
     {
         private AppDbContext db = new AppDbContext();
@@ -41,7 +42,7 @@ namespace KrimiRadServis.Controllers
             return Ok(tipDjela);
         }
 
-        // PUT: api/TipDjela/5
+        // PUT: api/TipDjela/5        
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutTipDjela(int id, TipDjela tipDjela)
         {
