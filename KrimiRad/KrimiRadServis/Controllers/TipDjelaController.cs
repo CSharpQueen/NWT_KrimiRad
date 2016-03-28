@@ -13,6 +13,8 @@ using DataAccess;
 using DataAccess.Entity;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace KrimiRadServis.Controllers
 {
@@ -25,7 +27,7 @@ namespace KrimiRadServis.Controllers
         // GET: api/TipDjela
         [ResponseType(typeof(List<TipDjela>))]
         public IHttpActionResult GetTipDjela()
-        {
+        {                        
             return Json<List<TipDjela>>(db.TipDjela.ToList());
         }
 
