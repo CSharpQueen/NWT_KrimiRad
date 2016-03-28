@@ -1,39 +1,132 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
+using DataAccess;
+using DataAccess.Entity;
+using System.Web.Http.Cors;
+using Newtonsoft.Json;
 
 namespace KrimiRadServis.Controllers
 {
     public class AlbumController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private AppDbContext db = new AppDbContext();
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        // GET api/Album
+        [ResponseType(typeof(List<Album>))]
+            public IHttpActionResult GetAlbum()
+            {
+                return Json<List<Album>>(db.Album.ToList());
+            }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+            // GET api/Album/5
+            [ResponseType(typeof(Album))]
+            public async Task<IHttpActionResult> GetAlbum(int id)
+            {
+                Album album = await db.Album.FindAsync(id);
+                if (album == null)
+                {
+                    return NotFound();
+                }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+                return Ok(album);
+            }
+
+            // POST api/Album
+            [ResponseType(typeof(Album))]
+            public async Task<IHttpActionResult> PostAlbum(Album album)
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                db.Album.Add(album);
+                await db.SaveChangesAsync();
+
+                return CreatedAtRoute("DefaultApi", new { id = album.ID }, album);
+            }
+
+
+        // PUT api/Album/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutAlbum(int id, Album album)
         {
-        }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != album.ID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(album).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AlbumExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        
+
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+
+            // DELETE api/Album/5
+            [ResponseType(typeof(Album))]
+            public async Task<IHttpActionResult> DeleteAlbum(int id)
+            {
+                Album album = await db.Album.FindAsync(id);
+                if (album == null)
+                {
+                    return NotFound();
+                }
+
+                db.Album.Remove(album);
+                await db.SaveChangesAsync();
+
+                return Ok(album);
+            }
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
+            }
+
+            private bool AlbumExists(int id)
+            {
+                return db.Album.Count(e => e.ID == id) > 0;
+            }
+
+
     }
 }
