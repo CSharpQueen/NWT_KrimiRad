@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess {
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
-        public AppDbContext() : base("Data Source=FARIS;Initial Catalog=KrimiRadDb;Integrated Security=True") {
+        public AppDbContext() : base("Data Source=NERMINA\\SQLEXPRESS;Initial Catalog=NWT;Integrated Security=True") {
 
         }
 
