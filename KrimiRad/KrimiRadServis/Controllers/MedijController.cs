@@ -103,7 +103,16 @@ namespace KrimiRadServis.Controllers
             return Ok(medij);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
+       
         private bool MedijExists(int id)
         {
             return db.Medij.Count(e => e.ID == id) > 0;

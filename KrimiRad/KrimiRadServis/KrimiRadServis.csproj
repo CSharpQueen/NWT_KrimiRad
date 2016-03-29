@@ -209,6 +209,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\MedijController.cs" />
+    <Compile Include="Controllers\NewsFeedController.cs" />
     <Compile Include="Controllers\PrijavaController.cs" />
     <Compile Include="Controllers\TipDjelaController.cs" />
     <Compile Include="Global.asax.cs">

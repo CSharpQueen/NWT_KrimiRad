@@ -10,14 +10,16 @@ namespace DataAccess.Entity {
         public int ID { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(100, ErrorMessage = "Naziv mora biti između {2} i {1} karaktera.", MinimumLength = 6)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Unesite pravilan tip djela")]
         public string Naziv { get; set; }
         
         [Required]
-        [StringLength(100)]
+        [StringLength(100, ErrorMessage = "Stručni naziv mora biti između {2} i {1} karaktera.", MinimumLength = 6)]
         public string StrucniNaziv { get; set; }
 
-        [Required]        
+        [Required]
+        [StringLength(100, ErrorMessage = "Vrsta djela mora biti između {2} i {1} karaktera.", MinimumLength = 6)]
         public string VrstaDjela { get; set; }
 
         [Required]
