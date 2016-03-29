@@ -30,6 +30,12 @@ namespace KrimiRadServis.Controllers
             return Json<List<Prijava>>(lista);
         }
 
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
     }
 }

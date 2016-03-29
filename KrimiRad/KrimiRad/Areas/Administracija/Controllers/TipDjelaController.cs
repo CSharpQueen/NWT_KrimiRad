@@ -9,9 +9,6 @@ namespace KrimiRad.Areas.Administracija.Controllers {
         // GET: Administracija/TipDjela
         public PartialViewResult Index() {
             return PartialView();
-        }
-        public PartialViewResult Create() {
-            return PartialView();
-        }
+        }       
     }
 }

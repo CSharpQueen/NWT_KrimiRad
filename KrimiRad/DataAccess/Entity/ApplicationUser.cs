@@ -15,5 +15,8 @@ namespace DataAccess.Entity {
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string ImeIPrezime { get; set; }
+        public string JMBG { get; set; }
     }
 }
