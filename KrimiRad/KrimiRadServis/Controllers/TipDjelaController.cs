@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 namespace KrimiRadServis.Controllers
 {
-    //[EnableCors("*", "*", "*")]
+    [EnableCors("*", "*", "*")]
     public class TipDjelaController : ApiController
     {
         private AppDbContext db = new AppDbContext();

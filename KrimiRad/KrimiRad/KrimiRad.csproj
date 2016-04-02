@@ -207,6 +207,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administracija\AdministracijaAreaRegistration.cs" />
+    <Compile Include="Areas\Administracija\Controllers\KorisnikController.cs" />
     <Compile Include="Areas\Administracija\Controllers\TipDjelaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GetViewsController.cs" />
@@ -222,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controller\korisnik.js" />
     <Content Include="app\controller\tipdjela.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -248,6 +250,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administracija\Views\TipDjela\Index.cshtml" />
+    <Content Include="Areas\Administracija\Views\TipDjela\_CreateEdit.cshtml" />
+    <Content Include="Areas\Administracija\Views\Korisnik\Index.cshtml" />
+    <Content Include="Areas\Administracija\Views\Korisnik\_CreateEdit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

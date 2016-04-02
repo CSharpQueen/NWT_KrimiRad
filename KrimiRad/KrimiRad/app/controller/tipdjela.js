@@ -1,39 +1,41 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 angular.module('KrimiRad.TipDjelaController', [])
-    .controller('TipDjelaCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.tipDjela = '';
-
-        $http.get("http://localhost:58808/api/TipDjela").success(function (data) {
+    .controller('TipDjelaCtrl', ['$scope', '$http', 'KrimiRadServis', function ($scope, $http, KrimiRadServis) {
+        $scope.tipDjela = '';    
+        
+        $http.get(KrimiRadServis.url + "/api/TipDjela").success(function (data) {
             $scope.tipoviDjela = data;
         })
 
-        $scope.prikaziFormu = function () {
+        $scope.prikaziFormuZaCreate = function () {
             $scope.sta = "dodaj";
+            $scope.tipDjela = ''
             $("#myModal").modal("show");
         }
 
         $scope.dodajTipDjela = function () {
-            $http.post("http://localhost:58808/api/TipDjela", $scope.tipDjela).success(function () {
+            $http.post(KrimiRadServis.url + "/api/TipDjela", $scope.tipDjela).success(function () {
                 alert("Dodano!");
                 $scope.tipoviDjela.push($scope.tipDjela);
             })
         }
 
         $scope.prikaziFormuZaEdit = function (tip) {
+            console.log(tip.Id);
             $scope.sta = "uredi";
             $scope.tipDjela = tip;
             $("#myModal").modal("show");
         }
 
         $scope.urediTipDjela = function () {
-            $http.put("http://localhost:58808/api/TipDjela?id=" + $scope.tipDjela.Id , $scope.tipDjela).success(function () {
+            $http.put(KrimiRadServis.url + "/api/TipDjela?id=" + $scope.tipDjela.Id , $scope.tipDjela).success(function () {
                 alert("Uređeno!");                
             })
         }
 
         $scope.obrisiTipDjela = function (tip) {            
-            $http.delete('http://localhost:58808/api/TipDjela', {id: tip.Id}).success(function() {
+            $http.delete(KrimiRadServis.url + '/api/TipDjela', {id: tip.Id}).success(function() {
                 alert("Obrisano!");
             })
         }

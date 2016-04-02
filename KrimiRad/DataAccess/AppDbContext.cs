@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess {
+    public enum TipKorisnika { Gradjanin, Administrator, NadlezniOrgan }
+
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
         public AppDbContext() : base("Data Source=FARIS;Initial Catalog=KrimiRadDb;Integrated Security=True") {
 

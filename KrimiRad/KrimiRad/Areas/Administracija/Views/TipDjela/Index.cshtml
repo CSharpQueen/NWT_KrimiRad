@@ -1,8 +1,6 @@
-﻿@model IEnumerable<DataAccess.Entity.TipDjela>
+﻿<div ng-controller="TipDjelaCtrl">
 
-<div ng-controller="TipDjelaCtrl">
-
-    <a ng-click="prikaziFormu()" class="btn btn-primary">Dodaj novi</a>
+    <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>
 
     <table class="table">
         <tr>
@@ -38,45 +36,5 @@
     </table>
 
 
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModal-label">Tip djela</h4>
-                </div>
-                <div class="modal-body">
-                    <form ng-submit="dodajTipDjela()">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    Naziv<input type="text" ng-model="tipDjela.Naziv" class="form-control" required />
-                                </div>
-
-                                <div class="form-group">
-                                    Stručni naziv <input type="text" ng-model="tipDjela.StrucniNaziv" class="form-control" required />
-                                </div>
-
-                                <div class="form-group">
-                                    Vrsta djela <input type="text" ng-model="tipDjela.VrstaDjela" class="form-control" required />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    Opis djela <textarea style="height:300px;" ng-model="tipDjela.Opis" class="form-control" required />
-                                </div>
-                            </div>
-                            <div class="form-group col-md-offset-3">
-                                <input ng-if="sta=='dodaj'" type="submit" ng-click="dodajTipDjela()" class="btn btn-primary" value="Dodaj" />
-                                <input ng-if="sta=='uredi'"  type="submit" ng-click="urediTipDjela()" class="btn btn-primary" value="Uredi" />
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+@Html.Partial("~/Areas/Administracija/Views/TipDjela/_CreateEdit.cshtml")
 </div>

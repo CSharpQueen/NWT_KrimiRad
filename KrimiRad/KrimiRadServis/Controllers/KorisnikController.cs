@@ -34,7 +34,16 @@ namespace KrimiRadServis.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            return Json<List<ApplicationUser>>(db.Users.ToList());
+            List<KorisnikViewModel> korisnici = (from u in db.Users
+                                                 select new KorisnikViewModel() {
+                                                     ImeIPrezime = u.ImeIPrezime,
+                                                     Email = u.Email,
+                                                     JMBG = u.JMBG,                                           
+                                                     Username = u.UserName
+                                                 }).ToList();
+
+
+            return Json<List<KorisnikViewModel>>(korisnici);
         }
 
         // GET: api/Korisnik/guidId
@@ -59,8 +68,28 @@ namespace KrimiRadServis.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             var user = await userManager.FindByIdAsync(id);
+            user.ImeIPrezime = korisnik.ImeIPrezime;
+            user.JMBG = korisnik.JMBG;
+            user.Email = korisnik.Email;
+            user.UserName = korisnik.Username;
+
+            user.Roles.Remove(user.Roles.FirstOrDefault());            
+
             var result = await userManager.UpdateAsync(user);
+
+
+            var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
+
+
+
+            if (!roleManager.RoleExists(korisnik.TipKorisnika.ToString())) {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = korisnik.TipKorisnika.ToString();
+                IdentityResult r = await roleManager.CreateAsync(role);
+            }
+
             if (result.Succeeded) return Json(new { poruka = "Korisnik je uspješno izmjenjen" });
             else return Json(new { errors = result.Errors });
         }
@@ -80,6 +109,16 @@ namespace KrimiRadServis.Controllers
                 Email = korisnik.Email,
                 UserName = korisnik.Username
             };
+
+            var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
+
+
+            if (!roleManager.RoleExists(korisnik.TipKorisnika.ToString())) {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = korisnik.TipKorisnika.ToString();
+                IdentityResult r = await roleManager.CreateAsync(role);
+            }
+
 
             var result = await userManager.CreateAsync(user, korisnik.Password);
             if (result.Succeeded) return Json(new { poruka = "Korisnik je uspješno dodan" });

@@ -1,0 +1,48 @@
+﻿
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModal-label">Tip djela</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="dodajTipDjela()">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                Ime i prezime<input type="text" ng-model="korisnik.ImeIPrezime" class="form-control" required />
+                            </div>
+
+                            <div class="form-group">
+                                JMBG<input type="text" ng-model="korisnik.JMBG" class="form-control" required />
+                            </div>
+
+                            <div class="form-group">
+                                Email <input type="text" ng-model="korisnik.Email" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                Username <input type="text" ng-model="korisnik.Username" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+
+                                Username <select class="form-control" ng-model="data.TipKorisnika">
+                                    <option value="NadlezniOrgan">NadlezniOrgan</option>
+                                    <option value="Administrator">Administrator</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-offset-3">
+                            <input ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="Dodaj" />
+                            <input ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="Uredi" />
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
