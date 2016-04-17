@@ -6,10 +6,10 @@ app.factory('KrimiRadUrl', function () {
     return {
         //serviceUrl: 'http://localhost:58808',
         //publicSiteUrl: 'http://localhost:58808',
-        //adminSiteUrl: 'http://localhost:51580',
+        adminSiteUrl: 'http://localhost:51580',
         serviceUrl: 'http://service-krimirad.azurewebsites.net',
-        publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
-        adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
+        publicSiteUrl: 'http://public-krimirad.azurewebsites.net'
+        //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
 

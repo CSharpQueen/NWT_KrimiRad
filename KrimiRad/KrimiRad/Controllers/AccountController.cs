@@ -78,11 +78,18 @@ namespace KrimiRad.Controllers
                 return View(model);
             }
             var user = await UserManager.FindByNameAsync(model.Username);
-            if(user == null) {                
-                return Json(new { poruka = "Korisnik ne postoji!" }, JsonRequestBehavior.AllowGet);
+            
+            if(user == null) {
+                ViewBag.Poruka = "Korisnik ne postoji!";
+                return View(model);
+                //return Json(new { poruka = "Korisnik ne postoji!" }, JsonRequestBehavior.AllowGet);
             }
-            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-                return Json(new { poruka = "Korisnik nije potvrdio svoj account. Provjerite vaš mail!" }, JsonRequestBehavior.AllowGet);
+            if (!await UserManager.IsEmailConfirmedAsync(user.Id)) {
+                ViewBag.Poruka = "Korisnik nije potvrdio svoj account. Provjerite vaš mail!";
+                return View(model);
+                //return Json(new { poruka = "Korisnik nije potvrdio svoj account. Provjerite vaš mail!" }, JsonRequestBehavior.AllowGet);
+
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);

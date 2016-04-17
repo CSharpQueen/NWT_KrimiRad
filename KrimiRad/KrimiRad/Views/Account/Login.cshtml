@@ -7,6 +7,13 @@
 <h2>@ViewBag.Title</h2>
 <div class="row">
     <div class="col-md-8">
+        @if (ViewBag.Poruka != null)
+        {
+            <div  class="alert alert-warning alert-dismissable">
+                <button type="button" data-dissmiss="alert" class="close" aria-hidden="true">x</button>
+                <p>@ViewBag.Poruka</p>
+            </div>
+        }
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
