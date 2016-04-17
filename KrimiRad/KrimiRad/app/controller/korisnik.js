@@ -1,10 +1,10 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 angular.module('KrimiRad.KorisnikController', [])
-    .controller('KorisnikCtrl', ['$scope', '$http', 'KrimiRadServis', function ($scope, $http, KrimiRadServis) {
+    .controller('KorisnikCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
         $scope.korisnik = '';    
-        
-        $http.get(KrimiRadServis.url + "/api/Korisnik").success(function (data) {
+        $scope.poruka = '';
+        $http.get(KrimiRadUrl.serviceUrl + "/api/Korisnik").success(function (data) {
             $scope.korisnici = data;
             console.log($scope.korisnici)
         })
@@ -15,11 +15,13 @@ angular.module('KrimiRad.KorisnikController', [])
             $("#myModal").modal("show");
         }
 
-        $scope.dodajKorisnika = function () {
-            $http.post(KrimiRadServis.url + "/api/Korisnik", $scope.korisnik).success(function () {
-                alert("Dodano!");
+        $scope.dodajKorisnika = function () {            
+            $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {
+                 $scope.poruka=data.poruka;
                 $scope.korisnici.push($scope.korisnik);
-            })
+            }).error(function (data, status, headers, config) {
+                $scope.poruka=data.poruka;
+            });
         }
 
         $scope.prikaziFormuZaEdit = function (k) {
@@ -29,15 +31,18 @@ angular.module('KrimiRad.KorisnikController', [])
         }
 
         $scope.urediKorisnika = function () {
-            $http.put(KrimiRadServis.url + "/api/Korisnik?id=" + $scope.korisnik.Id , $scope.korisnik).success(function () {
+            $http.put(KrimiRadUrl.serviceUrl + "/api/Korisnik?id=" + $scope.korisnik.Id, $scope.korisnik).success(function () {
                 alert("Uređeno!");                
             })
         }
 
         $scope.obrisiKorisnika = function (k) {
-            $http.delete(KrimiRadServis.url + '/api/Korisnik', { id: k.Id }).success(function () {
+            $http.delete(KrimiRadUrl.serviceUrl + '/api/Korisnik', { id: k.Id }).success(function () {
                 alert("Obrisano!");
             })
         }
 
+        $scope.sakrijAlert = function() {
+            $scope.poruka = '';
+        }
     }]);

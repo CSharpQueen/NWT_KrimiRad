@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 using KrimiRad.Models;
 using DataAccess.Entity;
 using DataAccess;
+using System.Net.Mail;
 
 namespace KrimiRad
 {
@@ -21,6 +22,17 @@ namespace KrimiRad
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            MailMessage msg = new MailMessage();
+            msg.From = new MailAddress("administracija@krimirad.com");
+            msg.To.Add(new MailAddress(message.Destination));
+            msg.Body = message.Body;
+            msg.Subject = message.Subject;
+            msg.IsBodyHtml = true;
+          
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));            
+            smtpClient.Credentials = new System.Net.NetworkCredential("sitim52014", "2014tim5si");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(msg);
             return Task.FromResult(0);
         }
     }

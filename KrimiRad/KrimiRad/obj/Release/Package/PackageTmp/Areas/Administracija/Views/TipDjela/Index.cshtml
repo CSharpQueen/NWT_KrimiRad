@@ -1,0 +1,40 @@
+﻿<div ng-controller="TipDjelaCtrl">
+
+    <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>
+
+    <table class="table">
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Stručni naziv
+            </th>
+            <th>
+                Vrsta djela
+            </th>
+            <th></th>
+        </tr>
+
+        <tr ng-repeat="tip in tipoviDjela">
+            <td>
+                {{ tip.Naziv }}
+            </td>
+            <td>
+                {{ tip.StrucniNaziv }}
+            </td>
+            <td>
+                {{ tip.VrstaDjela }}
+            </td>
+            <td>
+                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(tip)">Uredi</button> |
+                <button class="btn btn-danger" ng-click="obrisiTipDjela(tip)">Obriši</button>
+            </td>
+        </tr>
+        }
+
+    </table>
+
+
+@Html.Partial("~/Areas/Administracija/Views/TipDjela/_CreateEdit.cshtml")
+</div>

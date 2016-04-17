@@ -1,0 +1,47 @@
+﻿<div ng-controller="KorisnikCtrl">
+
+    <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>
+
+    <table class="table">
+        <tr>
+            <th>
+                Ime i prezime
+            </th>
+            <th>
+                Korisničko ime
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Tip korisnika
+            </th>
+            <th></th>
+        </tr>
+        
+        <tr ng-repeat="k in korisnici">
+            <td>
+                {{ k.ImeIPrezime }}
+            </td>
+            <td>
+                {{ k.Username }}
+            </td>
+            <td>
+                {{ k.Email }}
+            </td>
+            <td>
+                {{ k.TipKorisnika }}
+            </td>
+            <td>
+                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(k)">Uredi</button> |
+                <button class="btn btn-danger" ng-click="obrisiKorisnika(k)">Obriši</button>
+            </td>
+        </tr>
+        }
+
+    </table>
+
+
+    @Html.Partial("~/Areas/Administracija/Views/Korisnik/_CreateEdit.cshtml")
+</div>
+

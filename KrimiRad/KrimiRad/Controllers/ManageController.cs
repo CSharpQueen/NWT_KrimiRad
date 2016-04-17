@@ -215,9 +215,9 @@ namespace KrimiRad.Controllers
 
         //
         // GET: /Manage/ChangePassword
-        public ActionResult ChangePassword()
+        public PartialViewResult ChangePassword()
         {
-            return View();
+            return PartialView();
         }
 
         //

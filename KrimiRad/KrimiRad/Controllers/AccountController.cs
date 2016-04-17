@@ -10,6 +10,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using KrimiRad.Models;
 using DataAccess.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DataAccess;
+using CaptchaMvc.HtmlHelpers;
+using CaptchaMvc.Attributes;
 
 namespace KrimiRad.Controllers
 {
@@ -72,10 +76,16 @@ namespace KrimiRad.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
-            }            
+            }
+            var user = await UserManager.FindByNameAsync(model.Username);
+            if(user == null) {                
+                return Json(new { poruka = "Korisnik ne postoji!" }, JsonRequestBehavior.AllowGet);
+            }
+            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                return Json(new { poruka = "Korisnik nije potvrdio svoj account. Provjerite vaš mail!" }, JsonRequestBehavior.AllowGet);
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -145,31 +155,50 @@ namespace KrimiRad.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]        
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);                                
+                if (!this.IsCaptchaValid("Captcha nije ispravna")) {
+                    Response.StatusCode = 400;
+                    return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
+                }
+                var user = new ApplicationUser { UserName = model.Username, ImeIPrezime = model.ImeIPrezime, JMBG = model.JMBG, Email = model.Email };
+
+
+                var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
+
+                if (!roleManager.RoleExists(model.TipKorisnika.ToString())) {
+                    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                    role.Name = model.TipKorisnika.ToString();
+                    IdentityResult r = await roleManager.CreateAsync(role);
+                }
+
+                var check = await UserManager.FindByNameAsync(model.Username);
+                if(check == null) {
+                    Response.StatusCode = 400;
+                    return Json(new { poruka = "Korisnik već postoji" }, JsonRequestBehavior.AllowGet);
+                }
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+                                           
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    UserManager.AddToRole(user.Id, model.TipKorisnika.ToString());
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Potvrdite vaš account", "Potvrdite vaš account klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
+                    Response.StatusCode = 200;
+                    return Json(new { poruka = "Korisnik je dodan u sistem. Poslan je konfirmacijski mail na: " + model.Email }, JsonRequestBehavior.AllowGet);
+                }               
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            Response.StatusCode = 400;
+            return Json(new { poruka = "Neispravni podaci u formi!" }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -202,7 +231,7 @@ namespace KrimiRad.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -211,10 +240,10 @@ namespace KrimiRad.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset lozinke", "Molimo resetujte vašu lozinku klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
+                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -248,7 +277,7 @@ namespace KrimiRad.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist

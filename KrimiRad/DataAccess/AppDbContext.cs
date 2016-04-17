@@ -9,10 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess {
-    public enum TipKorisnika { Gradjanin, Administrator, NadlezniOrgan }
+    public enum TipKorisnika { Gradjanin = 1, Administrator = 2, NadlezniOrgan = 3 }
 
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
-        public AppDbContext() : base("Data Source=FARIS;Initial Catalog=KrimiRadDb;Integrated Security=True") {
+        public AppDbContext() : base("OVDJE UNESITE CS") {
 
         }
 

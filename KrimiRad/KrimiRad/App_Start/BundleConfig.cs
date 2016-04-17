@@ -8,7 +8,7 @@ namespace KrimiRad {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"
                        , "~/Scripts/jquery.unobtrusive-ajax.min.js"));
-
+            BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                        "~/Scripts/angular.min.js"
                      , "~/Scripts/angular-route.min.js"));
@@ -29,7 +29,7 @@ namespace KrimiRad {
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
         }
     }

@@ -16,10 +16,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using KrimiRadServis.Models;
 using System.Web.Http.Cors;
+using System.Configuration;
 
 namespace KrimiRadServis.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors("*", "*", "*")]
     public class KorisnikController : ApiController
     {
         private AppDbContext db = new AppDbContext();
@@ -34,14 +35,21 @@ namespace KrimiRadServis.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            List<KorisnikViewModel> korisnici = (from u in db.Users
-                                                 select new KorisnikViewModel() {
-                                                     ImeIPrezime = u.ImeIPrezime,
-                                                     Email = u.Email,
-                                                     JMBG = u.JMBG,                                           
-                                                     Username = u.UserName
-                                                 }).ToList();
+            List<KorisnikViewModel> korisnici = new List<KorisnikViewModel>();
+            List<string> ids = new List<string>();
+            foreach (var u in db.Users) {
+                korisnici.Add(new KorisnikViewModel() {
+                    ImeIPrezime = u.ImeIPrezime,
+                    Email = u.Email,
+                    JMBG = u.JMBG,                    
+                    Username = u.UserName
+                });
+                ids.Add(u.Id);
+            }
 
+            for (int i = 0; i < ids.Count; i++) {
+                korisnici[i].TipKorisnika = userManager.GetRoles(ids[i]).FirstOrDefault();
+            }
 
             return Json<List<KorisnikViewModel>>(korisnici);
         }
@@ -50,7 +58,7 @@ namespace KrimiRadServis.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            ApplicationUser applicationUser = db.Users.Find(id);
+            ApplicationUser applicationUser = await db.Users.FirstAsync(s => s.Id == id);
             if (applicationUser == null)
             {
                 return NotFound();
@@ -121,10 +129,18 @@ namespace KrimiRadServis.Controllers
 
 
             var result = await userManager.CreateAsync(user, korisnik.Password);
-            if (result.Succeeded) return Json(new { poruka = "Korisnik je uspješno dodan" });
-            else return Json(new { errors = result.Errors });           
-        }
+            if (result.Succeeded) {
 
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                string code = await userManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                var callbackUrl = ConfigurationManager.AppSettings.Get("AdminSite") + "/Account/ConfirmEmail/userId=" + user.Id + "&code=" + code; 
+                await userManager.SendEmailAsync(user.Id, "Potvrda registracije", "Potvrdite registraciju klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
+
+                return Json(new { poruka = "Korisnik je uspješno dodan" });
+            } else return Json(new { errors = result.Errors });           
+        }
+   
         // DELETE: api/Korisnik/guidid
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string id)

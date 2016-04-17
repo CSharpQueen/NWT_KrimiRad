@@ -11,6 +11,8 @@ namespace KrimiRadServis.Models {
         public string ImeIPrezime { get; set; }
         [Required]
         public string JMBG { get; set; }
+
+        public TipKorisnika TipKorisnika { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]        
@@ -26,7 +28,5 @@ namespace KrimiRadServis.Models {
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        public TipKorisnika TipKorisnika { get; set; }
     }
 }

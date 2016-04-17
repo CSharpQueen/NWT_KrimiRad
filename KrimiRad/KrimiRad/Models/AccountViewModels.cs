@@ -49,36 +49,46 @@ namespace KrimiRad.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Korisničko ime")]        
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamti me?")]
         public bool RememberMe { get; set; }
-    }
-
+    }    
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name="Ime i prezime")]
+        public string ImeIPrezime { get; set; }
+        [Required]
+        public string JMBG { get; set; }
+        [Required]
+        public DataAccess.TipKorisnika TipKorisnika { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} mora imati najmanje {2} karaktera", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Pozvrda lozinke")]
+        [Compare("Password", ErrorMessage = "Lozinka i potvrda lozinke se ne slažu!")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name="Korisničko ime")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -89,14 +99,14 @@ namespace KrimiRad.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} mora imati najmanje {2} karaktera", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrda lozinke")]
+        [Compare("Password", ErrorMessage = "Lozinka i potvrda lozinke nse ne slažu!")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

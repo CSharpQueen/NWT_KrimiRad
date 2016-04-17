@@ -1,0 +1,15 @@
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\DataAccess.dll.config
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\DataAccess.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\DataAccess.pdb
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\EntityFramework.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\EntityFramework.xml
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Release\DataAccess.Migrations.initonazure.resources
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Release\DataAccess.csproj.GenerateResource.Cache
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Release\DataAccess.dll
+C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Release\DataAccess.pdb

@@ -1,0 +1,69 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc
+
+@model KrimiRad.Models.RegisterViewModel
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModal-label">Tip djela</h4>
+            </div>
+            <div class="modal-body">
+                <div ng-show="poruka !== ''" class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" ng-click="sakrijAlert()" aria-hidden="true">×</button>
+                    <p>{{ poruka }}</p>
+                </div>
+                <form name="korisnikForm" ng-submit="dodajTipDjela()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.ImeIPrezime)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.ImeIPrezime, new { ng_model = "korisnik.ImeIPrezime", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            @Html.LabelFor(m => m.JMBG)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.JMBG, new { ng_model = "korisnik.JMBG", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            @Html.LabelFor(m => m.Email)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Email, new { ng_model = "korisnik.Email", @class = "form-control", required = "Obavezno polje" })
+                            </div>                            
+                            @{var mathCaptcha = Html.MathCaptcha("", "Input", "Obavezno!", true); }
+                            @mathCaptcha                                            
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Username)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Username, new { ng_model = "korisnik.Username", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            <div ng-if="sta=='dodaj'">
+                                @Html.LabelFor(m => m.Password)
+                                <div class="form-group">
+                                    @Html.PasswordFor(m => m.Password, new { ng_model = "korisnik.Password", @class = "form-control", required = "Obavezno polje" })
+                                </div>
+                                @Html.LabelFor(m => m.Password)
+                                <div class="form-group">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { ng_model = "korisnik.ConfirmPassword", @class = "form-control", required = "Obavezno polje" })
+                                </div>
+                            </div>
+                            @Html.LabelFor(m => m.TipKorisnika)
+                            <div class="form-group">
+                                @Html.EnumDropDownListFor(m => m.TipKorisnika, "Tip korisnika", new { ng_model = "korisnik.TipKorisnika", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            <div class="form-group col-md-offset-3">
+                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="Dodaj" />
+                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="Uredi" />
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                            </div>
+                        </div>
+
+                       
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

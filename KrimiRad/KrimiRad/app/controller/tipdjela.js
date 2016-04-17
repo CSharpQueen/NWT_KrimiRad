@@ -1,10 +1,10 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 angular.module('KrimiRad.TipDjelaController', [])
-    .controller('TipDjelaCtrl', ['$scope', '$http', 'KrimiRadServis', function ($scope, $http, KrimiRadServis) {
+    .controller('TipDjelaCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
         $scope.tipDjela = '';    
         
-        $http.get(KrimiRadServis.url + "/api/TipDjela").success(function (data) {
+        $http.get(KrimiRadUrl.serviceUrl + "/api/TipDjela").success(function (data) {
             $scope.tipoviDjela = data;
         })
 
@@ -15,7 +15,7 @@ angular.module('KrimiRad.TipDjelaController', [])
         }
 
         $scope.dodajTipDjela = function () {
-            $http.post(KrimiRadServis.url + "/api/TipDjela", $scope.tipDjela).success(function () {
+            $http.post(KrimiRadUrl.serviceUrl + "/api/TipDjela", $scope.tipDjela).success(function () {
                 alert("Dodano!");
                 $scope.tipoviDjela.push($scope.tipDjela);
             })
@@ -29,13 +29,13 @@ angular.module('KrimiRad.TipDjelaController', [])
         }
 
         $scope.urediTipDjela = function () {
-            $http.put(KrimiRadServis.url + "/api/TipDjela?id=" + $scope.tipDjela.Id , $scope.tipDjela).success(function () {
+            $http.put(KrimiRadUrl.serviceUrl + "/api/TipDjela?id=" + $scope.tipDjela.Id, $scope.tipDjela).success(function () {
                 alert("Uređeno!");                
             })
         }
 
         $scope.obrisiTipDjela = function (tip) {            
-            $http.delete(KrimiRadServis.url + '/api/TipDjela', {id: tip.Id}).success(function() {
+            $http.delete(KrimiRadUrl.serviceUrll + '/api/TipDjela', { id: tip.Id }).success(function () {
                 alert("Obrisano!");
             })
         }
