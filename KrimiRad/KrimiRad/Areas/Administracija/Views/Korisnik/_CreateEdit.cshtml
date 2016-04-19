@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 @Html.TextBoxFor(m => m.Email, new { ng_model = "korisnik.Email", @class = "form-control", required = "Obavezno polje" })
                             </div>                            
-                            @{var mathCaptcha = Html.MathCaptcha("", "Input", "Obavezno!", true); }
+                            @{var mathCaptcha = Html.Captcha("", "Unesite tekst sa slike iznad:", 5, "Obavezno", true); }
                             @mathCaptcha                                            
                         </div>
                         <div class="col-md-6">
