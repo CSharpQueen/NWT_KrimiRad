@@ -80,7 +80,7 @@ namespace KrimiRad.Controllers
             var user = await UserManager.FindByNameAsync(model.Username);
             
             if(user == null) {
-                ViewBag.Poruka = "Korisnik ne postoji!";
+                ViewBag.Poruka = "Neispravni login podaci.";
                 return View(model);
                 //return Json(new { poruka = "Korisnik ne postoji!" }, JsonRequestBehavior.AllowGet);
             }
@@ -103,7 +103,7 @@ namespace KrimiRad.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Neispravni login podaci.");
                     return View(model);
             }
         }
@@ -153,6 +153,7 @@ namespace KrimiRad.Controllers
 
         //
         // GET: /Account/Register
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -161,27 +162,33 @@ namespace KrimiRad.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
+        [AllowAnonymous]        
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (this.IsCaptchaValid("Captcha nije ispravna"))
+            if (ModelState.IsValid)
             {
+                if (this.IsCaptchaValid("Captcha nije ispravna")) {
+                    Response.StatusCode = 400;
+                    return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
+                }
                 var user = new ApplicationUser { UserName = model.Username, ImeIPrezime = model.ImeIPrezime, JMBG = model.JMBG, Email = model.Email };
+                
                 var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
 
-                if (!roleManager.RoleExists(model.TipKorisnika.ToString()))
-                {
+                if (!roleManager.RoleExists(model.TipKorisnika.ToString())) {
                     var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                     role.Name = model.TipKorisnika.ToString();
                     IdentityResult r = await roleManager.CreateAsync(role);
                 }
 
                 var check = await UserManager.FindByNameAsync(model.Username);
-                if (check != null)
-                {
+                if(check != null) {
                     Response.StatusCode = 400;
-                    return Json(new { poruka = "Korisnik već postoji" }, JsonRequestBehavior.AllowGet);
+                    return Json(new { poruka = "Username zauzet." }, JsonRequestBehavior.AllowGet);
                 }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+                                           
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, model.TipKorisnika.ToString());
@@ -192,12 +199,12 @@ namespace KrimiRad.Controllers
                     await UserManager.SendEmailAsync(user.Id, "Potvrdite vaš account", "Potvrdite vaš account klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
                     Response.StatusCode = 200;
                     return Json(new { poruka = "Korisnik je dodan u sistem. Poslan je konfirmacijski mail na: " + model.Email }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                { }
+                }               
             }
+
+            // If we got this far, something failed, redisplay form
             Response.StatusCode = 400;
-            return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
+            return Json(new { poruka = "Neispravni podaci u formi!" }, JsonRequestBehavior.AllowGet);
         }
 
         //
