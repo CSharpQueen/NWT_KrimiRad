@@ -42,6 +42,7 @@ namespace KrimiRad.Models
     public class ForgotViewModel
     {
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -77,7 +78,7 @@ namespace KrimiRad.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} mora imati najmanje {2} karaktera", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} mora imati najmanje {2} karaktera i sadržati barem jedan znak i broj", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Lozinka")]
         public string Password { get; set; }

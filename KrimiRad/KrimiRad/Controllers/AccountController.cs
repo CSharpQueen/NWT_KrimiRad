@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using DataAccess;
 using CaptchaMvc.HtmlHelpers;
 using CaptchaMvc.Attributes;
+using System.Text.RegularExpressions;
 
 namespace KrimiRad.Controllers
 {
@@ -184,9 +185,27 @@ namespace KrimiRad.Controllers
                 var check = await UserManager.FindByNameAsync(model.Username);
                 if(check != null) {
                     Response.StatusCode = 400;
-                    return Json(new { poruka = "Username zauzet." }, JsonRequestBehavior.AllowGet);
+                    return Json(new { poruka = "Username zauzet!" }, JsonRequestBehavior.AllowGet);
                 }
 
+                if(model.Password != model.ConfirmPassword)
+                {
+                    Response.StatusCode = 400;
+                    return Json(new { poruka = "Lozinka i potvrda lozinke se ne podudaraju!" }, JsonRequestBehavior.AllowGet);
+                }
+                if (!string.IsNullOrEmpty(model.Email))
+                {
+                    string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                                             @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                                                @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+                    Regex re = new Regex(emailRegex);
+                    if (!re.IsMatch(model.Email))
+                    {
+                        Response.StatusCode = 400;
+                        return Json(new { poruka = "Email nije ispravan!" }, JsonRequestBehavior.AllowGet);
+
+                    }
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                                            
                 if (result.Succeeded)

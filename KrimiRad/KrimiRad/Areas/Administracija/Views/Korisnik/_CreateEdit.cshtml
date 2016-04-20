@@ -29,7 +29,9 @@
                             @Html.LabelFor(m => m.Email)
                             <div class="form-group">
                                 @Html.TextBoxFor(m => m.Email, new { ng_model = "korisnik.Email", @class = "form-control", required = "Obavezno polje" })
-                            </div>                            
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                               </div>
+                                                     
                             @{var mathCaptcha = Html.MathCaptcha(); }
                             @mathCaptcha                                            
                         </div>
@@ -42,10 +44,12 @@
                                 @Html.LabelFor(m => m.Password)
                                 <div class="form-group">
                                     @Html.PasswordFor(m => m.Password, new { ng_model = "korisnik.Password", @class = "form-control", required = "Obavezno polje" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                 </div>
                                 @Html.LabelFor(m => m.Password)
                                 <div class="form-group">
                                     @Html.PasswordFor(m => m.ConfirmPassword, new { ng_model = "korisnik.ConfirmPassword", @class = "form-control", required = "Obavezno polje" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             @Html.LabelFor(m => m.TipKorisnika)
