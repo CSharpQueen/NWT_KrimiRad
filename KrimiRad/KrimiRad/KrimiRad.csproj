@@ -229,6 +229,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
     <Content Include="app\controller\tipdjela.js" />
+    <Content Include="app\service\tipDjelaService.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

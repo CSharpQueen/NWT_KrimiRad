@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "KrimiRad.TipDjelaController", "KrimiRad.KorisnikController"]);
+var app = angular.module('app', ["ngRoute", "KrimiRad.TipDjela", "KrimiRad.Korisnik"]);
 
 app.factory('KrimiRadUrl', function () {
     return {

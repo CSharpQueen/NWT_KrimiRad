@@ -1,12 +1,13 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-angular.module('KrimiRad.TipDjelaController', [])
-    .controller('TipDjelaCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
-        $scope.tipDjela = '';    
-        
-        $http.get(KrimiRadUrl.serviceUrl + "/api/TipDjela").success(function (data) {
+var TipDjela = angular.module('KrimiRad.TipDjela', [])
+    .controller('TipDjelaCtrl', ['$scope', 'tipDjelaService', function ($scope, tipDjelaService) {
+
+        $scope.tipDjela = '';
+
+        tipDjelaService.getAll().success(function (data) {
             $scope.tipoviDjela = data;
-        })
+        });
 
         $scope.prikaziFormuZaCreate = function () {
             $scope.sta = "dodaj";
@@ -15,29 +16,26 @@ angular.module('KrimiRad.TipDjelaController', [])
         }
 
         $scope.dodajTipDjela = function () {
-            $http.post(KrimiRadUrl.serviceUrl + "/api/TipDjela", $scope.tipDjela).success(function () {
+            tipDjelaService.create($scope.tipDjela).success(function (data) {
                 alert("Dodano!");
-                $scope.tipoviDjela.push($scope.tipDjela);
+                $scope.tipoviDjela.push($scope.tipDjela);                
             })
         }
 
         $scope.prikaziFormuZaEdit = function (tip) {
-            console.log(tip.Id);
             $scope.sta = "uredi";
             $scope.tipDjela = tip;
             $("#myModal").modal("show");
         }
 
         $scope.urediTipDjela = function () {
-            $http.put(KrimiRadUrl.serviceUrl + "/api/TipDjela?id=" + $scope.tipDjela.Id, $scope.tipDjela).success(function () {
-                alert("Uređeno!");                
-            })
+            tipDjelaService.update($scope.tipDjela);
+            alert("Spremljene izmjene!");
         }
 
-        $scope.obrisiTipDjela = function (tip) {            
-            $http.delete(KrimiRadUrl.serviceUrll + '/api/TipDjela', { id: tip.Id }).success(function () {
-                alert("Obrisano!");
-            })
+        $scope.obrisiTipDjela = function (tip) {
+            tipDjelaService.delete(tip);
+            alert("Obrisano!");
         }
 
     }]);

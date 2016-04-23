@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-angular.module('KrimiRad.KorisnikController', [])
+angular.module('KrimiRad.Korisnik', [])
     .controller('KorisnikCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
         $scope.korisnik = '';    
         $scope.poruka = '';
