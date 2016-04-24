@@ -22,3 +22,91 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.cssload-loader * {
+	box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+}
+
+.cssload-loader {
+	width: 1em;
+	height: 1em;
+	font-size: 206px;
+	position: absolute;
+	display:block;
+	margin: 69px auto;
+    z-index:100000;
+    top: 10%;
+    left: 40%;
+}
+
+.cssload-loader:before, .cssload-loader:after {
+	content: "";
+	top: 0;
+	display: block;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	border-width: 0.5em;
+	border-style: double;
+	border-color: transparent;
+	border-radius: 1em;
+	box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	animation: spin 0.9s infinite;
+		-o-animation: spin 0.9s infinite;
+		-ms-animation: spin 0.9s infinite;
+		-webkit-animation: spin 0.9s infinite;
+		-moz-animation: spin 0.9s infinite;
+}
+.cssload-loader:after {
+	left: 0;
+	border-left-color: rgb(0,0,0);
+}
+.cssload-loader:before {
+	right: 0;
+	border-right-color: rgb(0,0,0);
+	animation-delay: -0.2225s;
+		-o-animation-delay: -0.2225s;
+		-ms-animation-delay: -0.2225s;
+		-webkit-animation-delay: -0.2225s;
+		-moz-animation-delay: -0.2225s;
+}
+
+
+
+@keyframes spin {
+	from {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes spin {
+	from {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes spin {
+	from {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spin {
+	from {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes spin {
+	from {
+		-moz-transform: rotate(360deg);
+	}
+}

@@ -1,2 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters />
+<parameters>
+  <parameter name="DataAccess.AppDbContext-Web.config Connection String" description="DataAccess.AppDbContext Connection String used in web.config by the application to access the database." defaultValue="DataAccess.AppDbContext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GitHub\\NWT_KrimiRad\\KrimiRad\\KrimiRadServis\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataAccess.AppDbContext']/@connectionString" />
+  </parameter>
+</parameters>

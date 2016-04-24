@@ -73,22 +73,21 @@ namespace KrimiRadServis.Controllers
                 }
             }
 
+            Json(new { poruka = "Tip djela je uredjen!", tipDjela = tipDjela });
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/TipDjela
         [ResponseType(typeof(TipDjela))]
-        public async Task<IHttpActionResult> PostTipDjela(TipDjela tipDjela)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostTipDjela(TipDjela tipDjela) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
             db.TipDjela.Add(tipDjela);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = tipDjela.ID }, tipDjela);
+            return Json(new { poruka = "Tip djela je kreiran!", tipDjela = tipDjela });
         }
 
         // DELETE: api/TipDjela/5
@@ -104,7 +103,7 @@ namespace KrimiRadServis.Controllers
             db.TipDjela.Remove(tipDjela);
             await db.SaveChangesAsync();
 
-            return Ok(tipDjela);
+            return Json(new { poruka = "Tip djela je obrisan!", tipDjela = tipDjela });
         }
 
         protected override void Dispose(bool disposing)

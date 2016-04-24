@@ -2,19 +2,24 @@
 
 var app = angular.module('app', ["ngRoute", "KrimiRad.TipDjela", "KrimiRad.Korisnik"]);
 
+app.controller("appctrl", ["$rootScope", function ($rootScope) {    
+    $rootScope.loading = false;    
+}]);
+
 app.factory('KrimiRadUrl', function () {
     return {
-        //serviceUrl: 'http://localhost:58808',
+        serviceUrl: 'http://localhost:58808',
         //publicSiteUrl: 'http://localhost:58808',
         adminSiteUrl: 'http://localhost:51580',
-        serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
         publicSiteUrl: 'http://public-krimirad.azurewebsites.net'
         //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
 
+
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
-    
+    $locationProvider.html5Mode(true);
     $routeProvider
         .when("/administracija", {
             templateUrl: "/GetViews/GetAdministracija",
@@ -40,5 +45,5 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Manage/ChangePassword",
             controller: ""
         });
-        $locationProvider.html5Mode(true);
+
 }]);

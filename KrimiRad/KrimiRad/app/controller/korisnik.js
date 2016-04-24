@@ -1,12 +1,15 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 angular.module('KrimiRad.Korisnik', [])
-    .controller('KorisnikCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
+    .controller('KorisnikCtrl', ['$scope', '$http','$rootScope', 'KrimiRadUrl', function ($scope, $http,$rootScope, KrimiRadUrl) {
         $scope.korisnik = '';    
         $scope.poruka = '';
+        $rootScope.loading = true;
         $http.get(KrimiRadUrl.serviceUrl + "/api/Korisnik").success(function (data) {
             $scope.korisnici = data;
             console.log($scope.korisnici)
+        }).finally(function(data) { 
+            $rootScope.loading = false;
         })
 
         $scope.prikaziFormuZaCreate = function () {
@@ -17,7 +20,7 @@ angular.module('KrimiRad.Korisnik', [])
 
         $scope.dodajKorisnika = function () {            
             $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {
-                 $scope.poruka=data.poruka;
+                $scope.poruka=data.poruka;
                 $scope.korisnici.push($scope.korisnik);
             }).error(function (data, status, headers, config) {
                 $scope.poruka=data.poruka;

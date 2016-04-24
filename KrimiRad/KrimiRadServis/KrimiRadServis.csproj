@@ -300,7 +300,9 @@
     <None Include="Properties\PublishProfiles\krimiradservice - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\krimiradservice - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\krimiradservice - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\service-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\service-krimirad - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\service-krimirad - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\service-krimirad - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

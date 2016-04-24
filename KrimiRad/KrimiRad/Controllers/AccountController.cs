@@ -166,12 +166,15 @@ namespace KrimiRad.Controllers
         [AllowAnonymous]        
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+            if (!this.IsCaptchaValid("Captcha nije ispravna")) {
+                Response.StatusCode = 400;
+                return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
+            }
+
             if (ModelState.IsValid)
             {
-                if (this.IsCaptchaValid("Captcha nije ispravna")) {
-                    Response.StatusCode = 400;
-                    return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
-                }
+                
                 var user = new ApplicationUser { UserName = model.Username, ImeIPrezime = model.ImeIPrezime, JMBG = model.JMBG, Email = model.Email };
                 
                 var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
