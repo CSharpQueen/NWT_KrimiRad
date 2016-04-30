@@ -7,7 +7,7 @@ angular.module('KrimiRad.Korisnik', [])
         $rootScope.loading = true;
         $http.get(KrimiRadUrl.serviceUrl + "/api/Korisnik").success(function (data) {
             $scope.korisnici = data;
-            console.log($scope.korisnici)
+            $rootScope.loading = false;
         }).finally(function(data) { 
             $rootScope.loading = false;
         })

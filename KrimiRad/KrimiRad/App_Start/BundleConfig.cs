@@ -11,7 +11,9 @@ namespace KrimiRad {
             BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                        "~/Scripts/angular.min.js"
-                     , "~/Scripts/angular-route.min.js"));
+                     , "~/Scripts/angular-route.min.js"
+                     , "~/Scripts/angular-translate.min.js"
+                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/angularCustom").IncludeDirectory(
                 "~/app", "*.js", true));

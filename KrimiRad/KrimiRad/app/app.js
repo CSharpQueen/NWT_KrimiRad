@@ -1,17 +1,33 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "KrimiRad.TipDjela", "KrimiRad.Korisnik"]);
+var app = angular.module('app', ["ngRoute", "pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik"]);
 
-app.controller("appctrl", ["$rootScope", function ($rootScope) {    
-    $rootScope.loading = false;    
+app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {    
+    $rootScope.loading = false;
+    $scope.selectedLanguage = $translate.preferredLanguage();
+    $scope.switchLanguage = function (lang) {        
+        $translate.use(lang);
+        $scope.selectedLanguage = lang;
+    }    
+}]);
+
+app.config(["$translateProvider", function ($translateProvider) {
+   
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'Translations/lang-',
+        suffix: '.json'
+    });
+       
+    $translateProvider.preferredLanguage('bs');
+    //$translateProvider.useLocalStorage();
 }]);
 
 app.factory('KrimiRadUrl', function () {
     return {
-        serviceUrl: 'http://localhost:58808',
+        //serviceUrl: 'http://localhost:58808',
         //publicSiteUrl: 'http://localhost:58808',
         adminSiteUrl: 'http://localhost:51580',
-        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        serviceUrl: 'http://service-krimirad.azurewebsites.net',
         publicSiteUrl: 'http://public-krimirad.azurewebsites.net'
         //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
