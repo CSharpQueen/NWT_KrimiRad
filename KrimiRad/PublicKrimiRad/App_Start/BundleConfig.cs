@@ -5,6 +5,19 @@ namespace PublicKrimiRad {
     public class BundleConfig {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles) {
+
+            BundleTable.EnableOptimizations = true;
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                       "~/Scripts/angular.min.js"
+                     , "~/Scripts/angular-route.min.js"
+                     , "~/Scripts/angular-translate.min.js"
+                     , "~/Scripts/angular-google-maps.min"
+                     ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularCustom").IncludeDirectory(
+                "~/app", "*.js", true));
+
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

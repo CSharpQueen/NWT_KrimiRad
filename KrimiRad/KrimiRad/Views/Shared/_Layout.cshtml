@@ -38,7 +38,13 @@
             </div>
         </div>
         <div class="container body-content">
-            <divs ng-show="loading" class="cssload-loader"></divs>
+            <div ng-show="loading" class="cssload-wrap">
+                <div class="cssload-circle"></div>
+                <div class="cssload-circle"></div>
+                <div class="cssload-circle"></div>
+                <div class="cssload-circle"></div>
+                <div class="cssload-circle"></div>
+            </div>
             @RenderBody()
             <hr />
             <footer>

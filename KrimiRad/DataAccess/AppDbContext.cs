@@ -12,7 +12,10 @@ namespace DataAccess {
     public enum TipKorisnika { Gradjanin = 1, Administrator = 2, NadlezniOrgan = 3 }
 
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
-        public AppDbContext() : base("Data Source=etfsql.database.windows.net;Initial Catalog=KrimiRadDb;User ID=krimirad;Password=1DvaTri!") {
+        public AppDbContext() : base(
+            "Data Source=(localdb)\\ProjectsV13;Initial Catalog=KrimiRadDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+
+            ) {
 
         }
 

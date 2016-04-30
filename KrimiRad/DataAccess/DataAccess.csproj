@@ -64,21 +64,12 @@
     <Compile Include="Entity\Medij.cs" />
     <Compile Include="Entity\Prijava.cs" />
     <Compile Include="Entity\TipDjela.cs" />
-    <Compile Include="Migrations\201604171551324_initonazure.cs" />
-    <Compile Include="Migrations\201604171551324_initonazure.Designer.cs">
-      <DependentUpon>201604171551324_initonazure.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604171551324_initonazure.resx">
-      <DependentUpon>201604171551324_initonazure.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
