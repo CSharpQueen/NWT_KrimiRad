@@ -5,5 +5,11 @@
   "USERNAME": "Korisničko ime",
   "PASSWORD": "Lozinka",
   "ZAPAMTIME": "Zapamti me",
-  "ZABORAVILIPASS": "Zaboravili ste lozinku ?"
+  "ZABORAVILIPASS": "Zaboravili ste lozinku ?",
+  "PRIJAVI": "Prijavi",
+  "TIP DJELA": "Tip djela",
+  "LOKACIJA": "Lokacija",
+  "DATUM DJELA": "Datum djela",
+  "SLIKA/VIDEO": "Slika/Video",
+  "KOMENTAR": "Komentar"
 }

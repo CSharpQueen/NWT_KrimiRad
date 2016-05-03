@@ -1,9 +1,15 @@
 ﻿{
   "STATISTIKA": "Statistics",
-  "JEZIK": "Lanaguage",
+  "JEZIK": "Language",
   "PRIJAVA": "Login",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "ZAPAMTIME": "Remember me",
-  "ZABORAVILIPASS" :  "Forgot password"
+  "ZABORAVILIPASS": "Forgot password",
+  "PRIJAVI": "Report",
+  "TIP DJELA": "Type",
+  "LOKACIJA": "Location",
+  "DATUM DJELA": "Date",
+  "SLIKA/VIDEO": "Photo/Video",
+  "KOMENTAR": "Comment"
 }
