@@ -163,14 +163,11 @@ namespace KrimiRad.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]        
+        [AllowAnonymous]
+        //[CaptchaMvc.Attributes.CaptchaVerify("Captcha is not valid")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-
-            if (!this.IsCaptchaValid("Captcha nije ispravna")) {
-                Response.StatusCode = 400;
-                return Json(new { poruka = "Captcha nije ispravna" }, JsonRequestBehavior.AllowGet);
-            }
+            
 
             if (ModelState.IsValid)
             {

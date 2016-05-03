@@ -14,15 +14,5 @@ angular.module('app').controller('PrijavaCtrl', ['$scope', 'prijavaService', '$r
         //kraj loadinga
         $rootScope.loading = false;
     });
-
-    $scope.dodajPrijavu = function () {
-            $rootScope.loading = true;
-            prijavaService.create($scope.prijava).success(function (data) {
-                $scope.prijave.push($scope.prijava);
-                $scope.poruka = data.poruka;
-            })
-            .finally(function (data) {
-                $rootScope.loading = false;
-            });
-        }
+   
 }]);

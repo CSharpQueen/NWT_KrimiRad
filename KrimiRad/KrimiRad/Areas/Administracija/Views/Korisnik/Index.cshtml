@@ -1,7 +1,16 @@
-﻿<div ng-controller="KorisnikCtrl">
+﻿
+<div ng-controller="KorisnikCtrl">
 
     <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>
+    <button type="button" ng-show="formaZaUnos == true" class="btn btn-info" ng-click="formaZaUnos = false;" data-dismiss="modal">Izađi</button>
 
+
+    <div ng-show="poruka !== ''" class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" ng-click="sakrijAlert()" aria-hidden="true">×</button>
+        <p>{{ poruka }}</p>
+    </div>
+    
+    @Html.Partial("~/Areas/Administracija/Views/Korisnik/_CreateEdit.cshtml")
     <table class="table">
         <tr>
             <th>
@@ -18,7 +27,7 @@
             </th>
             <th></th>
         </tr>
-        
+
         <tr ng-repeat="k in korisnici">
             <td>
                 {{ k.ImeIPrezime }}
@@ -42,6 +51,6 @@
     </table>
 
 
-    @Html.Partial("~/Areas/Administracija/Views/Korisnik/_CreateEdit.cshtml")
+    
 </div>
 

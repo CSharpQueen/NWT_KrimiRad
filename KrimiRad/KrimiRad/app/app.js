@@ -60,7 +60,6 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""
-        });
-   
+        });        
 
 }]);

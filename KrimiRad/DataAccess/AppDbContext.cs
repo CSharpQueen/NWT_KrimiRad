@@ -13,8 +13,7 @@ namespace DataAccess {
 
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
         public AppDbContext() : base(
-            "Data Source=(localdb)\\ProjectsV13;Initial Catalog=KrimiRadDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-
+            "Data Source=(localdb)\\ProjectsV13;Initial Catalog=KrimiRadDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"            
             ) {
 
         }

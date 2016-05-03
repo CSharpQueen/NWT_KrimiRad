@@ -13,8 +13,8 @@
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.TipDjela)
                             <div class="form-group" ng-controller="TipDjelaCtrl">
-                                <select ng-model="selected" ng-options="t.Naziv for t in tipoviDjela">
-                                    <option value="">-- Odaberite djelo --</option>
+                                <select>
+                                    <option ng-repeat="t in tipoviDjela" value="{{t.Id}}">{{t.Naziv}}</option>
                                 </select>
                             </div>
                             @Html.LabelFor(m => m.Lokacija)
