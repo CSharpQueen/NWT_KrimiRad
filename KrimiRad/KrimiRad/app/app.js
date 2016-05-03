@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik"]);
+var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","ngMap"]);
 
 app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {    
     $rootScope.loading = false;
@@ -24,10 +24,10 @@ app.config(["$translateProvider", function ($translateProvider) {
 
 app.factory('KrimiRadUrl', function () {
     return {
-        //serviceUrl: 'http://localhost:58808',
+        serviceUrl: 'http://localhost:58808',
         //publicSiteUrl: 'http://localhost:58808',
         adminSiteUrl: 'http://localhost:51580',
-        serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
         publicSiteUrl: 'http://public-krimirad.azurewebsites.net'
         //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
@@ -43,7 +43,7 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
         })
        .when("/prijave", {
            templateUrl: "/GetViews/GetPrijave",
-           controller: ""
+           controller: "PregledMapeCtrl"
        })
        .when("/statistika", {
            templateUrl: "/GetViews/GetStatistika",
@@ -61,5 +61,6 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Manage/ChangePassword",
             controller: ""
         });
+   
 
 }]);

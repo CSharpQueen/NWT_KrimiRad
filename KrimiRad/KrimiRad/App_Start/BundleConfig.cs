@@ -13,6 +13,7 @@ namespace KrimiRad {
                        "~/Scripts/angular.min.js"
                      , "~/Scripts/angular-route.min.js"
                      , "~/Scripts/angular-translate.min.js"
+                     , "~/Scripts/angular-google-maps.min"
                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/angularCustom").IncludeDirectory(

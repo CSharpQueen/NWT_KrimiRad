@@ -228,7 +228,10 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
+    <Content Include="app\controller\pregledMape.js" />
+    <Content Include="app\controller\prijava.js" />
     <Content Include="app\controller\tipdjela.js" />
+    <Content Include="app\service\prijavaService.js" />
     <Content Include="app\service\tipDjelaService.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -287,6 +290,7 @@
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ng-map.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
