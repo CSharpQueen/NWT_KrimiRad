@@ -58,20 +58,11 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             controller: "KorisnikCtrl"
         })
 
-         .when("/statistika/PoOpstini", {
-            templateUrl: "/Statistika/PoOpstini/Index",
-            controller: "PoOpstiniCtrl"
+         .when("/statistika/PoTipuIOpstini", {
+             templateUrl: "/Statistika/GetView/PoOpstiniITipuDjela",
+            controller: "StatistikaCtrl"
         })
-
-        .when("/statistika/PoDatumu", {
-            templateUrl: "/Statistika/PoDatumu/Index",
-            controller: "PoDatumuCtrl"
-        })
-        .when("/statistika/PoTipuDjela", {
-            templateUrl: "/Statistika/PoTipuDjela/Index",
-            controller: "PoTipuDjelaCtrl"
-        })
-        
+               
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""

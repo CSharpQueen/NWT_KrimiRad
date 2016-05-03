@@ -213,10 +213,8 @@
     <Compile Include="Areas\Administracija\AdministracijaAreaRegistration.cs" />
     <Compile Include="Areas\Administracija\Controllers\KorisnikController.cs" />
     <Compile Include="Areas\Administracija\Controllers\TipDjelaController.cs" />
-    <Compile Include="Areas\Statistika\Controllers\PoDatumuController.cs" />
-    <Compile Include="Areas\Statistika\Controllers\PoOpstiniController.cs" />
-    <Compile Include="Areas\Statistika\Controllers\PoOpstiniITipuDjelaController.cs" />
-    <Compile Include="Areas\Statistika\Controllers\PoTipuDjelaController.cs" />
+    <Compile Include="Areas\Statistika\Controllers\GetViewController.cs" />
+    <Compile Include="Areas\Statistika\StatistikaAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GetViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,10 +230,6 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
-    <Content Include="app\controller\PoDatumu.js" />
-    <Content Include="app\controller\PoOpstiniITipuDjela.js" />
-    <Content Include="app\controller\PoOpstini.js" />
-    <Content Include="app\controller\PoTipuDjela.js" />
     <Content Include="app\controller\pregledMape.js" />
     <Content Include="app\controller\prijava.js" />
     <Content Include="app\controller\statistika.js" />
@@ -275,12 +269,10 @@
     <Content Include="Areas\Administracija\Views\TipDjela\_CreateEdit.cshtml" />
     <Content Include="Areas\Administracija\Views\Korisnik\Index.cshtml" />
     <Content Include="Areas\Administracija\Views\Korisnik\_CreateEdit.cshtml" />
+    <Content Include="Areas\Statistika\Views\web.config" />
     <Content Include="Areas\Statistika\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Statistika\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Statistika\Views\PoDatumu\Index.cshtml" />
-    <Content Include="Areas\Statistika\Views\PoOpstini\Index.cshtml" />
-    <Content Include="Areas\Statistika\Views\PoOpstiniITipuDjela\Index.cshtml" />
-    <Content Include="Areas\Statistika\Views\PoTipuDjela\Index.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\PoOpstiniITipuDjela.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />
