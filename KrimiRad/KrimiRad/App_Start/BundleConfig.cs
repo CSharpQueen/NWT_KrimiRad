@@ -8,13 +8,12 @@ namespace KrimiRad {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"
                        , "~/Scripts/jquery.unobtrusive-ajax.min.js"));
-            BundleTable.EnableOptimizations = true;
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                       "~/Scripts/angular.min.js"
-                     , "~/Scripts/angular-route.min.js"
-                     , "~/Scripts/angular-translate.min.js"
-                     , "~/Scripts/angular-google-maps.min"
-                     ));
+            //BundleTable.EnableOptimizations = true;
+            //bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+            //           "~/Scripts/angular.min.js"
+            //         , "~/Scripts/angular-route.min.js"
+            //         , "~/Scripts/angular-translate.min.js"
+            //         ));
 
             bundles.Add(new ScriptBundle("~/bundles/angularCustom").IncludeDirectory(
                 "~/app", "*.js", true));
