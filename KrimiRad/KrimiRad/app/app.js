@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","KrimiRad.PregledPrijava"]);
+var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","KrimiRad.PregledPrijava","KrimiRad.Statistika"]);
 
 app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {    
     $rootScope.loading = false;
@@ -57,6 +57,21 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Administracija/Korisnik/Index",
             controller: "KorisnikCtrl"
         })
+
+         .when("/statistika/PoOpstini", {
+            templateUrl: "/Statistika/PoOpstini/Index",
+            controller: "PoOpstiniCtrl"
+        })
+
+        .when("/statistika/PoDatumu", {
+            templateUrl: "/Statistika/PoDatumu/Index",
+            controller: "PoDatumuCtrl"
+        })
+        .when("/statistika/PoTipuDjela", {
+            templateUrl: "/Statistika/PoTipuDjela/Index",
+            controller: "PoTipuDjelaCtrl"
+        })
+        
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""

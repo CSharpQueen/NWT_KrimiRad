@@ -213,6 +213,10 @@
     <Compile Include="Areas\Administracija\AdministracijaAreaRegistration.cs" />
     <Compile Include="Areas\Administracija\Controllers\KorisnikController.cs" />
     <Compile Include="Areas\Administracija\Controllers\TipDjelaController.cs" />
+    <Compile Include="Areas\Statistika\Controllers\PoDatumuController.cs" />
+    <Compile Include="Areas\Statistika\Controllers\PoOpstiniController.cs" />
+    <Compile Include="Areas\Statistika\Controllers\PoOpstiniITipuDjelaController.cs" />
+    <Compile Include="Areas\Statistika\Controllers\PoTipuDjelaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GetViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,10 +232,16 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
+    <Content Include="app\controller\PoDatumu.js" />
+    <Content Include="app\controller\PoOpstiniITipuDjela.js" />
+    <Content Include="app\controller\PoOpstini.js" />
+    <Content Include="app\controller\PoTipuDjela.js" />
     <Content Include="app\controller\pregledMape.js" />
     <Content Include="app\controller\prijava.js" />
+    <Content Include="app\controller\statistika.js" />
     <Content Include="app\controller\tipdjela.js" />
     <Content Include="app\service\prijavaService.js" />
+    <Content Include="app\service\statistikaService.js" />
     <Content Include="app\service\tipDjelaService.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -265,6 +275,12 @@
     <Content Include="Areas\Administracija\Views\TipDjela\_CreateEdit.cshtml" />
     <Content Include="Areas\Administracija\Views\Korisnik\Index.cshtml" />
     <Content Include="Areas\Administracija\Views\Korisnik\_CreateEdit.cshtml" />
+    <Content Include="Areas\Statistika\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Statistika\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Statistika\Views\PoDatumu\Index.cshtml" />
+    <Content Include="Areas\Statistika\Views\PoOpstini\Index.cshtml" />
+    <Content Include="Areas\Statistika\Views\PoOpstiniITipuDjela\Index.cshtml" />
+    <Content Include="Areas\Statistika\Views\PoTipuDjela\Index.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />
@@ -276,6 +292,9 @@
     <Content Include="Areas\Administracija\Views\web.config" />
     <Content Include="Areas\Administracija\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administracija\Views\Shared\_Layout.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -289,6 +308,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\lodash.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ng-map.min.js" />
     <Content Include="Scripts\respond.js" />
@@ -340,6 +360,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administracija\Models\" />
+    <Folder Include="Areas\Statistika\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
