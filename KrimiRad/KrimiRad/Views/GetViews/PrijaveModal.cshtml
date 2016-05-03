@@ -1,5 +1,4 @@
 ﻿
-@model KrimiRad.Models.PrijavaViewModel
 
 <div class="modal fade" id="prijaveModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
     <div class="modal-dialog">
@@ -10,9 +9,9 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <h4 >Prijava</h4>
+                    <h4>Prijava</h4>
                     <hr />
-                    <dl class="dl-horizontal">
+                    @*<dl class="dl-horizontal">
                         <dt>
                             @Html.DisplayNameFor(model => model.TipDjela)
                         </dt>
@@ -52,17 +51,17 @@
                         <dd>
                             @Html.DisplayFor(model => model.Komentar)
                         </dd>
-                    </dl>
+                    </dl>*@
                 </div>
                 @*<p>
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-                    @Html.ActionLink("Back to List", "Index")
-                </p>*@
-                            <div class="form-group col-md-offset-3">
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
-                            </div>
-                        </div>
-                    </div>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>*@
+                <div class="form-group col-md-offset-3">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 

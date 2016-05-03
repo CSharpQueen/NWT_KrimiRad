@@ -10,7 +10,17 @@
         });
 
     });
-    $scope.otvoriPrijavu = function () {
+    $scope.otvoriPrijavu = function (id) {
+        $rootScope.loading = true;
+        prijavaService.getById(id).success(function (data) {
+
+            $scope.prijava = data;
+
+        }).finally(function (data) {
+            $rootScope.loading = false;
+        })
+
+
         $("#prijaveModal").modal("show");
     }
     //$scope.otvoriPrijavu = function () {

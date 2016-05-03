@@ -1,6 +1,6 @@
 ﻿
 angular.module("KrimiRad.TipDjela")
-.service("tipDjelaService", ["$http", "KrimiRadUrl", function ($http, KrimiRadUrl) {
+.service("tipDjelaService", ["$http", "KrimiRadUrl", function ($http, KrimiRadUrl   ) {
     var apiUrl = KrimiRadUrl.serviceUrl + "/api/TipDjela/";
     var getAll = function () { return $http.get(apiUrl); };
     var getById = function (id) { return $http.get(apiUrl + id); };

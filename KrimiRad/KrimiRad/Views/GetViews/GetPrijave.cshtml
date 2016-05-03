@@ -15,7 +15,7 @@
     <div ng-controller="PregledMapeCtrl" class="col-md-9">
         <div map-lazy-load="https://maps.google.com/maps/api/js">
             <ng-map center="43.849886, 18.355413" zoom="12">
-                <marker ng-repeat="p in prijave" position="[{{p.Latituda}} , {{p.Longituda}}]" title="{{p.Adresa}}" ng-click="otvoriPrijavu()"></marker>
+                <marker ng-repeat="p in prijave" position="[{{p.Latituda}} , {{p.Longituda}}]" title="{{p.Adresa}}" on-click="otvoriPrijavu({{p.Id}})"></marker>
 
             </ng-map>
         </div>
@@ -24,3 +24,4 @@
 
 </div>
 
+@Html.Partial("~/Views/GetViews/PrijaveModal.cshtml")
