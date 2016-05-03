@@ -13,5 +13,23 @@ namespace KrimiRad.Areas.Statistika.Controllers
         {
             return PartialView();
         }
+
+        // GET: Statistika/GetView/PoOpstini
+        public PartialViewResult PoOpstini()
+        {
+            return PartialView();
+        }
+
+        // GET: Statistika/GetView/PoTipuDjela
+        public PartialViewResult PoTipuDjela()
+        {
+            return PartialView();
+        }
+
+        // GET: Statistika/GetView/PoDatumu
+        public PartialViewResult PoDatumu()
+        {
+            return PartialView();
+        }
     }
 }
