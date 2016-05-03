@@ -8,7 +8,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', 'prijavaService
         $scope.tipoviDjela = data;
     })
     .finally(function(data) {
-        $rootScope.loading = true;
+        $rootScope.loading = false;
     });
     $("#myModal").modal("show");
     //pocetak loadinga

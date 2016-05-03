@@ -87,7 +87,16 @@ namespace KrimiRadServis.Controllers
                 return BadRequest(ModelState);
             }
             var prijava = new Prijava() {
-                //popunit
+                DatumIVrijemePocinjenjaDjela = model.DatumIVrijemePocinjenjaDjela,
+                DatumIVrijemePrijave = DateTime.Now,
+                TipDjelaId=model.TipDjelaId,
+                Adresa=model.Adresa,
+                Opstina=model.Opstina,
+                Grad=model.Grad,
+                Longituda=model.Longitude,
+                Latituda=model.Latitude,
+                ApplicationUserId=User.Identity.Name,
+                AlbumId=model.Album.ID
             };
             db.Prijava.Add(prijava);
             await db.SaveChangesAsync();

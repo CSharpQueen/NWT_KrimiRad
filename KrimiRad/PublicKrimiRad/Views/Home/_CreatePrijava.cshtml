@@ -11,29 +11,31 @@
                 <form name="korisnikForm" ng-submit="dodajPrijavu()">
                     <div class="row">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.TipDjela)
-                            <div class="form-group" ng-controller="TipDjelaCtrl">
+                            <div class="form-group" ng-controller="CreatePrijavaCtrl">
+                                Tip djela:
+                                <br>
                                 <select>
                                     <option ng-repeat="t in tipoviDjela" value="{{t.Id}}">{{t.Naziv}}</option>
                                 </select>
                             </div>
-                            @Html.LabelFor(m => m.Lokacija)
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.Lokacija, new { ng_model = "prijava.Lokacija", @class = "form-control", required = "Obavezno polje" })
+                                Datum:
+                                <br> @Html.EditorFor(m => m.Datum, new { ng_model = "prijava.DatumIVrijemePocinjenjaDjela", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            <div class="form-group">
+                                Slika:<input type="file" ng-model="prijava.Slika" class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.Datum)
                             <div class="form-group">
-                                @Html.EditorFor(m => m.Datum, new { ng_model = "prijava.Datum", @class = "form-control", required = "Obavezno polje" })
-                            </div>
-                            @Html.LabelFor(m => m.Slika)
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.Slika, new { ng_model = "prijava.Slika", @class = "form-control" })
-                            </div>
-                            @Html.LabelFor(m => m.Komentar)
-                            <div class="form-group">
-                                @Html.TextAreaFor(m => m.Komentar, new { ng_model = "prijava.Komentar", @class = "form-control" })
+                                Lokacija:
+                                <br>
+                                <div ng-controller="MapCtrl" >
+                                    <div map-lazy-load="https://maps.google.com/maps/api/js">
+                                        <ng-map center="43.849886, 18.355413" zoom="8" style="width:350px; height:400px">
+                                        </ng-map>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-md-offset-3">
                                 <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajPrijavu()" class="btn btn-primary" value="Dodaj" />
@@ -44,8 +46,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary">Sačuvaj</button>
             </div>
         </div>
     </div>
