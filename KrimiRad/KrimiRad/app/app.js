@@ -62,7 +62,23 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/PoOpstiniITipuDjela",
             controller: "StatistikaCtrl"
         })
-               
+       
+         .when("/statistika/PoOpstini", {
+             templateUrl: "/Statistika/GetView/PoOpstini",
+            controller: "StatistikaCtrl"
+        })
+
+          .when("/statistika/PoTipuDjela", {
+             templateUrl: "/Statistika/GetView/PoTipuDjela",
+            controller: "StatistikaCtrl"
+        })
+        
+          .when("/statistika/PoDatumu", {
+             templateUrl: "/Statistika/GetView/PoDatumu",
+            controller: "StatistikaCtrl"
+        })
+
+
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""
