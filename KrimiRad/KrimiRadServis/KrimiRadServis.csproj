@@ -219,6 +219,7 @@
     </Compile>
     <Compile Include="Models\KorisnikBindingModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
+    <Compile Include="Models\PrijavaCreateModel.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

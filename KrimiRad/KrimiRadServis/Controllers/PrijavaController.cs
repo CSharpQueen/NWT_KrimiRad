@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DataAccess.Entity;
+using KrimiRadServis.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -79,13 +80,15 @@ namespace KrimiRadServis.Controllers
 
         // POST api/prijava
         [ResponseType(typeof(Prijava))]
-        public async Task<IHttpActionResult> PostPrijava(Prijava prijava)
+        public async Task<IHttpActionResult> PostPrijava(PrijavaCreateModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            var prijava = new Prijava() {
+                //popunit
+            };
             db.Prijava.Add(prijava);
             await db.SaveChangesAsync();
 

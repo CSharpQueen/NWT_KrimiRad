@@ -21,7 +21,7 @@
                 @Html.EnumDropDownListFor(m => m.TipKorisnika, "Tip korisnika", new { ng_model = "korisnik.TipKorisnika", @class = "form-control", required = "Obavezno polje" })
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4">            
             @Html.LabelFor(m => m.Username)
             <div class="form-group">
                 @Html.TextBoxFor(m => m.Username, new { ng_model = "korisnik.Username", @class = "form-control", required = "Obavezno polje" })
