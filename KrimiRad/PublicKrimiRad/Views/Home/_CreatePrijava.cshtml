@@ -1,12 +1,47 @@
-﻿<div class="modal fade" ng-controller="CreatePrijavaCtrl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrijava-label" aria-hidden="true">
+﻿@model PublicKrimiRad.Models.PrijavaViewModel
+
+<div class="modal fade" ng-controller="CreatePrijavaCtrl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrijava-label" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalCreatePrijava-label">Modal title</h4>
+                <h4 class="modal-title" id="modalCreatePrijava-label">Prijava djela</h4>
             </div>
             <div class="modal-body">
-                <p>Ovdje implementirati formu za unos prijave</p>
+                <form name="korisnikForm" ng-submit="dodajPrijavu()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.TipDjela)
+                            <div class="form-group" ng-controller="TipDjelaCtrl">
+                                <select ng-model="selected" ng-options="t.Naziv for t in tipoviDjela">
+                                    <option value="">-- Odaberite djelo --</option>
+                                </select>
+                            </div>
+                            @Html.LabelFor(m => m.Lokacija)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Lokacija, new { ng_model = "prijava.Lokacija", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Datum)
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.Datum, new { ng_model = "prijava.Datum", @class = "form-control", required = "Obavezno polje" })
+                            </div>
+                            @Html.LabelFor(m => m.Slika)
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Slika, new { ng_model = "prijava.Slika", @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(m => m.Komentar)
+                            <div class="form-group">
+                                @Html.TextAreaFor(m => m.Komentar, new { ng_model = "prijava.Komentar", @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-offset-3">
+                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajPrijavu()" class="btn btn-primary" value="Dodaj" />
+                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediPrijavu()" class="btn btn-primary" value="Uredi" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
