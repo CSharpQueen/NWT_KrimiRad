@@ -5,5 +5,13 @@
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "ZAPAMTIME": "Remember me",
-  "ZABORAVILIPASS" :  "Forgot password"
+  "ZABORAVILIPASS": "Forgot password",
+  "PRIJAVI": "Report",
+  "TIPDJELA": "Type",
+  "LOKACIJA": "Location",
+  "DATUMDJELA": "Date",
+  "SLIKA/VIDEO": "Photo/Video",
+  "KOMENTAR": "Comment",
+  "BOSANSKI": "Bosnian",
+  "ENGLESKI": "English"
 }

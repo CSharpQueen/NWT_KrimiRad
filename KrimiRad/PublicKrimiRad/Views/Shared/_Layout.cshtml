@@ -32,12 +32,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="prijava">Prijavi</a></li>
+                    <li><a href="prijava"  aria-expanded="false"> {{ 'PRIJAVI' | translate }}</a></li>
                     <li class="right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ 'JEZIK' | translate }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" ng-controller="appctrl">
-                            <li><a ng-click="switchLanguage('bs')">Bosanski <span ng-show="selectedLanguage == 'bs'" class="glyphicon glyphicon-ok"></span></a></li>
-                            <li><a ng-click="switchLanguage('en')">English <span ng-show="selectedLanguage == 'en'" class="glyphicon glyphicon-ok"></span></a></li>
+                            <li><a ng-click="switchLanguage('bs')" aria-expanded="false"> {{ 'BOSANSKI' | translate }} <span ng-show="selectedLanguage == 'bs'" class="glyphicon glyphicon-ok"></span></a></li>
+                            <li><a ng-click="switchLanguage('en')" aria-expanded="false"> {{ 'ENGLESKI' | translate }} <span ng-show="selectedLanguage == 'en'" class="glyphicon glyphicon-ok"></span></a></li>
                         </ul>
                     </li>
                 </ul>

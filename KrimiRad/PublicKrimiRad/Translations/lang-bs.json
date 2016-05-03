@@ -7,9 +7,12 @@
   "ZAPAMTIME": "Zapamti me",
   "ZABORAVILIPASS": "Zaboravili ste lozinku ?",
   "PRIJAVI": "Prijavi",
-  "TIP DJELA": "Tip djela",
+  "TIPDJELA": "Tip djela",
   "LOKACIJA": "Lokacija",
-  "DATUM DJELA": "Datum djela",
+  "DATUMDJELA": "Datum djela",
   "SLIKA/VIDEO": "Slika/Video",
-  "KOMENTAR": "Komentar"
+  "KOMENTAR": "Komentar",
+  "BOSANSKI": "Bosanski",
+  "ENGLESKI": "Engleski"
+
 }

@@ -7,9 +7,11 @@
   "ZAPAMTIME": "Remember me",
   "ZABORAVILIPASS": "Forgot password",
   "PRIJAVI": "Report",
-  "TIP DJELA": "Type",
+  "TIPDJELA": "Type",
   "LOKACIJA": "Location",
-  "DATUM DJELA": "Date",
+  "DATUMDJELA": "Date",
   "SLIKA/VIDEO": "Photo/Video",
-  "KOMENTAR": "Comment"
+  "KOMENTAR": "Comment",
+  "BOSANSKI": "Bosnian",
+  "ENGLESKI": "English"
 }
