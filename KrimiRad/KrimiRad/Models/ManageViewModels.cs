@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace KrimiRad.Models
 {
@@ -82,5 +83,27 @@ namespace KrimiRad.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    public class PrijavaViewModel
+    {
+        [Required]
+        [Display(Name = "Tip djela")]
+        public DataAccess.Entity.TipDjela TipDjela { get; set; }
+
+        [Required]
+        public string Lokacija { get; set; }
+
+        [Required]
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Datum djela")]
+        public DateTime Datum { get; set; }
+
+        [Display(Name = "Slika/Video")]
+        public string Slika { get; set; }
+
+        [Display(Name = "Komentar")]
+        public string Komentar { get; set; }
     }
 }

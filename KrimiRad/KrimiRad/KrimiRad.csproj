@@ -335,6 +335,7 @@
     <Content Include="Views\GetViews\GetAdministracija.cshtml" />
     <Content Include="Translations\lang-bs.json" />
     <Content Include="Translations\lang-en.json" />
+    <Content Include="Views\GetViews\PrijaveModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
-﻿angular.module('app').controller('PregledMapeCtrl', ["$scope", "NgMap", "prijavaService", "$rootScope", function ($scope, NgMap, prijavaService, $rootScope) {
+﻿angular.module('KrimiRad.PregledPrijava', ['ngMap'])
+.controller('PregledMapeCtrl', ['$scope',"$rootScope", 'NgMap', 'prijavaService', '$rootScope',function ($scope,$rootScope, NgMap, prijavaService) {
     $rootScope.loading = true;
     NgMap.getMap().then(function (map) {
         prijavaService.getAll().success(function (data) {
@@ -9,4 +10,54 @@
         });
 
     });
+    $scope.otvoriPrijavu = function () {
+        $("#prijaveModal").modal("show");
+    }
+    //$scope.otvoriPrijavu = function () {
+
+    //    var modalInstance = $modal.open({
+    //        templateUrl: '/KrimiRad/Views/Modals/PrijaveModal.cshtml',
+    //        backdrop: 'static',
+    //        keyboard: false,
+    //        controller: function ($scope, $modalInstance) {
+    //            $scope.cancel = function () {
+    //                $modalInstance.dismiss('cancel');
+    //            };
+    //            $scope.ok = function () {
+    //                $modalInstance.close();
+    //            };
+    //        }
+    //    });
+    //}
+    //$scope.otvoriPrijavu = function () {
+    //    //aletr("radi");
+     
+  
+        //var ModalInstanceCtrl = function ($scope, $modalInstance) {
+
+        //    $scope.ok = function () {
+        //        $modalInstance.close();
+        //    };
+
+        //    $scope.cancel = function () {
+        //        $modalInstance.dismiss('cancel');
+        //    };
+        //};
+        //    var modalInstance = $uibModal.open({
+        //        animation: true,
+        //        templateUrl: '/KrimiRad/Views/Modals/PrijaveModal.cshtml',
+        //        controller: function ($scope, $modalInstance) {
+        //            $scope.cancel = function () {
+        //                $modalInstance.dismiss('cancel');
+        //            };
+        //            $scope.ok = function () {
+        //                $modalInstance.close();
+        //            };
+        //        }
+        //    });
+        //}
+            //modalInstance.result.then(function (changed_threshold){
+            //    $scope.threshold = changed_threshold;
+            //});
+    //}
 }]);

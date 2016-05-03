@@ -1,0 +1,68 @@
+﻿
+@model KrimiRad.Models.PrijavaViewModel
+
+<div class="modal fade" id="prijaveModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModal-label">Prijava</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4 >Prijava</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TipDjela)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TipDjela)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Lokacija)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Lokacija)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Datum)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Datum)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Slika)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Slika)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Komentar)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Komentar)
+                        </dd>
+                    </dl>
+                </div>
+                @*<p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>*@
+                            <div class="form-group col-md-offset-3">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
