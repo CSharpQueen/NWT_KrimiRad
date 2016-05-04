@@ -26,50 +26,74 @@ namespace KrimiRadServis.Controllers
         public IHttpActionResult GetPrijava()
         {
 
-            var prijave = new List<Prijava>() {
-                new Prijava {
-                    DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
-                    Grad = "Sarajevo",
-                    Adresa = "Skenderija 12",
-                    Longituda = 18.371985,
-                    Latituda = 43.852723,
-                    TipDjela = new TipDjela() {
-                        Naziv = "Ubistvo",
-                        Opis = "LALALAL",
-                        StrucniNaziv = "lalalaal",
-                        VrstaDjela = "adsfasf"
-                    }
-                },
+            //var prijave = new List<Prijava>() {
+            //    new Prijava {
+            //        DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
+            //        Grad = "Sarajevo",
+            //        Adresa = "Skenderija 12",
+            //        Longituda = 18.371985,
+            //        Latituda = 43.852723,
+            //        TipDjela = new TipDjela() {
+            //            Naziv = "Ubistvo",
+            //            Opis = "LALALAL",
+            //            StrucniNaziv = "lalalaal",
+            //            VrstaDjela = "adsfasf"
+            //        }
+            //    },
 
-                new Prijava {
-                    DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
-                    Grad = "Sarajevo2",
-                    Adresa = "Safeta zajke 13",
-                    Longituda = 43.851980,
-                    Latituda = 18.345206,
-                    TipDjela = new TipDjela() {
-                        Naziv = "Ubistvo2",
-                        Opis = "LALALAL2",
-                        StrucniNaziv = "lalalaal2",
-                        VrstaDjela = "adsfasf2"
-                    }
-                },
-            };
+            //    new Prijava {
+            //        DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
+            //        Grad = "Sarajevo2",
+            //        Adresa = "Safeta zajke 13",
+            //        Longituda = 43.851980,
+            //        Latituda = 18.345206,
+            //        TipDjela = new TipDjela() {
+            //            Naziv = "Ubistvo2",
+            //            Opis = "LALALAL2",
+            //            StrucniNaziv = "lalalaal2",
+            //            VrstaDjela = "adsfasf2"
+            //        }
+            //    },
+            //};
 
 
             //otkomentarisat kasnije
-            //var prijave = db.Prijava.Select(s => new { s.DatumIVrijemePocinjenjaDjela, s.Grad, s.Adresa, s.Latituda, s.Longituda, s.TipDjela }).ToList();
-            
+            //var prijave = db.Prijava.Select(s => new { s.ID, s.DatumIVrijemePocinjenjaDjela, s.Grad, s.Adresa, s.Latituda, s.Longituda, s.TipDjela.Naziv }).ToList();
+            var prijave = (from p in db.Prijava
+                           join t in db.TipDjela on p.TipDjelaId equals t.ID
+                           select new
+                           {
+                               ID = p.ID,
+                               DatumIVrijemePocinjenjaDjela = p.DatumIVrijemePocinjenjaDjela,
+                               DatumIVrijemePrijave = p.DatumIVrijemePrijave,
+                               Grad = p.Grad,
+                               Adresa = p.Adresa,
+                               Longituda = p.Longituda,
+                               Latituda = p.Latituda,
+                               TipDjelaId = t.ID
+                           }).ToList()
+                                     .Select(x => new Prijava()
+                                     {
+                                         ID = x.ID,
+                                         DatumIVrijemePocinjenjaDjela = x.DatumIVrijemePocinjenjaDjela,
+                                         DatumIVrijemePrijave = x.DatumIVrijemePrijave,
+                                         Grad = x.Grad,
+                                         Adresa = x.Adresa,
+                                         Longituda = x.Longituda,
+                                         Latituda = x.Latituda,
+                                         TipDjelaId = x.ID
+                                     });
 
 
-            return Json<List<Prijava>>(prijave);
+            return Json<List<Prijava>>(prijave.ToList());
         }
 
         // GET api/Prijava/5
         [ResponseType(typeof(Prijava))]
-        public async Task<IHttpActionResult> GetPrijava(int id)
+        public async Task<IHttpActionResult> GetPrijava(int? id)
         {
-            Prijava prijava = await db.Prijava.FindAsync(id);
+            int no = Convert.ToInt32(id);
+            Prijava prijava = await db.Prijava.FindAsync(no);
             if (prijava == null)
             {
                 return NotFound();

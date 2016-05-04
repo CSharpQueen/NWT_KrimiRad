@@ -1,67 +1,56 @@
-﻿
-
+﻿<html ng-app="KrimiRad.PregledPrijava">
 <div class="modal fade" id="prijaveModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModal-label">Prijava</h4>
+                <h4 class="modal-title" id="myModal-label">{{'PRIJAVA' | translate}}</h4>
             </div>
             <div class="modal-body">
                 <div>
-                    <h4>Prijava</h4>
-                    <hr />
-                    @*<dl class="dl-horizontal">
+                    <dl class="dl-horizontal">
                         <dt>
-                            @Html.DisplayNameFor(model => model.TipDjela)
+                            {{'DATUMIVRIJEMEPRIJAVE' | translate}}
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.TipDjela)
+                            {{prijava.DatumIVrijemePrijave}}
+
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.Lokacija)
+                            {{'DATUMIVRIJEMEPOCINJENJA' | translate}}
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.Lokacija)
+                            {{prijava.DatumIVrijemePocinjenjaDjela}}
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.Datum)
+                            {{'OPCINA' |translate}}
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.Datum)
+                            {{prijava.Opstina}}
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.Slika)
+                            {{'ADRESA' |translate}}
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.Slika)
+                            {{prijava.Adresa}}
                         </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Komentar)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Komentar)
-                        </dd>
-                    </dl>*@
-                </div>
-                @*<p>
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-                        @Html.ActionLink("Back to List", "Index")
-                    </p>*@
-                <div class="form-group col-md-offset-3">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                    </dl>
+                    @*<p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>*@
+                    <div class="form-group col-md-offset-3">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Izađi</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-

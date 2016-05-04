@@ -15,5 +15,10 @@
   "BOSANSKI": "Bosnian",
   "ENGLESKI": "English",
   "ZATVORI": "Close",
-  "SAČUVAJ": "Save"
+  "SAČUVAJ": "Save",
+   "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
+  "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
+  "OPCINA": "Municipality",
+  "ADRESA": "Adress" 
+
 }
