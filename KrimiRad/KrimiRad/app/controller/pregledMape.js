@@ -11,6 +11,7 @@
 
     });
     $scope.otvoriPrijavu = function (id) {
+    alert(parseInt(id));
         $rootScope.loading = true;
         prijavaService.getById(id).success(function (data) {
 
@@ -21,7 +22,7 @@
         })
 
 
-        $("#prijaveModal").modal("show");
+        //$("#prijaveModal").modal("show");
     }
     //$scope.otvoriPrijavu = function () {
 

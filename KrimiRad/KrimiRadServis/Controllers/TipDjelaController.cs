@@ -24,8 +24,8 @@ namespace KrimiRadServis.Controllers
         // GET: api/TipDjela
         [ResponseType(typeof(List<TipDjela>))]
         public IHttpActionResult GetTipDjela()
-        {
-            return Json<List<TipDjela>>(db.TipDjela.ToList());
+        {            
+            return Json(db.TipDjela.ToList());
         }
 
         // GET: api/TipDjela/5

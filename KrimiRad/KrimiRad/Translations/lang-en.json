@@ -14,12 +14,17 @@
   "KOMENTAR": "Comment",
   "BOSANSKI": "Bosnian",
   "ENGLESKI": "English",
-   "POOPŠTINI": "List by municipalities",
-  "PODATUMU":"List by date",
+  "POOPŠTINI": "List by municipalities",
+  "PODATUMU": "List by date",
   "POTIPUDJELA": "List by type",
   "POOPŠTINIITIPUDJELA": "List by municipality and type",
   "OPŠTINA": "Municipality",
   "DATUM": "Date",
-  "PRIKAŽI": "Show"
+  "PRIKAŽI": "Show",
+  "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
+  "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
+  "OPCINA": "Municipality",
+  "ADRESA": "Adress"
+
 
 }

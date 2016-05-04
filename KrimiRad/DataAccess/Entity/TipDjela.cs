@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace DataAccess.Entity {
         [DataType(DataType.MultilineText)]
         public string Opis { get; set; }
 
+        [JsonIgnore]
         public virtual List<Prijava> Prijava { get; set; }
     }
 }
