@@ -13,5 +13,13 @@
   "SLIKA/VIDEO": "Photo/Video",
   "KOMENTAR": "Comment",
   "BOSANSKI": "Bosnian",
-  "ENGLESKI": "English"
+  "ENGLESKI": "English",
+   "POOPŠTINI": "List by municipalities",
+  "PODATUMU":"List by date",
+  "POTIPUDJELA": "List by type",
+  "POOPŠTINIITIPUDJELA": "List by municipality and type",
+  "OPŠTINA": "Municipality",
+  "DATUM": "Date",
+  "PRIKAŽI": "Show"
+
 }

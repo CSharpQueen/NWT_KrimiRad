@@ -13,6 +13,13 @@
   "SLIKA/VIDEO": "Slika/Video",
   "KOMENTAR": "Komentar",
   "BOSANSKI": "Bosanski",
-  "ENGLESKI": "Engleski"
+  "ENGLESKI": "Engleski",
+  "POOPŠTINI": "Po opštini",
+  "PODATUMU":"Po datumu",
+  "POTIPUDJELA": "Po tipu djela",
+  "POOPŠTINIITIPUDJELA": "Po opštini i tipu djela",
+  "OPŠTINA": "Opština",
+  "DATUM": "Datum",
+  "PRIKAŽI": "Prikaži"
 
 }
