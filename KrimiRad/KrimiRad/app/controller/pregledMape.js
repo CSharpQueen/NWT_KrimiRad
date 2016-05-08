@@ -10,65 +10,23 @@
         });
 
     });
-    $scope.otvoriPrijavu = function (id) {
-    alert(parseInt(id));
+    $scope.otvoriPrijavu = function (event) {
         $rootScope.loading = true;
+
+       var v=prijavaService.getById(this.id);
+       alert(v);
+        console.log(v);
+
         prijavaService.getById(id).success(function (data) {
 
             $scope.prijava = data;
+            
 
         }).finally(function (data) {
             $rootScope.loading = false;
         })
-
-
-        //$("#prijaveModal").modal("show");
+           
+        $("#prijaveModal").modal("show");
     }
-    //$scope.otvoriPrijavu = function () {
-
-    //    var modalInstance = $modal.open({
-    //        templateUrl: '/KrimiRad/Views/Modals/PrijaveModal.cshtml',
-    //        backdrop: 'static',
-    //        keyboard: false,
-    //        controller: function ($scope, $modalInstance) {
-    //            $scope.cancel = function () {
-    //                $modalInstance.dismiss('cancel');
-    //            };
-    //            $scope.ok = function () {
-    //                $modalInstance.close();
-    //            };
-    //        }
-    //    });
-    //}
-    //$scope.otvoriPrijavu = function () {
-    //    //aletr("radi");
-     
-  
-        //var ModalInstanceCtrl = function ($scope, $modalInstance) {
-
-        //    $scope.ok = function () {
-        //        $modalInstance.close();
-        //    };
-
-        //    $scope.cancel = function () {
-        //        $modalInstance.dismiss('cancel');
-        //    };
-        //};
-        //    var modalInstance = $uibModal.open({
-        //        animation: true,
-        //        templateUrl: '/KrimiRad/Views/Modals/PrijaveModal.cshtml',
-        //        controller: function ($scope, $modalInstance) {
-        //            $scope.cancel = function () {
-        //                $modalInstance.dismiss('cancel');
-        //            };
-        //            $scope.ok = function () {
-        //                $modalInstance.close();
-        //            };
-        //        }
-        //    });
-        //}
-            //modalInstance.result.then(function (changed_threshold){
-            //    $scope.threshold = changed_threshold;
-            //});
-    //}
+    
 }]);
