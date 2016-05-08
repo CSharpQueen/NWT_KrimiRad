@@ -14,7 +14,7 @@ namespace DataAccess.Entity {
         public int ID { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
-        [DatumUnosa]
+        //[DatumUnosa]
         [Display(Name = "Datum i vrijeme prijave")]
         public DateTime DatumIVrijemePrijave { get; set; }
 

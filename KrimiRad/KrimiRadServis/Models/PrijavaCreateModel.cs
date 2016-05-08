@@ -11,12 +11,8 @@ namespace KrimiRadServis.Models {
         public string Opstina { get; set; }
         public string Grad { get; set; }
         public string Adresa { get; set; }
-        public DateTime DatumIVrijemePocinjenjaDjela { get; set; }
-        public string NazivTipaDjela { get; set; }
-        public int TipDjelaId { get; set; }
-        public Album Album { get; set; }
-        public HttpPostedFileBase Slika { get; set; }
-        public HttpPostedFileBase Video { get; set; }
-        
+        public DateTime DatumIVrijemePocinjenjaDjela { get; set; }        
+        public int TipDjelaId { get; set; }        
+        public int AlbumId { get; set; }        
     }
 }

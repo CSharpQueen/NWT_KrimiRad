@@ -8,22 +8,22 @@
                 <h4 class="modal-title" id="modalCreatePrijava-label">Prijava djela</h4>
             </div>
             <div class="modal-body">
-                <form name="korisnikForm" ng-submit="dodajPrijavu()">
+                <form name="prijavaForm" ng-submit="dodajPrijavu()">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group" ng-controller="CreatePrijavaCtrl">
-                                Tip djela:
+                                Tip djela
                                 <br>
-                                <select>
-                                    <option ng-repeat="t in tipoviDjela" value="{{t.Id}}">{{t.Naziv}}</option>
+                                <select class="form-control" ng-model="prijava.TipDjelaId">
+                                    <option ng-repeat="t in tipoviDjela"  value="{{t.ID}}">{{t.Naziv}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                Datum:
+                                Datum djela:
                                 <br> @Html.EditorFor(m => m.Datum, new { ng_model = "prijava.DatumIVrijemePocinjenjaDjela", @class = "form-control", required = "Obavezno polje" })
                             </div>
                             <div class="form-group">
-                                Slika:<input type="file" ng-model="prijava.Slika" class="form-control" />
+                                Slika/Video:<input type="file" file-model="medij" class="form-control" multiple/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -38,17 +38,12 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-offset-3">
-                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajPrijavu()" class="btn btn-primary" value="Dodaj" />
-                                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediPrijavu()" class="btn btn-primary" value="Uredi" />
+                                <input @*ng-disabled="prijavaForm.$invalid"*@ type="submit" ng-click="dodajPrijavu()" class="btn btn-primary" value="Dodaj" />                                
                             </div>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
-                <button type="button" class="btn btn-primary">Sačuvaj</button>
-            </div>
+            </div>            
         </div>
     </div>
 </div>
