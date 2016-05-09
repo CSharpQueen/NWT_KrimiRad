@@ -87,20 +87,25 @@ namespace PublicKrimiRad.Models
         [Required]
         [Display(Name = "Tip djela")]
         public DataAccess.Entity.TipDjela TipDjela { get; set; }
-
         [Required]
-        public string Lokacija { get; set; }
-
+        public double Latitude { get; set; }
+        [Required]
+        public double Longitude { get; set; }
+        [Required]
+        public string Opstina { get; set; }
+        [Required]
+        public string Grad { get; set; }
+        [Required]
+        public string Adresa { get; set; }
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Datum djela")]
-        public DateTime Datum { get; set; }
+        public DateTime DatumIVrijemePocinjenjaDjela { get; set; }
 
         [Display(Name = "Slika/Video")]
         public string Slika { get; set; }
 
-        [Display(Name = "Komentar")]
-        public string Komentar { get; set; }
+        
     }
     public class ResetPasswordViewModel
     {

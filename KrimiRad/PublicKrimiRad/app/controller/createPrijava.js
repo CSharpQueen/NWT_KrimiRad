@@ -9,9 +9,8 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', 'prijavaService
         Opstina: "Centar",
         Grad: "Sarajevo",
         Adresa: "Nermine Agović 13",
-        Latitude: 18.12331,
-        Longitude: 43.123312,
-        TipDjelaId: 3
+        Latitude: 43.123312,
+        Longitude: 18.12331
     };
 
     $rootScope.loading = true;
@@ -34,7 +33,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', 'prijavaService
         prijavaService.createMedij(fd).success(function (data) {
 
             //ako je uspješan upload, kreiramo prijavu
-            $scope.prijava.AlbumId = data.albumId
+            $scope.prijava.AlbumId = data.albumId;
             prijavaService.create($scope.prijava).success(function (data) {
                 alert(data.poruka);
                 //$scope.prijave.push($scope.prijava);

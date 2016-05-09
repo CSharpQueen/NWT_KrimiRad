@@ -169,16 +169,18 @@ namespace KrimiRadServis.Controllers {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
+           
             var prijava = new Prijava() {
-                DatumIVrijemePocinjenjaDjela = DateTime.Now, // privrmno stavljno kao trnutni datum, nešto zeza pravi
                 DatumIVrijemePrijave = DateTime.Now,
+                DatumIVrijemePocinjenjaDjela = model.DatumIVrijemePocinjenjaDjela, 
                 TipDjelaId = model.TipDjelaId,
                 Adresa = model.Adresa,
                 Opstina = model.Opstina,
                 Grad = model.Grad,
                 Longituda = model.Longitude,
                 Latituda = model.Latitude,
-                AlbumId = model.AlbumId
+                AlbumId = model.AlbumId,
+                
             };
 
 
