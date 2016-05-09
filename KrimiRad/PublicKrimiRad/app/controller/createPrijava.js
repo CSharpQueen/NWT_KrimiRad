@@ -4,6 +4,16 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', 'prijavaService
     $scope.poruka = '';
     $scope.prijava = '';
 
+    var that = this;
+
+    this.isOpen = false;
+
+    this.openCalendar = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        that.isOpen = true;
+    };
     //za testiranje
     $scope.prijava = {
         Opstina: "Centar",
@@ -25,26 +35,26 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', 'prijavaService
 
 
     $scope.dodajPrijavu = function () {
-        $rootScope.loading = true;
+        $rootScope.loading = true;        
+        alert($scope.prijava.DatumIVrijemePocinjenjaDjela);
+        //var fd = new FormData();
+        //fd.append('file', $scope.medij);
+        ////prvo upload slike/videa
+        //prijavaService.createMedij(fd).success(function (data) {
 
-        var fd = new FormData();
-        fd.append('file', $scope.medij);
-        //prvo upload slike/videa
-        prijavaService.createMedij(fd).success(function (data) {
-
-            //ako je uspješan upload, kreiramo prijavu
-            $scope.prijava.AlbumId = data.albumId;
-            prijavaService.create($scope.prijava).success(function (data) {
-                alert(data.poruka);
-                //$scope.prijave.push($scope.prijava);
-                //$scope.poruka = data.poruka;
-            })
-            .finally(function (data) {                
-                $rootScope.loading = false;
-            });
-        }).finally(function(data) {
-            $rootScope.loading = false;
-        });
+        //    //ako je uspješan upload, kreiramo prijavu
+        //    $scope.prijava.AlbumId = data.albumId;
+        //    prijavaService.create($scope.prijava).success(function (data) {
+        //        alert(data.poruka);
+        //        //$scope.prijave.push($scope.prijava);
+        //        //$scope.poruka = data.poruka;
+        //    })
+        //    .finally(function (data) {                
+        //        $rootScope.loading = false;
+        //    });
+        //}).finally(function(data) {
+        //    $rootScope.loading = false;
+        //});
 
 
 

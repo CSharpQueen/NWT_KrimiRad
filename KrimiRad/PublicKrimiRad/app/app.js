@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "ngMap", "pascalprecht.translate"]);
+var app = angular.module('app', ["ngRoute", "ngMap", "pascalprecht.translate", "ui.bootstrap", "ui.bootstrap.datetimepicker"]);
 
 
 app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {   
