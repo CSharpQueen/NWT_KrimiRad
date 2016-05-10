@@ -7,7 +7,7 @@
   "ZAPAMTIME": "Remember me",
   "ZABORAVILIPASS": "Forgot password",
   "PRIJAVI": "Report",
-  "TIPDJELA": "Type",
+  "TIPDJELA": "Type of crime:",
   "LOKACIJA": "Location",
   "DATUMDJELA": "Date",
   "SLIKA/VIDEO": "Photo/Video",
@@ -18,13 +18,15 @@
   "PODATUMU": "List by date",
   "POTIPUDJELA": "List by type",
   "POOPŠTINIITIPUDJELA": "List by municipality and type",
-  "OPŠTINA": "Municipality",
+  "OPŠTINA": "Municipality:",
   "DATUM": "Date",
   "PRIKAŽI": "Show",
   "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
   "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
-  "OPCINA": "Municipality",
-  "ADRESA": "Adress"
+  "OPCINA": "Municipality:",
+  "ADRESA": "Adress:",
+  "PRIJAVADJELA": "Report",
+
 
 
 }

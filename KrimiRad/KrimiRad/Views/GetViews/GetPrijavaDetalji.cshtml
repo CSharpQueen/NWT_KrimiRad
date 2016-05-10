@@ -55,22 +55,23 @@
 </div>
 <div class="row">
     
-
-    <div style="width: 100%; height: 500px;" ng-if="slike != ''" id="my-carousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">            
-            <li data-target="#my-carousel" ng-repeat="s in slike" ng-class="{{ $index == 1 ? 'active' : ''}}" data-slide-to="{{$index}}"></li>            
-        </ol>
-        <div class="carousel-inner">
-            <div  ng-repeat="s in slike" ng-class="{{ $index == 1 ? 'item active' : 'item'}}">
-                <img alt="First slide" src="{{s.Url}}">                              
-            </div>          
+    <div class="slike">
+        <div ng-if="slike != ''" id="my-carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#my-carousel" ng-repeat="s in slike" ng-class="{{ $index == 1 ? 'active' : ''}}" data-slide-to="{{$index}}"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div ng-repeat="s in slike" ng-class="{{ $index == 1 ? 'item active' : 'item'}}">
+                    <img alt="First slide" src="{{s.Url}}">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#my-carousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
         </div>
-        <a class="left carousel-control" href="#my-carousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#my-carousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
     </div>
 
 </div>

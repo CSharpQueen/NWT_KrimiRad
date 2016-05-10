@@ -7,7 +7,7 @@
   "ZAPAMTIME": "Zapamti me",
   "ZABORAVILIPASS": "Zaboravili ste lozinku ?",
   "PRIJAVI": "Prijavi",
-  "TIPDJELA": "Tip djela",
+  "TIPDJELA": "Tip djela:",
   "LOKACIJA": "Lokacija",
   "DATUMDJELA": "Datum djela",
   "SLIKA/VIDEO": "Slika/Video",
@@ -23,7 +23,11 @@
   "PRIKAŽI": "Prikaži",
   "DATUMIVRIJEMEPRIJAVE": "Datum i vrijeme prijave:",
   "DATUMIVRIJEMEPOCINJENJA": "Datum i vrijeme počinjenja:",
-  "OPCINA": "Općina",
-  "ADRESA": "Adresa"
+  "OPCINA": "Općina:",
+  "ADRESA": "Adresa:",
+  "PRIJAVADJELA": "Prijava djela",
+    "STATISTIKA": "Statistika",
+  "ADMINISTRATION": "Administracija",
+  "REPORTS": "Prijave"
 
 }
