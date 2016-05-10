@@ -45,6 +45,10 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
            templateUrl: "/GetViews/GetPrijave",
            controller: "PregledMapeCtrl"
        })
+        .when("/prijave/:prijavaId", {
+            templateUrl: "/GetViews/GetPrijavaDetalji",
+            controller: "PrijavaDetalji"
+        })
        .when("/statistika", {
            templateUrl: "/GetViews/GetStatistika",
            controller: ""

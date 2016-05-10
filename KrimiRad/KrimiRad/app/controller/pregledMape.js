@@ -1,5 +1,5 @@
 ﻿angular.module('KrimiRad.PregledPrijava', ['ngMap'])
-.controller('PregledMapeCtrl', ['$scope',"$rootScope", 'NgMap', 'prijavaService', '$rootScope',function ($scope,$rootScope, NgMap, prijavaService) {
+.controller('PregledMapeCtrl', ['$scope',"$rootScope", "$location",'NgMap', 'prijavaService', '$rootScope',function ($scope,$rootScope,$location, NgMap, prijavaService) {
     $rootScope.loading = true;
     $scope.prijava = ''
     NgMap.getMap().then(function (map) {
@@ -13,15 +13,27 @@
     });
 
     $scope.otvoriPrijavu = function (event) {
-        $rootScope.loading = true;            
-          
-        prijavaService.getById(this.id).success(function (data) {
-            $scope.prijava = data;            
-        }).finally(function (data) {
-            $rootScope.loading = false;
-        })
-           
-        $("#prijaveModal").modal("show");
+        $location.path("/prijave/" + this.id);        
     }
     
 }]);
+
+
+angular.module('KrimiRad.PregledPrijava')
+.controller('PrijavaDetalji', ['$scope', "$rootScope", 'NgMap', 'prijavaService', "$route", 'tipDjelaService', function ($scope, $rootScope, NgMap, prijavaService, $route, tipDjelaService) {
+    $rootScope.loading = true;
+    $scope.prijava = '';
+    $scope.slike = '';
+    prijavaService.getById($route.current.params.prijavaId).success(function (data) {
+        $scope.prijava = data;
+        $scope.slike = data.Album.Medij;
+
+        tipDjelaService.getById($scope.prijava.TipDjelaId).success(function (data) {
+            $scope.prijava.TipDjela = data;
+        })
+    }).finally(function (data) {
+        $rootScope.loading = false;
+    })
+
+}]);
+

@@ -2,24 +2,22 @@
     ViewBag.Title = "Krimi rad";
 }
 
-<div class="row">
+<div class="row" ng-controller="PregledMapeCtrl">
 
-    <div ng-controller="PrijavaCtrl" class="col-md-3">
+    <div class="col-md-3">
 
         <ul class="list-group">
             <li ng-repeat="p in prijave" class="list-group-item">{{ p.TipDjela.Naziv }}</li>
 
         </ul>
-    </div>
-
-    <div ng-controller="PregledMapeCtrl" class="col-md-9">
+    </div>    
+    <div  class="col-md-9">
         <div map-lazy-load="https://maps.google.com/maps/api/js">
             <ng-map center="43.849886, 18.355413" zoom="12">
                 <marker ng-repeat="p in prijave" position="[{{p.Latituda}} , {{p.Longituda}}]" title="{{p.Adresa}}" id="{{p.ID}}" on-click="otvoriPrijavu($event)"></marker>
 
             </ng-map>
-        </div>
-        @Html.Partial("~/Views/GetViews/PrijaveModal.cshtml")
+        </div>        
     </div>
    
 
