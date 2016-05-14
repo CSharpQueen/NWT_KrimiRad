@@ -177,6 +177,7 @@ namespace KrimiRadServis.Controllers {
                 Adresa = model.Adresa,
                 Opstina = model.Opstina,
                 Grad = model.Grad,
+                Komentar = model.Komentar,
                 Longituda = model.Longitude,
                 Latituda = model.Latitude,
                 AlbumId = model.AlbumId,

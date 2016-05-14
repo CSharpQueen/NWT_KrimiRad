@@ -35,8 +35,11 @@ namespace DataAccess.Entity {
         [StringLength(50, ErrorMessage = "Naziv adrese mora sadržati više od {2} karaktera.", MinimumLength = 3)]
         public string Adresa { get; set; }
 
-        public bool Rijesen { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Komentar { get; set; }
 
+        public bool Rijesen { get; set; }
+        
         public int? AlbumId { get; set; }
         [ForeignKey("AlbumId")]
         public virtual Album Album { get; set; }
