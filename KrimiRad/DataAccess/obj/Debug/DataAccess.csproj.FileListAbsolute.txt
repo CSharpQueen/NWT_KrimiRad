@@ -62,3 +62,4 @@ C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.Cache
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache

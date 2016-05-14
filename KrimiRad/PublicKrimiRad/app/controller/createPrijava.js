@@ -42,8 +42,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
                         //ovdje postaviti adresu i opstinu
                         $scope.prijava.Adresa = addr[0].long_name; //adresa
                         $scope.prijava.Grad = addr[2].long_name; //grad
-                        $scope.prijava.Opstina = addr[3].long_name; //opstina
-                        
+                        $scope.prijava.Opstina = addr[3].long_name; //opstina                        
                         $scope.$apply();                        
                     }
                     else {
@@ -63,8 +62,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
     //end mapa-----------------------------------------
 
     
-    $scope.poruka = '';
-    $scope.prijava = '';
+    $scope.poruka = '';    
 
     
     prijavaService.getAllTipDjela().success(function (data) {
