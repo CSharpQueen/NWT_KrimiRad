@@ -16,9 +16,10 @@
   "ENGLESKI": "English",
   "ZATVORI": "Close",
   "SAČUVAJ": "Save",
-   "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
+  "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
   "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
-  "OPCINA": "Municipality",
-  "ADRESA": "Adress" 
+  "OPSTINA": "Municipality",
+  "ADRESA": "Adress",
+  "PRIJAVADJELA": "Report Crime"
 
 }

@@ -14,6 +14,12 @@ angular.module("app").service("prijavaService", ["$http", "KrimiRadUrl", functio
         });
     };
     var destroy = function (prijava) { return $http.delete(apiUrl + prijava.Id); };
-    return { getAll: getAll, getById: getById, getAllTipDjela:getAllTipDjela, update: update, create: create, delete: destroy, createMedij:createMedij };
+
+    var getAddressData = function (latLng) {
+        return $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latLng + "&sensor=true");
+
+    }
+
+    return { getAll: getAll, getById: getById, getAllTipDjela:getAllTipDjela, update: update, create: create, delete: destroy, createMedij:createMedij, getAddressData:getAddressData };
 }]);
 
