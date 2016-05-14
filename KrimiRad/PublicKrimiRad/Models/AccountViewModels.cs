@@ -105,7 +105,8 @@ namespace PublicKrimiRad.Models
         [Display(Name = "Slika/Video")]
         public string Slika { get; set; }
 
-        
+        public string Komentar { get; set; }
+
     }
     public class ResetPasswordViewModel
     {
