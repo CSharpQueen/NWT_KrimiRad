@@ -19,7 +19,8 @@
   "DATUMIVRIJEMEPRIJAVE": "Date and time of report:",
   "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
   "OPSTINA": "Municipality",
-  "ADRESA": "Adress",
-  "PRIJAVADJELA": "Report Crime"
+  "ADRESA": "Address",
+  "PRIJAVADJELA": "Report Crime",
+  "DODAJ": "Add"
 
 }

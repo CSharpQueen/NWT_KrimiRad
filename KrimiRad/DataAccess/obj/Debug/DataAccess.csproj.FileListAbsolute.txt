@@ -57,8 +57,8 @@ C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\bin\Debug
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.Migrations.nnn.resources
+C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.Migrations.komentar.resources
+C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.Cache
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
-C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.Migrations.nnn.resources
-C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.Cache
-C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.Migrations.komentar.resources

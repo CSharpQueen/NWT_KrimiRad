@@ -381,6 +381,7 @@ C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\KrimiRadServis\bin\z
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.csprojResolveAssemblyReference.cache
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.pdb
+C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.pdb
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\bin\ApplicationInsights.config
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\bin\roslyn\csc.exe
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -524,4 +525,3 @@ C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\bin\z
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.csprojResolveAssemblyReference.cache
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.dll
-C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.pdb
