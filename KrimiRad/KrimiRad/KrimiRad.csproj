@@ -230,9 +230,11 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
+    <Content Include="app\controller\newsFeed.js" />
     <Content Include="app\controller\pregledMape.js" />
     <Content Include="app\controller\statistika.js" />
     <Content Include="app\controller\tipdjela.js" />
+    <Content Include="app\service\newsFeedService.js" />
     <Content Include="app\service\prijavaService.js" />
     <Content Include="app\service\statistikaService.js" />
     <Content Include="app\service\tipDjelaService.js" />

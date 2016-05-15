@@ -25,5 +25,7 @@
   "DATUMIVRIJEMEPOCINJENJA": "Date and time of commit:",
   "OPCINA": "Municipality:",
   "ADRESA": "Address:",
-  "PRIJAVADJELA": "Report"
+  "PRIJAVADJELA": "Report",
+  "ADMINISTRACIJA": "Administration",
+  "PRIJAVE": "Reports"
 }
