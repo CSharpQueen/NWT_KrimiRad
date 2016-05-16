@@ -56,9 +56,9 @@ namespace PublicKrimiRad
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "260877480928507",
+               appSecret: "324060e05582f2d9a3b82d1912c497bf");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

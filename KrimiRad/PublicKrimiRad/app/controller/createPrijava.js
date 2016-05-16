@@ -1,6 +1,7 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prijavaService', '$rootScope', function ($scope,NgMap, prijavaService, $rootScope) {
+    $("#myModal").modal("show");
     $rootScope.loading = true;
 
     $scope.prijava = {
@@ -74,7 +75,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
         $rootScope.loading = false;
     });
 
-    $("#myModal").modal("show");
+    
 
     $scope.dodajPrijavu = function () {
         $rootScope.loading = true;                
