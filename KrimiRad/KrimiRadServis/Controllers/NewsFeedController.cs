@@ -21,6 +21,7 @@ namespace KrimiRadServis.Controllers
 
             foreach (Prijava p in prijave)
             {
+                //samo djela pocinjena danas ili juce
                 if (p.DatumIVrijemePocinjenjaDjela.Date == DateTime.Now.AddDays(-1) || p.DatumIVrijemePocinjenjaDjela.Date == DateTime.Now.Date)
                     lista.Add(p);
 

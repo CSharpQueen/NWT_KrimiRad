@@ -1,7 +1,9 @@
 ﻿angular.module('KrimiRad.PregledPrijava', ['ngMap'])
-.controller('PregledMapeCtrl', ['$scope',"$rootScope", "$location",'NgMap', 'prijavaService', '$rootScope',function ($scope,$rootScope,$location, NgMap, prijavaService) {
+.controller('PregledMapeCtrl', ['$scope',"$rootScope", "$location",'NgMap', 'prijavaService','newsFeedService',function ($scope,$rootScope,$location, NgMap, prijavaService,newsFeedService) {
     $rootScope.loading = true;
     $scope.prijava = ''
+     $scope.newsFeed = ''
+
     NgMap.getMap().then(function (map) {
         prijavaService.getAll().success(function (data) {
             $scope.prijave = data;
@@ -11,6 +13,14 @@
         });
 
     });
+  
+        newsFeedService.getAll().success(function (data) {
+            $scope.newsFeed = data;
+            console.log(data);
+        }).finally(function (data) {
+            //kraj loadinga
+            $rootScope.loading = false;
+        });
 
     $scope.otvoriPrijavu = function (event) {
         $location.path("/prijave/" + this.id);        

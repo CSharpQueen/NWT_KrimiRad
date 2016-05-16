@@ -6,10 +6,29 @@
 
     <div class="col-md-3">
 
-        <ul class="list-group">
+        @*<ul class="list-group">
             <li ng-repeat="p in prijave" class="list-group-item">{{ p.TipDjela.Naziv }}</li>
 
-        </ul>
+        </ul>*@
+        <div class="panel-group" id="collapse">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div  ng-repeat="prijave in neewsFeed">
+                            <a data-toggle="collapse" data-parent="#collapse" href={{prijave.ID}}>
+                                {{prijave.Adresa}}
+                            </a>
+                        </div>
+                    </h4>
+                </div>
+                <div id={{prijave.ID}} class="panel-collapse collapse in">
+                    <div class="panel-body">
+                       {{prijave.DatumIVrijemePrijave}}
+                    </div>
+                </div>
+            </div>
+           
+        </div>
     </div>    
     <div  class="col-md-9">
         <div map-lazy-load="https://maps.google.com/maps/api/js">

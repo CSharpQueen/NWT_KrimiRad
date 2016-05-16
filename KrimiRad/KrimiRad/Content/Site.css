@@ -208,3 +208,19 @@ textarea {
 	}
 }
 /*END - CSS - LOADER*/
+
+ .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: 0 auto;
+  }
+
+ .prijava{
+     font-size:16px;
+ }
+ .naslov{
+ font-size:18px;
+ font-weight:bold;
+ text-transform:uppercase;
+ }
+

@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","KrimiRad.PregledPrijava","KrimiRad.Statistika"]);
+var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","KrimiRad.PregledPrijava","KrimiRad.Statistika","KrimiRad.NewsFeed"]);
 
 app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {    
     $rootScope.loading = false;
@@ -45,6 +45,7 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
            templateUrl: "/GetViews/GetPrijave",
            controller: "PregledMapeCtrl"
        })
+
         .when("/prijave/:prijavaId", {
             templateUrl: "/GetViews/GetPrijavaDetalji",
             controller: "PrijavaDetalji"
