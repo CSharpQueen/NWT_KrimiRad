@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
+  <parameter name="krimiradblob-Web.config Connection String" description="krimiradblob Connection String used in web.config by the application to access the database." defaultValue="DefaultEndpointsProtocol=https;AccountName=krimirad;AccountKey=q0ZiHefMKHIOWrH3h37VwvBEZwKb5374s2Y0VKkw1JSkMwdVba0Myuylm9u5cY44XtUlMSaaM4LTsFZ52VbaeQ==" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GitHub\\NWT_KrimiRad\\KrimiRad\\KrimiRadServis\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='krimiradblob']/@connectionString" />
+  </parameter>
   <parameter name="DataAccess.AppDbContext-Web.config Connection String" description="DataAccess.AppDbContext Connection String used in web.config by the application to access the database." defaultValue="DataAccess.AppDbContext_ConnectionString" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\GitHub\\NWT_KrimiRad\\KrimiRad\\KrimiRadServis\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataAccess.AppDbContext']/@connectionString" />
   </parameter>

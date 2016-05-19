@@ -21,6 +21,8 @@
   "OPSTINA": "Municipality",
   "ADRESA": "Address",
   "PRIJAVADJELA": "Report Crime",
-  "DODAJ": "Add"
-
+  "DODAJ": "Add",
+  "RIJESEN": "Resolved",
+  "DA": "Yes",
+  "NE": "No"
 }

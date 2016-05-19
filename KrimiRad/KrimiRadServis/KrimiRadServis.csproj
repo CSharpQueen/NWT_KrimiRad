@@ -244,7 +244,9 @@
     </Compile>
     <Compile Include="Models\KorisnikBindingModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
+    <Compile Include="Models\NewsFeedViewModel.cs" />
     <Compile Include="Models\PrijavaCreateModel.cs" />
+    <Compile Include="Models\PrijavaViewModel.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -342,7 +344,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

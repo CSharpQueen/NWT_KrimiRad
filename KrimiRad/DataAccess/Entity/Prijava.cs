@@ -47,8 +47,6 @@ namespace DataAccess.Entity {
         public virtual int TipDjelaId { get; set; }        
         public virtual TipDjela TipDjela { get; set; }
 
-        public string ApplicationUserId { get; set; }
-        [ForeignKey("ApplicationUserId")]
-        public virtual ApplicationUser UserLogin { get; set; }
+        public string Username { get; set; }
     }
 }

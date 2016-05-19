@@ -1,6 +1,26 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "KrimiRad.TipDjelaController", "KrimiRad.KorisnikController"]);
+var app = angular.module('app', ["ngRoute","pascalprecht.translate", "KrimiRad.TipDjela", "KrimiRad.Korisnik","KrimiRad.PregledPrijava","KrimiRad.Statistika"]);
+
+app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {    
+    $rootScope.loading = false;
+    $scope.selectedLanguage = $translate.preferredLanguage();
+    $scope.switchLanguage = function (lang) {        
+        $translate.use(lang);
+        $scope.selectedLanguage = lang;
+    }    
+}]);
+
+app.config(["$translateProvider", function ($translateProvider) {
+   
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'Translations/lang-',
+        suffix: '.json'
+    });
+       
+    $translateProvider.preferredLanguage('bs');
+    //$translateProvider.useLocalStorage();
+}]);
 
 app.factory('KrimiRadUrl', function () {
     return {
@@ -13,17 +33,23 @@ app.factory('KrimiRadUrl', function () {
     };
 });
 
+
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
-    
-    $routeProvider
+    $locationProvider.html5Mode(true);
+    $routeProvider       
         .when("/administracija", {
             templateUrl: "/GetViews/GetAdministracija",
             controller: ""
         })
        .when("/prijave", {
            templateUrl: "/GetViews/GetPrijave",
-           controller: ""
+           controller: "PregledMapeCtrl"
        })
+
+        .when("/prijave/:prijavaId", {
+            templateUrl: "/GetViews/GetPrijavaDetalji",
+            controller: "PrijavaDetalji"
+        })
        .when("/statistika", {
            templateUrl: "/GetViews/GetStatistika",
            controller: ""
@@ -36,9 +62,31 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Administracija/Korisnik/Index",
             controller: "KorisnikCtrl"
         })
+
+         .when("/statistika/PoTipuIOpstini", {
+             templateUrl: "/Statistika/GetView/PoOpstiniITipuDjela",
+            controller: "StatistikaCtrl"
+        })
+       
+         .when("/statistika/PoOpstini", {
+             templateUrl: "/Statistika/GetView/PoOpstini",
+            controller: "StatistikaCtrl"
+        })
+
+          .when("/statistika/PoTipuDjela", {
+             templateUrl: "/Statistika/GetView/PoTipuDjela",
+            controller: "StatistikaCtrl"
+        })
+        
+          .when("/statistika/PoDatumu", {
+             templateUrl: "/Statistika/GetView/PoDatumu",
+            controller: "StatistikaCtrl"
+        })
+
+
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""
-        });
-        $locationProvider.html5Mode(true);
+        });        
+
 }]);

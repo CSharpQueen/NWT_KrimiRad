@@ -1,23 +1,35 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-angular.module('KrimiRad.KorisnikController', [])
-    .controller('KorisnikCtrl', ['$scope', '$http', 'KrimiRadUrl', function ($scope, $http, KrimiRadUrl) {
+angular.module('KrimiRad.Korisnik', [])
+    .controller('KorisnikCtrl', ['$scope', '$http','$rootScope', 'KrimiRadUrl','$location', function ($scope, $http,$rootScope, KrimiRadUrl, $location) {
         $scope.korisnik = '';    
         $scope.poruka = '';
+        $rootScope.loading = true;
+        
+        
         $http.get(KrimiRadUrl.serviceUrl + "/api/Korisnik").success(function (data) {
             $scope.korisnici = data;
-            console.log($scope.korisnici)
+            $rootScope.loading = false;
+        }).finally(function(data) { 
+            $rootScope.loading = false;
         })
 
         $scope.prikaziFormuZaCreate = function () {
+            
             $scope.sta = "dodaj";
-            $scope.korisnik = ''
-            $("#myModal").modal("show");
+            $scope.korisnik = ''    
+            $scope.formaZaUnos = true;
         }
+
+        $scope.$on('$routeChangeStart', function (next, current) {            
+            if ($location.path() == "/administracija/korisnici") {                                
+                formaZaUnos=true;                
+            }
+        });
 
         $scope.dodajKorisnika = function () {            
             $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {
-                 $scope.poruka=data.poruka;
+                $scope.poruka=data.poruka;
                 $scope.korisnici.push($scope.korisnik);
             }).error(function (data, status, headers, config) {
                 $scope.poruka=data.poruka;
@@ -27,7 +39,7 @@ angular.module('KrimiRad.KorisnikController', [])
         $scope.prikaziFormuZaEdit = function (k) {
             $scope.sta = "uredi";
             $scope.korisnik = k;
-            $("#myModal").modal("show");
+            $scope.formaZaUnos = true;
         }
 
         $scope.urediKorisnika = function () {

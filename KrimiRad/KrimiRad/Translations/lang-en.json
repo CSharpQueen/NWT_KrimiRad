@@ -27,5 +27,9 @@
   "ADRESA": "Address:",
   "PRIJAVADJELA": "Report",
   "ADMINISTRACIJA": "Administration",
-  "PRIJAVE": "Reports"
+  "PRIJAVE": "Reports",
+  "RIJESEN": "Riješen",
+  "DA": "Da",
+  "NE": "Ne",
+  "RIJESI":  "Resolve"
 }

@@ -26,74 +26,31 @@ namespace KrimiRadServis.Controllers {
     public class PrijavaController : ApiController {
         private AppDbContext db = new AppDbContext();
         // GET api/prijava
-        [ResponseType(typeof(List<Prijava>))]
+        [ResponseType(typeof(List<PrijavaViewModel>))]
         public IHttpActionResult GetPrijava() {
-
-            //var prijave = new List<Prijava>() {
-            //    new Prijava {
-            //        DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
-            //        Grad = "Sarajevo",
-            //        Adresa = "Skenderija 12",
-            //        Longituda = 18.371985,
-            //        Latituda = 43.852723,
-            //        TipDjela = new TipDjela() {
-            //            Naziv = "Ubistvo",
-            //            Opis = "LALALAL",
-            //            StrucniNaziv = "lalalaal",
-            //            VrstaDjela = "adsfasf"
-            //        }
-            //    },
-
-            //    new Prijava {
-            //        DatumIVrijemePocinjenjaDjela = DateTime.Now,                    
-            //        Grad = "Sarajevo2",
-            //        Adresa = "Safeta zajke 13",
-            //        Longituda = 43.851980,
-            //        Latituda = 18.345206,
-            //        TipDjela = new TipDjela() {
-            //            Naziv = "Ubistvo2",
-            //            Opis = "LALALAL2",
-            //            StrucniNaziv = "lalalaal2",
-            //            VrstaDjela = "adsfasf2"
-            //        }
-            //    },
-            //};
-
-
-            //otkomentarisat kasnije
-            //var prijave = db.Prijava.Select(s => new { s.ID, s.DatumIVrijemePocinjenjaDjela, s.Grad, s.Adresa, s.Latituda, s.Longituda, s.TipDjela.Naziv }).ToList();
             var prijave = (from p in db.Prijava
-                           join t in db.TipDjela on p.TipDjelaId equals t.ID
-                           select new {
-                               ID = p.ID,
-                               DatumIVrijemePocinjenjaDjela = p.DatumIVrijemePocinjenjaDjela,
-                               DatumIVrijemePrijave = p.DatumIVrijemePrijave,
-                               Grad = p.Grad,
-                               Adresa = p.Adresa,
-                               Longituda = p.Longituda,
-                               Latituda = p.Latituda,
-                               TipDjelaId = t.ID
-                           }).ToList()
-                                     .Select(x => new Prijava() {
-                                         ID = x.ID,
-                                         DatumIVrijemePocinjenjaDjela = x.DatumIVrijemePocinjenjaDjela,
-                                         DatumIVrijemePrijave = x.DatumIVrijemePrijave,
-                                         Grad = x.Grad,
-                                         Adresa = x.Adresa,
-                                         Longituda = x.Longituda,
-                                         Latituda = x.Latituda,
-                                         TipDjelaId = x.ID
-                                     });
+                          select new PrijavaViewModel() {
+                              ID = p.ID,
+                              Adresa = p.Adresa,
+                              DatumIVrijemePocinjenjaDjela = p.DatumIVrijemePocinjenjaDjela,
+                              Grad = p.Grad,
+                              Komentar = p.Komentar,
+                              Opstina = p.Opstina,
+                              TipDjelaNaziv = p.TipDjela.Naziv,
+                              Latituda = p.Latituda,
+                              Longituda = p.Longituda,
+                              Rijesen = p.Rijesen
+                          }).ToList();
 
-
-            return Json<List<Prijava>>(prijave.ToList());
+            return Json<List<PrijavaViewModel>>(prijave);
         }
 
         // GET api/Prijava/5
         [ResponseType(typeof(Prijava))]
+        [HttpGet]
         public async Task<IHttpActionResult> GetPrijava(int? id) {
             int no = Convert.ToInt32(id);
-            Prijava prijava = await db.Prijava.FindAsync(no);
+            Prijava prijava = await db.Prijava.FindAsync(no);            
             if (prijava == null) {
                 return NotFound();
             }
@@ -105,13 +62,13 @@ namespace KrimiRadServis.Controllers {
 
         //privatna metoda sa snimanje medija
         private async Task SnimiMedij(int albumId, ICollection<HttpContent> contents) {
+
+                // Obzirom da se u istom containeru ne može nalaziti blob istog imena, promijenićemo ime dokumenta, ali ćemo zadržati ekstenziju.
             foreach (var content in contents) {
 
                 // Pravimo referencu na container unutar kojeg ćemo smještati dokumente.
                 // Container nosi naziv 'krimirad'
                 CloudBlobContainer container = BlobHelper.GetContainer("krimirad");
-
-                // Obzirom da se u istom containeru ne može nalaziti blob istog imena, promijenićemo ime dokumenta, ali ćemo zadržati ekstenziju.
                 //string fileName = string.Format("{0}{1}", Guid.NewGuid(), Path.GetExtension(content.Headers.ContentDisposition.FileName)); // ne radi uzimanje ekstenzije
 
                 string fileName = string.Format("{0}{1}", Guid.NewGuid(), ".jpg");
@@ -134,7 +91,7 @@ namespace KrimiRadServis.Controllers {
             }
         }
 
-        [Route("PostMedij")]
+        [Route("PostMedij")]        
         public async Task<IHttpActionResult> PostMedij() {
 
             try {
@@ -168,11 +125,10 @@ namespace KrimiRadServis.Controllers {
 
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
-            }
-           
+            }            
             var prijava = new Prijava() {
                 DatumIVrijemePrijave = DateTime.Now,
-                DatumIVrijemePocinjenjaDjela = model.DatumIVrijemePocinjenjaDjela, 
+                DatumIVrijemePocinjenjaDjela = model.DatumIVrijemePocinjenjaDjela,
                 TipDjelaId = model.TipDjelaId,
                 Adresa = model.Adresa,
                 Opstina = model.Opstina,
@@ -180,7 +136,8 @@ namespace KrimiRadServis.Controllers {
                 Longituda = model.Longitude,
                 Latituda = model.Latitude,
                 AlbumId = model.AlbumId,
-                Komentar = model.Komentar
+                Komentar = model.Komentar,
+                Username = User != null ? User.Identity != null ? User.Identity.Name : null : null               
             };
 
 
@@ -193,6 +150,29 @@ namespace KrimiRadServis.Controllers {
             }
 
         }
+
+
+        //[Route("Rijesi")]        
+        //public async Task<IHttpActionResult> Rijesi(int id) {
+        //    var prijava = db.Prijava.Find(id);
+        //    if (prijava == null) {
+        //        return NotFound();                
+        //    }
+        //    prijava.Rijesen = true;
+        //    db.Entry(prijava).State = EntityState.Modified;
+
+        //    try {
+        //        await db.SaveChangesAsync();
+        //    } catch (DbUpdateConcurrencyException) {
+        //        if (!PrijavaExists(id)) {
+        //            return NotFound();
+        //        } else {
+        //            throw;
+        //        }
+        //    }
+
+        //    return Json(new { poruka = "Slučaj je rješen!" });
+        //}
 
         // PUT api/prijava/5
         [ResponseType(typeof(void))]

@@ -1,44 +1,23 @@
-﻿@{
-    ViewBag.Title = "Krimi rad";
-}
-
-<div class="row" ng-controller="PregledMapeCtrl">
+﻿<div class="row" ng-controller="PregledMapeCtrl">
 
     <div class="col-md-3">
+        <uib-accordion close-others="oneAtATime">
+            <uib-accordion-group heading="{{nF.TipDjela}}" ng-repeat="nF in newsFeed">
+                <p>{{nF.Opstina}}</p>
+                <p>{{nF.Adresa}}</p>
+                <p>{{nF.DatumIVrijemePocinjenjaDjela}}</p>
+            </uib-accordion-group>
 
-        @*<ul class="list-group">
-            <li ng-repeat="p in prijave" class="list-group-item">{{ p.TipDjela.Naziv }}</li>
-
-        </ul>*@
-        <div class="panel-group" id="collapse">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <div  ng-repeat="prijave in neewsFeed">
-                            <a data-toggle="collapse" data-parent="#collapse" href={{prijave.ID}}>
-                                {{prijave.Adresa}}
-                            </a>
-                        </div>
-                    </h4>
-                </div>
-                <div id={{prijave.ID}} class="panel-collapse collapse in">
-                    <div class="panel-body">
-                       {{prijave.DatumIVrijemePrijave}}
-                    </div>
-                </div>
-            </div>
-           
-        </div>
-    </div>    
-    <div  class="col-md-9">
-        <div map-lazy-load="https://maps.google.com/maps/api/js">
-            <ng-map center="43.849886, 18.355413" zoom="12">
-                <marker ng-repeat="p in prijave" position="[{{p.Latituda}} , {{p.Longituda}}]" title="{{p.Adresa}}" id="{{p.ID}}" on-click="otvoriPrijavu($event)"></marker>
-
-            </ng-map>
-        </div>        
+        </uib-accordion>      
     </div>
-   
+    <div class="col-md-9">
+        <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <ng-map style="height:600px;" center="43.849886, 18.355413" zoom="12">
+                <marker ng-repeat="p in prijave" icon="{{ p.Rijesen ? '/Content/img/circle_green.png' : '/Content/img/circle_red.png'}}" position="[{{p.Latituda}} , {{p.Longituda}}]" title="{{p.TipDjelaNaziv}}" id="{{p.ID}}" on-click="otvoriPrijavu($event)"></marker>
+            </ng-map>
+        </div>
+    </div>
+
 
 </div>
 
