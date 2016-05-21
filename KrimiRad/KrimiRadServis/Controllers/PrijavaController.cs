@@ -3,6 +3,7 @@ using DataAccess.Entity;
 using KrimiRadServis.Models;
 using KrimiRadServis.Providers;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,7 +22,7 @@ using System.Web.Http.Description;
 namespace KrimiRadServis.Controllers {
     //[Authorize]
 
-    [EnableCors("*", "*", "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "PUT, POST, GET, DELETE, OPTIONS")]
     [RoutePrefix("api/prijava")]
     public class PrijavaController : ApiController {
         private AppDbContext db = new AppDbContext();
@@ -50,12 +51,26 @@ namespace KrimiRadServis.Controllers {
         [HttpGet]
         public async Task<IHttpActionResult> GetPrijava(int? id) {
             int no = Convert.ToInt32(id);
-            Prijava prijava = await db.Prijava.FindAsync(no);            
+            Prijava prijava = await db.Prijava.FindAsync(no);
             if (prijava == null) {
                 return NotFound();
             }
 
-            return Ok(prijava);
+            PrijavaViewModel model = new PrijavaViewModel() {
+                Adresa = prijava.Adresa,
+                DatumIVrijemePocinjenjaDjela = prijava.DatumIVrijemePocinjenjaDjela,
+                ID = prijava.ID,
+                Grad = prijava.Grad,
+                Komentar = prijava.Komentar,
+                Latituda = prijava.Latituda,
+                Longituda = prijava.Longituda,
+                Opstina = prijava.Opstina,
+                Rijesen = prijava.Rijesen,
+                TipDjelaNaziv = prijava.TipDjela.Naziv,
+                ImgUrls = prijava.Album.Medij.Select(s => s.Url).ToList()
+            };
+
+            return Ok(model);
         }
 
 
@@ -152,27 +167,27 @@ namespace KrimiRadServis.Controllers {
         }
 
 
-        //[Route("Rijesi")]        
-        //public async Task<IHttpActionResult> Rijesi(int id) {
-        //    var prijava = db.Prijava.Find(id);
-        //    if (prijava == null) {
-        //        return NotFound();                
-        //    }
-        //    prijava.Rijesen = true;
-        //    db.Entry(prijava).State = EntityState.Modified;
+        [Route("Rijesi")]                
+        public async Task<IHttpActionResult> Rijesi(int id) {
+            var prijava = db.Prijava.Find(id);
+            if (prijava == null) {
+                return NotFound();
+            }
+            prijava.Rijesen = true;
+            db.Entry(prijava).State = EntityState.Modified;
 
-        //    try {
-        //        await db.SaveChangesAsync();
-        //    } catch (DbUpdateConcurrencyException) {
-        //        if (!PrijavaExists(id)) {
-        //            return NotFound();
-        //        } else {
-        //            throw;
-        //        }
-        //    }
+            try {
+                await db.SaveChangesAsync();
+            } catch (DbUpdateConcurrencyException) {
+                if (!PrijavaExists(id)) {
+                    return NotFound();
+                } else {
+                    throw;
+                }
+            }
 
-        //    return Json(new { poruka = "Slučaj je rješen!" });
-        //}
+            return Json(new { poruka = "Slučaj je rješen!" });
+        }
 
         // PUT api/prijava/5
         [ResponseType(typeof(void))]

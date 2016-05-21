@@ -77,7 +77,7 @@ namespace KrimiRad.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
-            }
+            }            
             var user = await UserManager.FindByNameAsync(model.Username);
             
             if(user == null) {

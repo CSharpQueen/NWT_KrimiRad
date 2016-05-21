@@ -11,21 +11,23 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccess;
 using DataAccess.Entity;
-using System.Web.Http.Cors;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
+using PagedList;
 
 namespace KrimiRadServis.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "PUT, POST, GET, DELETE, OPTIONS")]
     public class TipDjelaController : ApiController
     {
         private AppDbContext db = new AppDbContext();
 
-        // GET: api/TipDjela
-        [ResponseType(typeof(List<TipDjela>))]
-        public IHttpActionResult GetTipDjela()
-        {            
-            return Json(db.TipDjela.ToList());
+        // GET: api/TipDjela        
+        public IHttpActionResult Get(int page)
+        {
+            var model = db.TipDjela;
+            if (model == null) return null;
+            return Json(new { count = model.Count(), tipoviDjela = model.ToList().ToPagedList(page, 7).ToList() });
         }
 
         // GET: api/TipDjela/5

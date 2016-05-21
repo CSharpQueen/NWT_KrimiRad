@@ -11,7 +11,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccess;
 using DataAccess.Entity;
-using System.Web.Http.Cors;
 using Newtonsoft.Json;
 
 namespace KrimiRadServis.Controllers

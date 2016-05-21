@@ -15,12 +15,13 @@ using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using KrimiRadServis.Models;
-using System.Web.Http.Cors;
 using System.Configuration;
+using PagedList;
+using System.Web.Http.Cors;
 
 namespace KrimiRadServis.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors(origins: "http://localhost:51580", headers: "*", methods: "PUT, POST, GET, DELETE, OPTIONS")]
     public class KorisnikController : ApiController
     {
         private AppDbContext db = new AppDbContext();
@@ -33,12 +34,13 @@ namespace KrimiRadServis.Controllers
 
         // GET: api/Korisnik
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(int page)
         {
             List<KorisnikViewModel> korisnici = new List<KorisnikViewModel>();
             List<string> ids = new List<string>();
-            foreach (var u in db.Users) {
+            foreach (var u in db.Users.Where(s => !String.IsNullOrEmpty(s.ImeIPrezime))) {
                 korisnici.Add(new KorisnikViewModel() {
+                    ID = u.Id,
                     ImeIPrezime = u.ImeIPrezime,
                     Email = u.Email,
                     JMBG = u.JMBG,                    
@@ -51,7 +53,7 @@ namespace KrimiRadServis.Controllers
                 korisnici[i].TipKorisnika = userManager.GetRoles(ids[i]).FirstOrDefault();
             }
 
-            return Json<List<KorisnikViewModel>>(korisnici);
+            return Json(new { count = korisnici.Count, korisnici = korisnici.ToPagedList(page, 7).ToList()});
         }
 
         // GET: api/Korisnik/guidId
@@ -70,7 +72,7 @@ namespace KrimiRadServis.Controllers
 
         // PUT: api/Korisnik/5
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, KorisnikBindingModel korisnik)
+        public async Task<IHttpActionResult> Put(string id, KorisnikViewModel korisnik)
         {            
             if (!ModelState.IsValid)
             {

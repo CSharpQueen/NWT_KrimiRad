@@ -11,17 +11,42 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccess;
 using DataAccess.Entity;
-using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using KrimiRadServis.Models;
-
+using System.Web.Http.Cors;
+using KrimiRadServis.Models;
 namespace KrimiRadServis.Controllers
 {
     [RoutePrefix("api/Statistika")]
+    [EnableCors(origins: "*", headers: "*", methods: "PUT, POST, GET, DELETE, OPTIONS")]
     public class StatistikaController : ApiController
     {
 
         private AppDbContext db = new AppDbContext();
+
+
+        [HttpGet]
+        [Route("BrojDjelaPoOpstinama")]
+        public IHttpActionResult BrojDjelaPoOpstinama() {
+            var data = db.Prijava;
+            var model = new List<BrojDjelaPoOpstinamaModel>();
+            
+            foreach (var line in data.GroupBy(info => info.Opstina)
+                        .Select(group => new {
+                            Opstina = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.Opstina))
+                {
+
+                model.Add(new BrojDjelaPoOpstinamaModel() {
+                    Opstina = line.Opstina,
+                    Count = line.Count
+                });                
+            }
+
+            return Json(model);
+        }
 
         [HttpGet]
         [Route("PrijavePoOpstiniITipuDjela")]

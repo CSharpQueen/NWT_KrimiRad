@@ -24,14 +24,20 @@ app.config(["$translateProvider", function ($translateProvider) {
 
 app.factory('KrimiRadUrl', function () {
     return {
-        //serviceUrl: 'http://localhost:58808',
-        //publicSiteUrl: 'http://localhost:58808',
-        //adminSiteUrl: 'http://localhost:51580',
-        serviceUrl: 'http://service-krimirad.azurewebsites.net',
-        publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
-        adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
+        serviceUrl: 'http://localhost:58808',
+        publicSiteUrl: 'http://localhost:58808',
+        adminSiteUrl: 'http://localhost:51580',
+        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        //publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
+        //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
+
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
 
 
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
@@ -82,6 +88,11 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/PoDatumu",
             controller: "StatistikaCtrl"
         })
+         .when("/statistika/BrojDjelaPoOpstinama", {
+             templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinama",
+            controller: "StatistikaCtrl"
+        })
+
 
 
         .when("/Manage/ChangePassword", {

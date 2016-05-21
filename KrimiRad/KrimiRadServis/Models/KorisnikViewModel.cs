@@ -7,6 +7,7 @@ using System.Web;
 
 namespace KrimiRadServis.Models {
     public class KorisnikViewModel {
+        public string ID { get; set; }
         public string ImeIPrezime { get; set; }
         [Required]
         public string JMBG { get; set; }

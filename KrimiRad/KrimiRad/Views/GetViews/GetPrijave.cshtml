@@ -1,6 +1,7 @@
 ﻿<div class="row" ng-controller="PregledMapeCtrl">
 
     <div class="col-md-3">
+        <uib-pagination items-per-page="5" previous-text="&lsaquo;" next-text="&rsaquo;" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
         <uib-accordion close-others="oneAtATime">
             <uib-accordion-group heading="{{nF.TipDjela}}" ng-repeat="nF in newsFeed">
                 <p>{{nF.Opstina}}</p>

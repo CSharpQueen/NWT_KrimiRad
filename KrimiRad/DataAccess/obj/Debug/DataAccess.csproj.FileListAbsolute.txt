@@ -14,21 +14,6 @@ C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.Migrati
 C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.Cache
 C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
 C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.dll.config
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Newtonsoft.Json.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\DataAccess\bin\Debug\DataAccess.dll.config
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\DataAccess\bin\Debug\DataAccess.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad6\KrimiRad\DataAccess\bin\Debug\DataAccess.pdb
@@ -62,4 +47,19 @@ C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.Cache
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\Nermina Agovic\Source\Repos\NWT_KrimiRad2\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.dll.config
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\DataAccess.pdb
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.pdb
 C:\GitHub\NWT_KrimiRad\KrimiRad\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache

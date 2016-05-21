@@ -3,9 +3,12 @@
     $rootScope.loading = true;
     $scope.prijava = ''
     $scope.newsFeed = ''
+    $scope.currentPage = 1;
 
-    newsFeedService.getAll().success(function (data) {
-        $scope.newsFeed = data;
+
+    newsFeedService.getPage($scope.currentPage).success(function (data) {
+        $scope.newsFeed = data.prijave;
+        $scope.totalItems = data.count;        
     }).error(function (data) {
         console.log(data);
     });
@@ -19,6 +22,15 @@
         });
 
     });
+    
+    $scope.pageChanged = function() {
+        newsFeedService.getPage($scope.currentPage).success(function (data) {
+        $scope.newsFeed = data.prijave;
+        $scope.totalItems = data.count;
+        }).error(function (data) {
+            console.log(data);
+        });
+    }
 
   
 
@@ -32,16 +44,15 @@
 angular.module('KrimiRad.PregledPrijava')
 .controller('PrijavaDetalji', ['$scope', "$rootScope", 'NgMap', 'prijavaService', "$route", 'tipDjelaService', function ($scope, $rootScope, NgMap, prijavaService, $route, tipDjelaService) {
     $rootScope.loading = true;
-    $scope.prijava = '';
-    $scope.slike = '';
+    $scope.prijava = '';    
     $scope.poruka = '';
-    prijavaService.getById($route.current.params.prijavaId).success(function (data) {
-        $scope.prijava = data;
-        $scope.slike = data.Album.Medij;
 
-        tipDjelaService.getById($scope.prijava.TipDjelaId).success(function (data) {
-            $scope.prijava.TipDjela = data;
-        })
+    prijavaService.getById($route.current.params.prijavaId).success(function (data) {
+        $scope.prijava = data;        
+
+        //tipDjelaService.getById($scope.prijava.TipDjelaId).success(function (data) {
+        //    $scope.prijava.TipDjela = data;
+        //})
     }).finally(function (data) {
         $rootScope.loading = false;
     })
@@ -50,7 +61,7 @@ angular.module('KrimiRad.PregledPrijava')
         $rootScope.loading = true;
         prijavaService.rijesi($scope.prijava.ID).success(function (data) {            
             console.log(data);
-            $scope.poruka = data;
+            $scope.poruka = data.poruka;
         }).error(function (data) {
             console.log(data);
             $scope.poruka = data;
