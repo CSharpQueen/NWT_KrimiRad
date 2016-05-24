@@ -14,7 +14,7 @@ app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scop
 app.config(["$translateProvider", function ($translateProvider) {
    
     $translateProvider.useStaticFilesLoader({
-        prefix: 'Translations/lang-',
+        prefix: 'Content/translations/lang-',
         suffix: '.json'
     });
        
@@ -24,12 +24,12 @@ app.config(["$translateProvider", function ($translateProvider) {
 
 app.factory('KrimiRadUrl', function () {
     return {
-        serviceUrl: 'http://localhost:58808',
-        publicSiteUrl: 'http://localhost:58808',
-        adminSiteUrl: 'http://localhost:51580',
-        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
-        //publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
-        //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
+        //serviceUrl: 'http://localhost:58808',
+        //publicSiteUrl: 'http://localhost:58808',
+        //adminSiteUrl: 'http://localhost:51580',
+        serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
+        adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
 
@@ -105,6 +105,10 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             controller: "StatistikaCtrl"
         }).when("/statistika/BrojDjelaPoTipuDjela", {
             templateUrl: "/Statistika/GetView/BrojDjelaPoTipuDjela",
+            controller: "StatistikaCtrl"
+
+        }).when("/statistika/OmjerRjesenihUPeriodu", {
+            templateUrl: "/Statistika/GetView/OmjerRjesenihUPeriodu",
             controller: "StatistikaCtrl"
         }); 
 

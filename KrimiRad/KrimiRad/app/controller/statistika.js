@@ -63,6 +63,25 @@
                 $rootScope.loading = false;
             });
         }
+        
+        $scope.OmjerRjesenihUPeriodu = function () {           
+            $scope.labels = [];
+            $scope.data = [[], []];
+            $scope.series = ["Riješenih", "Nerješenih"];
+            $rootScope.loading = true;
+            statistikaService.dajOmjerRjesenihUPeriodu($scope.datumOd.toJSON(), $scope.datumDo.toJSON()).success(function (data) {
+
+                for (i = 0; i < data.length; i++) {
+                    $scope.labels.push(data[i].TipDjela);
+                    $scope.data[0].push(data[i].BrojRijesenih);
+                    $scope.data[1].push(data[i].BrojNerjesenih);
+                }
+
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            });
+        }
+
 
         //dobavljanje po opstini i tipu djela
         $scope.PoOpstiniITipuDjela = function () {

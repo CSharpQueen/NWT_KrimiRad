@@ -25,4 +25,10 @@ namespace KrimiRadServis.Models {
         public string TipDjela { get; set; }
         public int Count { get; set; }
     }
+
+    public class OmjerRjesenihUPerioduModel {
+        public string TipDjela { get; set; }
+        public int BrojRijesenih { get; set; }
+        public int BrojNerjesenih { get; set; }
+    }
 }

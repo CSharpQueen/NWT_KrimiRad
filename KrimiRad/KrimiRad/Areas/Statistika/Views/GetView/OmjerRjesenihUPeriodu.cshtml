@@ -1,0 +1,13 @@
+﻿<div ng-controller="StatistikaCtrl">
+    <div class="form-group">
+        Datum od <input type="date" datepicker-popup="MM/dd/yyyy" class="form-control" ng-model="datumOd" required/> <br />
+        Datum do <input type="date" datepicker-popup="MM/dd/yyyy" class="form-control" ng-model="datumDo" required/> 
+
+    </div>
+    <button class="btn btn-primary" ng-click="OmjerRjesenihUPeriodu()">Generiši</button>
+    <canvas id="bar" class="chart chart-bar"
+            chart-data="data" chart-labels="labels"
+        chart-series="series">
+    </canvas>
+</div>
+

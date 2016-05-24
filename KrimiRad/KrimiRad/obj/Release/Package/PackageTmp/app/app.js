@@ -14,7 +14,7 @@ app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scop
 app.config(["$translateProvider", function ($translateProvider) {
    
     $translateProvider.useStaticFilesLoader({
-        prefix: 'Translations/lang-',
+        prefix: 'Content/translations/lang-',
         suffix: '.json'
     });
        
@@ -24,12 +24,12 @@ app.config(["$translateProvider", function ($translateProvider) {
 
 app.factory('KrimiRadUrl', function () {
     return {
-        //serviceUrl: 'http://localhost:58808',
-        //publicSiteUrl: 'http://localhost:58808',
-        //adminSiteUrl: 'http://localhost:51580',
-        serviceUrl: 'http://service-krimirad.azurewebsites.net',
-        publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
-        adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
+        serviceUrl: 'http://localhost:58808',
+        publicSiteUrl: 'http://localhost:58808',
+        adminSiteUrl: 'http://localhost:51580',
+        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        //publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
+        //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
 
@@ -68,7 +68,10 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Administracija/Korisnik/Index",
             controller: "KorisnikCtrl"
         })
-
+          .when("/Manage/ChangePassword", {
+            templateUrl: "/Manage/ChangePassword",
+            controller: ""
+        })
          .when("/statistika/PoTipuIOpstini", {
              templateUrl: "/Statistika/GetView/PoOpstiniITipuDjela",
             controller: "StatistikaCtrl"
@@ -92,12 +95,48 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinama",
             controller: "StatistikaCtrl"
         })
+        .when("/statistika/BrojDjelaPoDatumu", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoDatumu",
+            controller: "StatistikaCtrl"
+        })    
+      
+        .when("/statistika/PrijavePoTipovimaZaOpstinu", {
+            templateUrl: "/Statistika/GetView/PrijavePoTipovimaZaOpstinu",
+            controller: "StatistikaCtrl"
+        }).when("/statistika/BrojDjelaPoTipuDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoTipuDjela",
+            controller: "StatistikaCtrl"
 
-
-
-        .when("/Manage/ChangePassword", {
-            templateUrl: "/Manage/ChangePassword",
-            controller: ""
-        });        
+        }).when("/statistika/OmjerRjesenihUPeriodu", {
+            templateUrl: "/Statistika/GetView/OmjerRjesenihUPeriodu",
+            controller: "StatistikaCtrl"
+        }); 
 
 }]);
+
+//ANGULAR
+app.run(function($rootScope) {
+   
+   $rootScope.loading = false; 
+
+   $rootScope.$on('$routeChangeStart', function() {
+
+      //show loading gif
+      $rootScope.loading = true;
+
+   });
+
+   $rootScope.$on('$routeChangeSuccess', function() {
+
+      //hide loading gif
+      $rootScope.loading = false;
+
+   });
+
+   $rootScope.$on('$routeChangeError', function() {
+
+       //hide loading gif
+       alert('wtff');
+       $rootScope.loading = false;
+   });
+});

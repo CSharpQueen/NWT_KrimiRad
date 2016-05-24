@@ -7,18 +7,20 @@ angular.module("KrimiRad.Statistika")
     var dajPoOpstini = function (opstina) { return $http.get(apiUrl + "PrijavePoOpstini?opstina=" + opstina); };
     var dajPoTipuDjela = function (id) { return $http.get(apiUrl + "PrijavePoTipuDjela?id=" + id); };
     var dajBrojDjelaPoOpstinama = function () { return $http.get(apiUrl + "BrojDjelaPoOpstinama"); };
-    var dajBrojDjelaPoDatumu = function () { return $http.get(apiUrl + "BrojDjelaPoDatumu"); };    
-    var dajBrojDjelaPoTipuDjela = function () { return $http.get(apiUrl + "BrojDjelaPoTipuDjela"); }; 
-    var dajPrijavePoTipovimaZaOpstinu = function (opstina) { return $http.get(apiUrl + "PrijavePoTipovimaZaOpstinu?opstina=" + opstina); };   
+    var dajBrojDjelaPoDatumu = function () { return $http.get(apiUrl + "BrojDjelaPoDatumu"); };
+    var dajBrojDjelaPoTipuDjela = function () { return $http.get(apiUrl + "BrojDjelaPoTipuDjela"); };
+    var dajPrijavePoTipovimaZaOpstinu = function (opstina) { return $http.get(apiUrl + "PrijavePoTipovimaZaOpstinu?opstina=" + opstina); };
+    var dajOmjerRjesenihUPeriodu = function (datumOd, datumDo) { return $http.get(apiUrl + "OmjerRjesenihUPeriodu?datumOd=" + datumOd + "&datumDo=" + datumDo); }
     return {
-            dajBrojDjelaPoTipuDjela: dajBrojDjelaPoTipuDjela,
-            dajPrijavePoTipovimaZaOpstinu: dajPrijavePoTipovimaZaOpstinu,
-            dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, 
-            dajBrojDjelaPoDatumu:dajBrojDjelaPoDatumu, 
-            dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, 
-            dajPoDatumu: dajPoDatumu, 
-            dajPoOpstini: dajPoOpstini, 
-            dajPoTipuDjela: dajPoTipuDjela 
+        dajOmjerRjesenihUPeriodu: dajOmjerRjesenihUPeriodu,
+        dajBrojDjelaPoTipuDjela: dajBrojDjelaPoTipuDjela,
+        dajPrijavePoTipovimaZaOpstinu: dajPrijavePoTipovimaZaOpstinu,
+        dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama,
+        dajBrojDjelaPoDatumu: dajBrojDjelaPoDatumu,
+        dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela,
+        dajPoDatumu: dajPoDatumu,
+        dajPoOpstini: dajPoOpstini,
+        dajPoTipuDjela: dajPoTipuDjela
     };
 }]);
 

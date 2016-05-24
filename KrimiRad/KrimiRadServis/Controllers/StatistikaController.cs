@@ -118,6 +118,32 @@ namespace KrimiRadServis.Controllers
             return Json(model);
         }
 
+        [HttpGet]
+        [Route("OmjerRjesenihUPeriodu")]
+        public IHttpActionResult OmjerRjesenihUPeriodu(DateTime datumOd, DateTime datumDo) {
+
+            var data = db.Prijava.Where(p => p.DatumIVrijemePocinjenjaDjela >= datumOd && p.DatumIVrijemePocinjenjaDjela <= datumDo).ToList();
+            var model = new List<OmjerRjesenihUPerioduModel>();
+
+            foreach (var line in data.GroupBy(info => info.TipDjela.Naziv)
+                        .Select(group => new {
+                            TipDjela = group.Key,
+                            BrojRijesenih = group.Where(p => p.Rijesen).Count(),
+                            BrojNerjesenih = group.Where(p => !p.Rijesen).Count()
+                        })
+                        .OrderBy(x => x.TipDjela)) {
+
+                model.Add(new OmjerRjesenihUPerioduModel() {
+                    TipDjela = line.TipDjela,
+                    BrojRijesenih = line.BrojRijesenih,
+                    BrojNerjesenih = line.BrojNerjesenih
+                });
+            }
+
+
+            return Json(model);
+        }
+
 
 
 
