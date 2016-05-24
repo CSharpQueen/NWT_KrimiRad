@@ -73,7 +73,7 @@ namespace KrimiRadServis.Controllers
 
         [HttpGet]
         [Route("PrijavePoTipovimaZaOpstinu")]
-        public async Task<IHttpActionResult> PrijavePoTipovimaZaOpstinu(string opstina) {
+        public IHttpActionResult PrijavePoTipovimaZaOpstinu(string opstina) {
 
             List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina)).ToList();
             if (prijave == null) return Json("Ne postoje prijave za ovu opštinu");
