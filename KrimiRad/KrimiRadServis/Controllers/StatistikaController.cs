@@ -71,6 +71,17 @@ namespace KrimiRadServis.Controllers
         }
 
 
+        [HttpGet]
+        [Route("PrijavePoTipovimaZaOpstinu")]
+        public async Task<IHttpActionResult> PrijavePoTipovimaZaOpstinu(string opstina) {
+
+            List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina)).ToList();
+            if (prijave == null) return Json("Ne postoje prijave za ovu opštinu");
+            return Json<List<Prijava>>(prijave);
+        }
+
+
+
 
         [HttpGet]
         [Route("PrijavePoOpstiniITipuDjela")]
@@ -90,14 +101,7 @@ namespace KrimiRadServis.Controllers
         }
 
         //get: api/Statistika/PrijavePoDatumu?opstina=nekaopstina
-        [HttpGet]
-        [Route("PrijavePoOpstini")]
-        public async Task<IHttpActionResult> PrijavePoOpstini(string opstina) {
-
-            List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina)).ToList();
-            if (prijave == null) return Json("Ne postoje prijave za ovu opštinu");
-            return Json<List<Prijava>>(prijave);
-        }
+        
 
         //get: api/Statistika/PrijavePoDatumu/3
         [HttpGet]

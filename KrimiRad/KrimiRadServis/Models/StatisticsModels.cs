@@ -15,4 +15,9 @@ namespace KrimiRadServis.Models {
         public string Datum { get; set; }
         public int Count { get; set; }
     }
+
+    public class PrijavePoTipovimaZaOpstinuModel {
+        public string TipDjela { get; set; }
+        public string Count { get; set; }
+    }
 }
