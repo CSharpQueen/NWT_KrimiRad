@@ -286,6 +286,7 @@
     <Content Include="Areas\Statistika\Views\GetView\PoTipuDjela.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\PoDatumu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoOpstinama.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoDatumuZaOpstinu.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />

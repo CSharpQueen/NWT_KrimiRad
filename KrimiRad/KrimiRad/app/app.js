@@ -92,12 +92,40 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinama",
             controller: "StatistikaCtrl"
         })
-
-
-
+        .when("/statistika/BrojDjelaPoDatumuZaOpstinu", {
+             templateUrl: "/Statistika/GetView/BrojDjelaPoDatumuZaOpstinu",
+            controller: "StatistikaCtrl"
+        })    
         .when("/Manage/ChangePassword", {
             templateUrl: "/Manage/ChangePassword",
             controller: ""
         });        
 
 }]);
+
+//ANGULAR
+app.run(function($rootScope) {
+   
+   $rootScope.loading = false; 
+
+   $rootScope.$on('$routeChangeStart', function() {
+
+      //show loading gif
+      $rootScope.loading = true;
+
+   });
+
+   $rootScope.$on('$routeChangeSuccess', function() {
+
+      //hide loading gif
+      $rootScope.loading = false;
+
+   });
+
+   $rootScope.$on('$routeChangeError', function() {
+
+       //hide loading gif
+       alert('wtff');
+       $rootScope.loading = false;
+   });
+});

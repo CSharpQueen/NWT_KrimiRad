@@ -237,3 +237,7 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\ko\System.Spatial.resources.d
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\ru\System.Spatial.resources.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\zh-Hans\System.Spatial.resources.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\zh-Hant\System.Spatial.resources.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.xml

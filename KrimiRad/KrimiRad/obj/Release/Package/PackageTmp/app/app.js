@@ -33,6 +33,12 @@ app.factory('KrimiRadUrl', function () {
     };
 });
 
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+
 
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -82,6 +88,11 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/PoDatumu",
             controller: "StatistikaCtrl"
         })
+         .when("/statistika/BrojDjelaPoOpstinama", {
+             templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinama",
+            controller: "StatistikaCtrl"
+        })
+
 
 
         .when("/Manage/ChangePassword", {

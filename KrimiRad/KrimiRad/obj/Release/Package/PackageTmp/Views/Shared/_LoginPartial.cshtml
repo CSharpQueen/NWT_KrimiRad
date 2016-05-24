@@ -5,7 +5,14 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">        
+    <ul class="nav navbar-nav navbar-right"> 
+        <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ 'JEZIK' | translate }} <span class="caret"></span></a>
+            <ul class="dropdown-menu" ng-controller="appctrl">
+                <li><a ng-click="switchLanguage('bs')">Bosanski <span ng-show="selectedLanguage == 'bs'" class="glyphicon glyphicon-ok"></span></a></li>
+                <li><a ng-click="switchLanguage('en')">English <span ng-show="selectedLanguage == 'en'" class="glyphicon glyphicon-ok"></span></a></li>
+            </ul>
+        </li>       
         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vozdra, @User.Identity.GetUserName() <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>@Html.ActionLink("Promjena lozinke", "ChangePassword", "Manage")</li>

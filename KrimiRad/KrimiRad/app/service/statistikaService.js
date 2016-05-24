@@ -7,6 +7,7 @@ angular.module("KrimiRad.Statistika")
     var dajPoOpstini = function (opstina) { return $http.get(apiUrl + "PrijavePoOpstini?opstina=" + opstina); };
     var dajPoTipuDjela = function (id) { return $http.get(apiUrl + "PrijavePoTipuDjela?id=" + id); };
     var dajBrojDjelaPoOpstinama = function (id) { return $http.get(apiUrl + "BrojDjelaPoOpstinama"); };
-    return { dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, dajPoDatumu: dajPoDatumu, dajPoOpstini: dajPoOpstini, dajPoTipuDjela: dajPoTipuDjela };
+    var dajBrojDjelaPoDatumuZaOpstinu = function (id) { return $http.get(apiUrl + "BrojDjelaPoDatumuZaOpstinu"); };    
+    return { dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, dajBrojDjelaPoDatumuZaOpstinu:dajBrojDjelaPoDatumuZaOpstinu, dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, dajPoDatumu: dajPoDatumu, dajPoOpstini: dajPoOpstini, dajPoTipuDjela: dajPoTipuDjela };
 }]);
 

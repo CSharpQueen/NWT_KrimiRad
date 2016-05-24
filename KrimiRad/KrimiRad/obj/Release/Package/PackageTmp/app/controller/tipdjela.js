@@ -1,21 +1,33 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var TipDjela = angular.module('KrimiRad.TipDjela', [])
+var TipDjela = angular.module('KrimiRad.TipDjela', ['ngAnimate', 'ui.bootstrap'])
     .controller('TipDjelaCtrl', ['$scope', 'tipDjelaService', '$rootScope', function ($scope, tipDjelaService, $rootScope) {
         $scope.poruka = '';
         $scope.tipDjela = '';
-
         //pocetak loadinga
         $rootScope.loading = true;
 
-
-        tipDjelaService.getAll().success(function (data) {
-            $scope.tipoviDjela = data;
+        tipDjelaService.getPage(1).success(function (data) {
+            $scope.tipoviDjela = data.tipoviDjela;            
+            $scope.totalItems = data.count;
+            $scope.currentPage = 1;
         }).finally(function (data) {
             //kraj loadinga
             $rootScope.loading = false;
         });
 
+        $scope.pageChanged = function () {
+            $rootScope.loading = true;
+            tipDjelaService.getPage($scope.currentPage).success(function (data) {                
+                $scope.tipoviDjela = data.tipoviDjela;
+                $scope.totalItems = data.count;
+            }).finally(function (data) {
+                //kraj loadinga
+                $rootScope.loading = false;
+            });
+        }
+
+       
         $scope.prikaziFormuZaCreate = function () {
             $scope.sta = "dodaj";
             $scope.tipDjela = ''
@@ -40,7 +52,8 @@ var TipDjela = angular.module('KrimiRad.TipDjela', [])
         }
 
         $scope.urediTipDjela = function () {
-            $rootScope.loading = true;
+            $rootScope.loading = true;            
+
             tipDjelaService.update($scope.tipDjela)
             .success(function (data) {
                 alert("Spremljene izmjene!");

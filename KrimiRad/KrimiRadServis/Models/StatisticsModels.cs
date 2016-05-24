@@ -10,4 +10,9 @@ namespace KrimiRadServis.Models {
         public int Count { get; set; }
     }
 
+
+    public class BrojDjelaPoDatumuZaOpstinuModel {
+        public string Datum { get; set; }
+        public int Count { get; set; }
+    }
 }

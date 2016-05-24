@@ -1,11 +1,11 @@
-﻿var Statistika = angular.module('KrimiRad.Statistika', [])
+﻿var Statistika = angular.module('KrimiRad.Statistika', ["chart.js"])
     .controller('StatistikaCtrl', ['$scope', 'statistikaService', '$rootScope', function ($scope, statistikaService, $rootScope) {
         $scope.tipDjelaId = '';
         $scope.opstina = '';
 
         $scope.BrojDjelaPoOpstinama = function () {
-            $scope.labels = '';
-            $scope.data = '';
+            $scope.labels = [];
+            $scope.data = [];
             $rootScope.loading = true;
             statistikaService.dajBrojDjelaPoOpstinama().success(function (data) {
                 for (i = 0; i < data.length; i++) {
@@ -16,6 +16,27 @@
                 $rootScope.loading = false;
             });
         }
+
+
+        $scope.BrojDjelaPoDatumuZaOpstinu = function() {
+            $scope.labels = [];
+            $scope.data = [[]];
+            $scope.series = ["Broj djela"];
+            $rootScope.loading = true;
+            statistikaService.dajBrojDjelaPoDatumuZaOpstinu().success(function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $scope.labels.push(data[i].Datum);
+                    $scope.data[0].push(data[i].Count);
+                }
+                console.log($scope.labels);
+                console.log($scope.data);
+                console.log($scope.series);
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            });
+
+        }
+
 
         //dobavljanje po opstini i tipu djela
         $scope.PoOpstiniITipuDjela = function () {

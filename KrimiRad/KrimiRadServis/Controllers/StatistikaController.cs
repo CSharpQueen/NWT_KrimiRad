@@ -49,6 +49,30 @@ namespace KrimiRadServis.Controllers
         }
 
         [HttpGet]
+        [Route("BrojDjelaPoDatumuZaOpstinu")]
+        public IHttpActionResult BrojDjelaPoDatumuZaOpstinu() {
+            var data = db.Prijava;
+            var model = new List<BrojDjelaPoDatumuZaOpstinuModel>();
+
+            foreach (var line in data.GroupBy(info => info.DatumIVrijemePocinjenjaDjela)
+                        .Select(group => new {
+                            Datum = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.Datum)) {
+
+                model.Add(new BrojDjelaPoDatumuZaOpstinuModel() {
+                    Datum = line.Datum.ToShortDateString(),
+                    Count = line.Count
+                });
+            }
+
+            return Json(model);
+        }
+
+
+
+        [HttpGet]
         [Route("PrijavePoOpstiniITipuDjela")]
         public async Task<IHttpActionResult> PrijavePoOpstiniITipuDjela(int id, string opstina) {
             List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina) && p.TipDjelaId.Equals(id)).ToList();
