@@ -18,11 +18,11 @@
         }
 
 
-        $scope.BrojDjelaPoDatumuZaOpstinu = function() {
+        $scope.BrojDjelaPoDatumu = function() {
             $scope.labels = [];
             $scope.data = [[]];            
             $rootScope.loading = true;
-            statistikaService.dajBrojDjelaPoDatumuZaOpstinu().success(function (data) {
+            statistikaService.dajBrojDjelaPoDatumu().success(function (data) {
                 for (i = 0; i < data.length; i++) {
                     $scope.labels.push(data[i].Datum);
                     $scope.data[0].push(data[i].Count);
@@ -32,6 +32,20 @@
                 $rootScope.loading = false;
             });
 
+        }
+
+        $scope.BrojDjelaPoTipuDjela = function () {
+            $scope.labels = [];
+            $scope.data = [];
+            $rootScope.loading = true;
+            statistikaService.dajBrojDjelaPoTipuDjela().success(function (data){
+                for (i = 0; i < data.length; i++) {
+                    $scope.labels.push(data[i].TipDjela);
+                    $scope.data.push(data[i].Count);
+                }
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            });
         }
 
         $scope.PrijavePoTipovimaZaOpstinu = function(opstina) {

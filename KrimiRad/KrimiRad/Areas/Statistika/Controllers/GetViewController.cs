@@ -36,10 +36,13 @@ namespace KrimiRad.Areas.Statistika.Controllers
             return PartialView();
         }
 
-        public PartialViewResult BrojDjelaPoDatumuZaOpstinu() {
+        public PartialViewResult BrojDjelaPoDatumu() {
             return PartialView();
         }
         public PartialViewResult PrijavePoTipovimaZaOpstinu() {
+            return PartialView();
+        }
+        public PartialViewResult BrojDjelaPoTipuDjela() {
             return PartialView();
         }
     }

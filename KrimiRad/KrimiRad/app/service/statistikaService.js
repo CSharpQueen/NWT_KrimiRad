@@ -7,12 +7,14 @@ angular.module("KrimiRad.Statistika")
     var dajPoOpstini = function (opstina) { return $http.get(apiUrl + "PrijavePoOpstini?opstina=" + opstina); };
     var dajPoTipuDjela = function (id) { return $http.get(apiUrl + "PrijavePoTipuDjela?id=" + id); };
     var dajBrojDjelaPoOpstinama = function () { return $http.get(apiUrl + "BrojDjelaPoOpstinama"); };
-    var dajBrojDjelaPoDatumuZaOpstinu = function () { return $http.get(apiUrl + "BrojDjelaPoDatumuZaOpstinu"); };    
+    var dajBrojDjelaPoDatumu = function () { return $http.get(apiUrl + "BrojDjelaPoDatumu"); };    
+    var dajBrojDjelaPoTipuDjela = function () { return $http.get(apiUrl + "BrojDjelaPoTipuDjela"); }; 
     var dajPrijavePoTipovimaZaOpstinu = function (opstina) { return $http.get(apiUrl + "PrijavePoTipovimaZaOpstinu?opstina=" + opstina); };   
     return {
-            dajPrijavePoTipovimaZaOpstinu:dajPrijavePoTipovimaZaOpstinu,
+            dajBrojDjelaPoTipuDjela: dajBrojDjelaPoTipuDjela,
+            dajPrijavePoTipovimaZaOpstinu: dajPrijavePoTipovimaZaOpstinu,
             dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, 
-            dajBrojDjelaPoDatumuZaOpstinu:dajBrojDjelaPoDatumuZaOpstinu, 
+            dajBrojDjelaPoDatumu:dajBrojDjelaPoDatumu, 
             dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, 
             dajPoDatumu: dajPoDatumu, 
             dajPoOpstini: dajPoOpstini, 

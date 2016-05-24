@@ -95,15 +95,18 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinama",
             controller: "StatistikaCtrl"
         })
-        .when("/statistika/BrojDjelaPoDatumuZaOpstinu", {
-             templateUrl: "/Statistika/GetView/BrojDjelaPoDatumuZaOpstinu",
+        .when("/statistika/BrojDjelaPoDatumu", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoDatumu",
             controller: "StatistikaCtrl"
         })    
       
         .when("/statistika/PrijavePoTipovimaZaOpstinu", {
             templateUrl: "/Statistika/GetView/PrijavePoTipovimaZaOpstinu",
             controller: "StatistikaCtrl"
-        });    
+        }).when("/statistika/BrojDjelaPoTipuDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoTipuDjela",
+            controller: "StatistikaCtrl"
+        }); 
 
 }]);
 

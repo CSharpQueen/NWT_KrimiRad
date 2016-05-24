@@ -286,8 +286,9 @@
     <Content Include="Areas\Statistika\Views\GetView\PoTipuDjela.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\PoDatumu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoOpstinama.cshtml" />
-    <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoDatumuZaOpstinu.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoDatumu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\PrijavePoTipovimaZaOpstinu.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoTipuDjela.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />

@@ -20,4 +20,9 @@ namespace KrimiRadServis.Models {
         public string TipDjela { get; set; }
         public int Count { get; set; }
     }
+
+    public class BrojDjelaPoTipuDjelaModel {
+        public string TipDjela { get; set; }
+        public int Count { get; set; }
+    }
 }

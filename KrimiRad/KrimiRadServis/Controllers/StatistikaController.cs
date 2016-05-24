@@ -49,8 +49,8 @@ namespace KrimiRadServis.Controllers
         }
 
         [HttpGet]
-        [Route("BrojDjelaPoDatumuZaOpstinu")]
-        public IHttpActionResult BrojDjelaPoDatumuZaOpstinu() {
+        [Route("BrojDjelaPoDatumu")]
+        public IHttpActionResult BrojDjelaPoDatumu() {
             var data = db.Prijava;
             var model = new List<BrojDjelaPoDatumuZaOpstinuModel>();
 
@@ -67,6 +67,28 @@ namespace KrimiRadServis.Controllers
                 });
             }
 
+
+            return Json(model);
+        }
+
+        [HttpGet]
+        [Route("BrojDjelaPoTipuDjela")]
+        public IHttpActionResult BrojDjelaPoTipuDjela() {
+            var data = db.Prijava;
+            var model = new List<BrojDjelaPoTipuDjelaModel>();
+
+            foreach (var line in data.GroupBy(info => info.TipDjela.Naziv)
+                        .Select(group => new {
+                            TipDjela = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.TipDjela)) {
+
+                model.Add(new BrojDjelaPoTipuDjelaModel() {
+                    TipDjela = line.TipDjela,
+                    Count = line.Count
+                });
+            }
 
             return Json(model);
         }
