@@ -76,9 +76,24 @@ namespace KrimiRadServis.Controllers
         [Route("PrijavePoTipovimaZaOpstinu")]
         public IHttpActionResult PrijavePoTipovimaZaOpstinu(string opstina) {
 
-            List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina)).ToList();
-            if (prijave == null) return Json("Ne postoje prijave za ovu opštinu");
-            return Json<List<Prijava>>(prijave);
+            var data = db.Prijava.Where(p => p.Opstina.Contains(opstina));
+            var model = new List<PrijavePoTipovimaZaOpstinuModel>();
+
+            foreach (var line in data.GroupBy(info => info.TipDjela.Naziv)
+                        .Select(group => new {
+                            TipDjela = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.TipDjela)) {
+
+                model.Add(new PrijavePoTipovimaZaOpstinuModel() {
+                    TipDjela = line.TipDjela,
+                    Count = line.Count
+                });
+            }
+
+
+            return Json(model);
         }
 
 

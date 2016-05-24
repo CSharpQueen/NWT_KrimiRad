@@ -20,23 +20,35 @@
 
         $scope.BrojDjelaPoDatumuZaOpstinu = function() {
             $scope.labels = [];
-            $scope.data = [[]];
-            $scope.series = ["Broj djela"];
+            $scope.data = [[]];            
             $rootScope.loading = true;
             statistikaService.dajBrojDjelaPoDatumuZaOpstinu().success(function (data) {
                 for (i = 0; i < data.length; i++) {
                     $scope.labels.push(data[i].Datum);
                     $scope.data[0].push(data[i].Count);
                 }
-                console.log($scope.labels);
-                console.log($scope.data);
-                console.log($scope.series);
+
             }).finally(function (data) {
                 $rootScope.loading = false;
             });
 
         }
 
+        $scope.PrijavePoTipovimaZaOpstinu = function(opstina) {
+            $scope.labels = [];
+            $scope.data = [[]];            
+            $rootScope.loading = true;
+
+            statistikaService.dajPrijavePoTipovimaZaOpstinu(opstina).success(function(data) {
+                for (i = 0; i < data.length; i++) {
+                    $scope.labels.push(data[i].TipDjela);
+                    $scope.data[0].push(data[i].Count);
+                }
+
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            });
+        }
 
         //dobavljanje po opstini i tipu djela
         $scope.PoOpstiniITipuDjela = function () {

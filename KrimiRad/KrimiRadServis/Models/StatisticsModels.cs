@@ -18,6 +18,6 @@ namespace KrimiRadServis.Models {
 
     public class PrijavePoTipovimaZaOpstinuModel {
         public string TipDjela { get; set; }
-        public string Count { get; set; }
+        public int Count { get; set; }
     }
 }

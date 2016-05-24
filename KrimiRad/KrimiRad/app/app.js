@@ -68,7 +68,10 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Administracija/Korisnik/Index",
             controller: "KorisnikCtrl"
         })
-
+          .when("/Manage/ChangePassword", {
+            templateUrl: "/Manage/ChangePassword",
+            controller: ""
+        })
          .when("/statistika/PoTipuIOpstini", {
              templateUrl: "/Statistika/GetView/PoOpstiniITipuDjela",
             controller: "StatistikaCtrl"
@@ -96,10 +99,11 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
              templateUrl: "/Statistika/GetView/BrojDjelaPoDatumuZaOpstinu",
             controller: "StatistikaCtrl"
         })    
-        .when("/Manage/ChangePassword", {
-            templateUrl: "/Manage/ChangePassword",
-            controller: ""
-        });        
+      
+        .when("/statistika/PrijavePoTipovimaZaOpstinu", {
+            templateUrl: "/Statistika/GetView/PrijavePoTipovimaZaOpstinu",
+            controller: "StatistikaCtrl"
+        });    
 
 }]);
 

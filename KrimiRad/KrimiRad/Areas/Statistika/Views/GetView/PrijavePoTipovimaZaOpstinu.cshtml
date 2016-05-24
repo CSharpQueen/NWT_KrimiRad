@@ -1,0 +1,8 @@
+﻿<div ng-controller="StatistikaCtrl">
+    {{OPSTINA | translate}} <input type="text" ng-model="opstina" class="form-control" />
+    <button class="btn btn-primary" ng-click="PrijavePoTipovimaZaOpstinu(opstina)">Generiši</button>
+    <canvas id="radar" class="chart chart-radar" chart-data="data" chart-labels="labels"></canvas> 
+
+</div>
+
+

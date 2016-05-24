@@ -22,6 +22,11 @@ namespace KrimiRadServis.Controllers
     {
         private AppDbContext db = new AppDbContext();
 
+
+        public IHttpActionResult Get() {
+            return Json(db.TipDjela);
+        }
+
         // GET: api/TipDjela        
         public IHttpActionResult Get(int page)
         {

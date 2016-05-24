@@ -39,5 +39,8 @@ namespace KrimiRad.Areas.Statistika.Controllers
         public PartialViewResult BrojDjelaPoDatumuZaOpstinu() {
             return PartialView();
         }
+        public PartialViewResult PrijavePoTipovimaZaOpstinu() {
+            return PartialView();
+        }
     }
 }

@@ -6,8 +6,17 @@ angular.module("KrimiRad.Statistika")
     var dajPoDatumu = function (date) { return $http.get(apiUrl + "PrijavePoDatumu?datum=" + date); };
     var dajPoOpstini = function (opstina) { return $http.get(apiUrl + "PrijavePoOpstini?opstina=" + opstina); };
     var dajPoTipuDjela = function (id) { return $http.get(apiUrl + "PrijavePoTipuDjela?id=" + id); };
-    var dajBrojDjelaPoOpstinama = function (id) { return $http.get(apiUrl + "BrojDjelaPoOpstinama"); };
-    var dajBrojDjelaPoDatumuZaOpstinu = function (id) { return $http.get(apiUrl + "BrojDjelaPoDatumuZaOpstinu"); };    
-    return { dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, dajBrojDjelaPoDatumuZaOpstinu:dajBrojDjelaPoDatumuZaOpstinu, dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, dajPoDatumu: dajPoDatumu, dajPoOpstini: dajPoOpstini, dajPoTipuDjela: dajPoTipuDjela };
+    var dajBrojDjelaPoOpstinama = function () { return $http.get(apiUrl + "BrojDjelaPoOpstinama"); };
+    var dajBrojDjelaPoDatumuZaOpstinu = function () { return $http.get(apiUrl + "BrojDjelaPoDatumuZaOpstinu"); };    
+    var dajPrijavePoTipovimaZaOpstinu = function (opstina) { return $http.get(apiUrl + "PrijavePoTipovimaZaOpstinu?opstina=" + opstina); };   
+    return {
+            dajPrijavePoTipovimaZaOpstinu:dajPrijavePoTipovimaZaOpstinu,
+            dajBrojDjelaPoOpstinama: dajBrojDjelaPoOpstinama, 
+            dajBrojDjelaPoDatumuZaOpstinu:dajBrojDjelaPoDatumuZaOpstinu, 
+            dajPoOpstiniITipuDjela: dajPoOpstiniITipuDjela, 
+            dajPoDatumu: dajPoDatumu, 
+            dajPoOpstini: dajPoOpstini, 
+            dajPoTipuDjela: dajPoTipuDjela 
+    };
 }]);
 
