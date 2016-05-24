@@ -67,6 +67,7 @@ namespace KrimiRadServis.Controllers
                 });
             }
 
+
             return Json(model);
         }
 
