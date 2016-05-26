@@ -6,7 +6,7 @@
         }).finally(function (data) {
             //kraj loadinga
             $rootScope.loading = false;
-        });       
+        });
         
     });
 }]);

@@ -15,6 +15,6 @@ namespace KrimiRadServis.Models {
         public double Latituda { get; set; }
         public double Longituda { get; set; }
         public bool Rijesen { get;  set; }
-        public List<string> ImgUrls { get; set; }
+        public List<MedijModel> Medij { get; set; }
     }
 }

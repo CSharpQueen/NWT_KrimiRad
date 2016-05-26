@@ -85,20 +85,21 @@ namespace KrimiRadServis.Controllers
             user.Email = korisnik.Email;
             user.UserName = korisnik.Username;
 
-            user.Roles.Remove(user.Roles.FirstOrDefault());            
-
-            var result = await userManager.UpdateAsync(user);
-
-
             var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
-
-
 
             if (!roleManager.RoleExists(korisnik.TipKorisnika.ToString())) {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = korisnik.TipKorisnika.ToString();
                 IdentityResult r = await roleManager.CreateAsync(role);
             }
+
+
+            userManager.RemoveFromRole(user.Id, "Administrator");
+            userManager.RemoveFromRole(user.Id, "NadlezniOrgan");
+            if (!string.IsNullOrEmpty(korisnik.TipKorisnika)) {
+                userManager.AddToRole(user.Id, korisnik.TipKorisnika);
+            }
+            var result = await userManager.UpdateAsync(user);           
 
             if (result.Succeeded) return Json(new { poruka = "Korisnik je uspješno izmjenjen" });
             else return Json(new { errors = result.Errors });

@@ -1,7 +1,11 @@
-﻿var Statistika = angular.module('KrimiRad.Statistika', ["chart.js"])
+﻿var Statistika = angular.module('KrimiRad.Statistika', ["chart.js", 'ngAnimate','ui.bootstrap'])
     .controller('StatistikaCtrl', ['$scope', 'statistikaService', '$rootScope', function ($scope, statistikaService, $rootScope) {
         $scope.tipDjelaId = '';
         $scope.opstina = '';
+         $scope.options = {    
+            minDate: new Date(),
+            showWeeks: true
+          };
 
         $scope.BrojDjelaPoOpstinama = function () {
             $scope.labels = [];
@@ -137,6 +141,14 @@
         };
         //END dobavljanje po datumu
 
+        $scope.popup1 = false;
+        $scope.popup2 = false;
 
+        $scope.datumOdOpen = function () {
+            $scope.popup1 = true;
+        }
+        $scope.datumDoOpen = function () {
+            $scope.popup2 = true;
+        }
 
     }]);

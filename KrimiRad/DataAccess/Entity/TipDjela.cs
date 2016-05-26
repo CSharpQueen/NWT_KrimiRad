@@ -12,7 +12,7 @@ namespace DataAccess.Entity {
 
         [Required]
         [StringLength(100, ErrorMessage = "Naziv mora biti između {2} i {1} karaktera.", MinimumLength = 6)]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Unesite pravilan tip djela")]
+        //[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Unesite pravilan tip djela")]
         public string Naziv { get; set; }
         
         [Required]

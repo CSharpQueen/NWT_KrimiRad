@@ -66,23 +66,20 @@
     </div>
 </div>
 <div class="container">
-    <br />
-    <div ng-if="slike != ''" id="my-carousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#my-carousel" ng-repeat="s in prijava.ImgUrls" ng-class="{{ $index == 0 ? 'active' : ''}}" data-slide-to="{{$index}}" class="active"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div ng-repeat="s in prijava.ImgUrls" ng-class="{{ $index == 1 ? 'item active' : 'item'}}">
-                <img alt="First slide" ng-src="{{s}}" width="460" style="height:345px !important;" class="img-responsive center-block">
-            </div>
-        </div>
-        <a class="left carousel-control" href="#my-carousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#my-carousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <br />  
+
+    <div style="height: 500px">
+        <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <uib-slide ng-repeat="p in prijava.Medij" index="$index">
+                <img ng-if="p.TipMedija == 1 || p.TipMedija == 0" ng-src="{{p.Url}}" style="margin:auto;">
+                <embed style="height:500px; width:600px;" ng-if="p.TipMedija == 2" src="{{p.Url}}"/>
+                @*<video ng-if="p.TipMedija == 2" width="320" height="240" controls="controls">
+                    <source ng-src="{{p.Url}}" type="video/mp4" />                               
+                    <source ng-src="{{p.Url}}" type="video/ogg" />
+                    <source ng-src="{{p.Url}}" type="video/webm" />
+                </video>*@                
+            </uib-slide>
+        </uib-carousel>
     </div>
+
 </div>

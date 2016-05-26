@@ -230,7 +230,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\korisnik.js" />
-    <Content Include="app\controller\pregledMape.js" />
+    <Content Include="app\controller\pregledPrijava.js" />
     <Content Include="app\controller\statistika.js" />
     <Content Include="app\controller\tipdjela.js" />
     <Content Include="app\service\newsFeedService.js" />
@@ -359,8 +359,8 @@
     <Content Include="Views\GetViews\GetPrijave.cshtml" />
     <Content Include="Views\GetViews\GetStatistika.cshtml" />
     <Content Include="Views\GetViews\GetAdministracija.cshtml" />
-    <Content Include="Content\translations\lang-bs.json" />
-    <Content Include="Content\translations\lang-en.json" />
+    <Content Include="Translations\lang-bs.json" />
+    <Content Include="Translations\lang-en.json" />
     <Content Include="Views\GetViews\GetPrijavaDetalji.cshtml" />
   </ItemGroup>
   <ItemGroup>

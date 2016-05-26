@@ -9,12 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess {
-    public enum TipKorisnika { Gradjanin = 1, Administrator = 2, NadlezniOrgan = 3 }
+    public enum TipKorisnika { Administrator = 1, NadlezniOrgan = 2 }
 
     public class AppDbContext : IdentityDbContext<ApplicationUser> {
         public AppDbContext() : base(
-            //"Data Source=(localdb)\\ProjectsV13;Initial Catalog=KrimiRadDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" 
-            "Data Source=etfsql.database.windows.net;Initial Catalog=KrimiRadDb;User ID=krimirad;Password=1DvaTri!"
+            //"Data Source=(localdb)\\ProjectsV13;Initial Catalog=KrimiRadDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"             
             ) {
 
         }

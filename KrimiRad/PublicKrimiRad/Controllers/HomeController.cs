@@ -24,7 +24,7 @@ namespace PublicKrimiRad.Controllers {
 
             return View();
         }
-        [Authorize]
+        //[Authorize]
         public PartialViewResult CreatePrijava() {
             return PartialView("_CreatePrijava");
         }

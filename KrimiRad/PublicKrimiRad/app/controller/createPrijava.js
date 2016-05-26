@@ -1,7 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prijavaService', '$rootScope', function ($scope,NgMap, prijavaService, $rootScope) {
-    $("#myModal").modal("show");
+angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prijavaService', '$rootScope', function ($scope,NgMap, prijavaService, $rootScope) {    
     $rootScope.loading = true;
 
     $scope.prijava = {
@@ -39,13 +38,10 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
 
                         var addr = responses[0].address_components;
 
-
                         //ovdje postaviti adresu i opstinu
                         $scope.prijava.Adresa = addr[0].long_name; //adresa
                         $scope.prijava.Grad = addr[2].long_name; //grad
                         $scope.prijava.Opstina = addr[3].long_name; //opstina
-                        console.log($scope.prijava);
-                        console.log(addr);
                         $scope.$apply();                        
                     }
                     else {
@@ -75,12 +71,15 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
         $rootScope.loading = false;
     });
 
-    
+    $scope.medij = [];
 
     $scope.dodajPrijavu = function () {
         $rootScope.loading = true;                
         var fd = new FormData();
-        fd.append('file', $scope.medij);
+        for (var i = 0; i < $scope.medij.length; i++) {
+            fd.append('file', $scope.medij[i]._file);
+        }
+                
         //prvo upload slike/videa
         prijavaService.createMedij(fd).success(function (data) {
 
@@ -97,6 +96,11 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
         });
     }
 
+     $scope.popup1 = false;        
+
+    $scope.datumOdOpen = function () {
+        $scope.popup1 = true;
+    }
 
 
     $scope.sakrijAlert = function() {

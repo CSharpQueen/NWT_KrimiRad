@@ -18,7 +18,11 @@
             </div>
             @Html.LabelFor(m => m.TipKorisnika)
             <div class="form-group">
-                @Html.EnumDropDownListFor(m => m.TipKorisnika, "Tip korisnika", new { ng_model = "korisnik.TipKorisnika", @class = "form-control", required = "Obavezno polje" })
+                <select ng-model="korisnik.TipKorisnika" class="form-control">
+                    <option value="">Odaberite tip korisnika</option>
+                    <option value="Administrator">Administrator</option>
+                    <option value="NadlezniOrgan">Nadležni organ</option>
+                </select>                
             </div>
         </div>
         <div class="col-md-4">            

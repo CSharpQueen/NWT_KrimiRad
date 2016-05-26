@@ -1,9 +1,6 @@
 ﻿@using PublicKrimiRad.Models
 @model LoginViewModel
-
-<h2>@ViewBag.Title.</h2>
 <div class="row">        
-
         <div class="col-md-4 col-md-push-2" id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </div>    

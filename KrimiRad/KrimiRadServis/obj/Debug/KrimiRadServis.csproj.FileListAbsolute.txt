@@ -429,9 +429,13 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Microsoft.Web.Infrastructure.
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Microsoft.WindowsAzure.Storage.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Newtonsoft.Json.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Owin.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Net.Http.Formatting.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Spatial.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Cors.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Helpers.dll
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.Cors.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.Owin.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.WebHost.dll
@@ -456,7 +460,10 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Microsoft.Data.Services.Clien
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Microsoft.WindowsAzure.Storage.pdb
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Microsoft.WindowsAzure.Storage.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\Newtonsoft.Json.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Spatial.xml
+C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.Cors.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Net.Http.Formatting.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Helpers.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.xml
@@ -522,10 +529,3 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\zh-Hant\System.Spatial.resour
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.csprojResolveAssemblyReference.cache
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\obj\Debug\KrimiRadServis.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Cors.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.Cors.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\System.Web.Http.Cors.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.xml
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRadServis\bin\PagedList.Mvc.xml

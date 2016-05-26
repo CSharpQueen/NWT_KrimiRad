@@ -67,13 +67,31 @@ namespace KrimiRadServis.Controllers {
                 Opstina = prijava.Opstina,
                 Rijesen = prijava.Rijesen,
                 TipDjelaNaziv = prijava.TipDjela.Naziv,
-                ImgUrls = prijava.Album.Medij.Select(s => s.Url).ToList()
+                Medij = prijava.Album.Medij.Select(s => new MedijModel() { TipMedija = s.TipMedija, Url = s.Url }).ToList()
             };
 
             return Ok(model);
         }
 
 
+
+
+        private bool IsImgFile(string ext) {
+            string[] imgExtensions = {
+            ".PNG", ".JPG", ".JPEG", ".BMP", ".GIF"
+            };
+            return -1 != Array.IndexOf(imgExtensions, ext.ToUpperInvariant());
+        }
+
+       
+
+        private bool IsVideoFile(string ext) {
+            string[] videoExtensions = {            
+            ".WAV", ".MID", ".MIDI", ".WMA", ".MP3", ".OGG", ".RMA", //etc
+            ".AVI", ".MP4", ".DIVX", ".WMV", //etc
+            };
+            return -1 != Array.IndexOf(videoExtensions, ext.ToUpperInvariant());
+        }
 
         //privatna metoda sa snimanje medija
         private async Task SnimiMedij(int albumId, ICollection<HttpContent> contents) {
@@ -84,9 +102,19 @@ namespace KrimiRadServis.Controllers {
                 // Pravimo referencu na container unutar kojeg ćemo smještati dokumente.
                 // Container nosi naziv 'krimirad'
                 CloudBlobContainer container = BlobHelper.GetContainer("krimirad");
-                //string fileName = string.Format("{0}{1}", Guid.NewGuid(), Path.GetExtension(content.Headers.ContentDisposition.FileName)); // ne radi uzimanje ekstenzije
+                var fileName = content.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
 
-                string fileName = string.Format("{0}{1}", Guid.NewGuid(), ".jpg");
+                var ext = Path.GetExtension(fileName);
+
+                TipMedija t;
+
+                if (IsImgFile(ext)) t = TipMedija.Image;
+                else if (IsVideoFile(ext)) t = TipMedija.Video;
+                else throw new Exception("Nije podržan format slike/videa");
+
+                fileName = string.Format("{0}{1}", Guid.NewGuid(), ext); // ne radi uzimanje ekstenzije
+
+                //string fileName = string.Format("{0}{1}", Guid.NewGuid(), ".jpg");
 
                 // Pravimo referencu na blob sa generisanim imenom unutar referenciranog containera.
                 CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
@@ -98,6 +126,7 @@ namespace KrimiRadServis.Controllers {
 
                 Medij medij = new Medij() {
                     AlbumId = albumId,
+                    TipMedija = t,
                     Url = ConfigurationManager.AppSettings.Get("BlobStorage") + fileName
                 };
 
@@ -108,27 +137,30 @@ namespace KrimiRadServis.Controllers {
 
         [Route("PostMedij")]        
         public async Task<IHttpActionResult> PostMedij() {
+            using (var transaction = db.Database.BeginTransaction()) {
+                try {
+                    if (Request.Content.IsMimeMultipartContent()) {
 
-            try {
-                if (Request.Content.IsMimeMultipartContent()) {
+                        MultipartMemoryStreamProvider provider = await Request.Content.ReadAsMultipartAsync(new MultipartMemoryStreamProvider()).ContinueWith((task) => {
+                            return task.Result;
+                        });
 
-                    MultipartMemoryStreamProvider provider = await Request.Content.ReadAsMultipartAsync(new MultipartMemoryStreamProvider()).ContinueWith((task) => {
-                        return task.Result;
-                    });
-
-                    Album album = new Album() {
-                        Naziv = DateTime.Now.ToString()
-                    };
-                    db.Album.Add(album);
-                    db.SaveChanges();
-                    await SnimiMedij(album.ID, provider.Contents);
-                    HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.Accepted;
-                    return Json(new { albumId = album.ID, poruka = "Slika/Video je spremljen" });
-                }                
-                return Json(new { poruka = "Nema slike/videa" });
-            } catch (Exception ex) {
-                HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.Conflict;
-                return Json(new { poruka = "Problem kod spremanja slike/videa!" });
+                        Album album = new Album() {
+                            Naziv = DateTime.Now.ToString()
+                        };
+                        db.Album.Add(album);
+                        db.SaveChanges();
+                        await SnimiMedij(album.ID, provider.Contents);
+                        HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.Accepted;
+                        transaction.Commit();
+                        return Json(new { albumId = album.ID, poruka = "Slika/Video je spremljen" });
+                    }
+                    return Json(new { poruka = "Nema slike/videa" });
+                } catch (Exception ex) {
+                    transaction.Rollback();
+                    HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.Conflict;
+                    return Json(new { poruka = "Problem kod spremanja slike/videa!" });
+                }
             }
 
         }
