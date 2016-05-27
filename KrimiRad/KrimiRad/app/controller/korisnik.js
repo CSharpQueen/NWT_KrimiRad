@@ -40,30 +40,40 @@ angular.module('KrimiRad.Korisnik', ['ngAnimate', 'ui.bootstrap'])
             }
         });
 
-        $scope.dodajKorisnika = function () {            
+        $scope.dodajKorisnika = function () {
+            $rootScope.loading = true;
             $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {
                 $scope.poruka=data.poruka;
                 $scope.korisnici.push($scope.korisnik);
             }).error(function (data, status, headers, config) {
                 $scope.poruka=data.poruka;
+            }).finally(function(data) {
+                $rootScope.loading = false;
             });
         }
 
         $scope.prikaziFormuZaEdit = function (k) {
             $scope.sta = "uredi";
+            console.log(k);
             $scope.korisnik = k;
             $scope.formaZaUnos = true;
         }
 
         $scope.urediKorisnika = function () {
+            $rootScope.loading = true;
             $http.put(KrimiRadUrl.serviceUrl + "/api/Korisnik?id=" + $scope.korisnik.ID, $scope.korisnik).success(function (data) {
                 $scope.poruka = data.poruka;
+            }).finally(function (data) {
+                $rootScope.loading = false;
             })
         }
 
         $scope.obrisiKorisnika = function (k) {
+            $rootScope.loading = true;
             $http.delete(KrimiRadUrl.serviceUrl + '/api/Korisnik/' + k.ID).success(function (data) {
                 $scope.poruka = data.poruka;
+            }).finally(function (data) {
+                $rootScope.loading = false;
             })
         }
 

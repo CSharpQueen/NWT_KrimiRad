@@ -44,7 +44,8 @@ namespace KrimiRadServis.Controllers
                     ImeIPrezime = u.ImeIPrezime,
                     Email = u.Email,
                     JMBG = u.JMBG,                    
-                    Username = u.UserName
+                    Username = u.UserName,
+                    Banovan = u.Banovan
                 });
                 ids.Add(u.Id);
             }
@@ -84,7 +85,7 @@ namespace KrimiRadServis.Controllers
             user.JMBG = korisnik.JMBG;
             user.Email = korisnik.Email;
             user.UserName = korisnik.Username;
-
+            user.Banovan = korisnik.Banovan;
             var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
 
             if (!roleManager.RoleExists(korisnik.TipKorisnika.ToString())) {

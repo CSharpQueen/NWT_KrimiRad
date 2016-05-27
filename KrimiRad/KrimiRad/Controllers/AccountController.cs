@@ -79,7 +79,10 @@ namespace KrimiRad.Controllers
                 return View(model);
             }            
             var user = await UserManager.FindByNameAsync(model.Username);
-            
+            if(user.Banovan) {
+                ViewBag.Poruka = "Korisnik je banovan!";
+                return View(model);
+            }
             if(user == null) {
                 ViewBag.Poruka = "Neispravni login podaci.";
                 return View(model);

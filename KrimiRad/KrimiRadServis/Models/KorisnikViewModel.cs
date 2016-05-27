@@ -16,5 +16,6 @@ namespace KrimiRadServis.Models {
         [Required]
         public string Email { get; set; }   
         public string TipKorisnika { get; set; }
+        public bool Banovan { get; set; }
     }
 }

@@ -18,5 +18,6 @@ namespace DataAccess.Entity {
 
         public string ImeIPrezime { get; set; }
         public string JMBG { get; set; }
+        public bool Banovan { get; set; }        
     }
 }
