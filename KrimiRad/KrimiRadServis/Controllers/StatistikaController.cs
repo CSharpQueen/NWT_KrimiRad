@@ -15,12 +15,10 @@ using Newtonsoft.Json;
 using KrimiRadServis.Models;
 using System.Web.Http.Cors;
 using KrimiRadServis.Models;
-namespace KrimiRadServis.Controllers
-{
+namespace KrimiRadServis.Controllers {
     [RoutePrefix("api/Statistika")]
     [EnableCors(origins: "*", headers: "*", methods: "PUT, POST, GET, DELETE, OPTIONS")]
-    public class StatistikaController : ApiController
-    {
+    public class StatistikaController : ApiController {
 
         private AppDbContext db = new AppDbContext();
 
@@ -30,19 +28,18 @@ namespace KrimiRadServis.Controllers
         public IHttpActionResult BrojDjelaPoOpstinama() {
             var data = db.Prijava;
             var model = new List<BrojDjelaPoOpstinamaModel>();
-            
+
             foreach (var line in data.GroupBy(info => info.Opstina)
                         .Select(group => new {
                             Opstina = group.Key,
                             Count = group.Count()
                         })
-                        .OrderBy(x => x.Opstina))
-                {
+                        .OrderBy(x => x.Opstina)) {
 
                 model.Add(new BrojDjelaPoOpstinamaModel() {
                     Opstina = line.Opstina,
                     Count = line.Count
-                });                
+                });
             }
 
             return Json(model);
@@ -190,7 +187,37 @@ namespace KrimiRadServis.Controllers
             return Json(model);
         }
 
-      
+        [HttpGet]
+        [Route("OmjerRjesenihPoTipuUPeriodu")]
+        public IHttpActionResult OmjerRjesenihPoTipuUPeriodu(int tipDjelaId, DateTime datumOd, DateTime datumDo) {
+            var data = db.Prijava.Where(p => (p.TipDjelaId == tipDjelaId) && (p.DatumIVrijemePocinjenjaDjela >= datumOd) && (p.DatumIVrijemePocinjenjaDjela <= datumDo)).ToList();
+
+            var model = new List<OmjerRjesenihUPerioduModel>();
+
+            foreach (var line in data.GroupBy(info => info.TipDjela.Naziv)
+                        .Select(group => new {
+                            TipDjela = group.Key,
+                            BrojRijesenih = group.Where(p => p.Rijesen).Count(),
+                            BrojNerjesenih = group.Where(p => !p.Rijesen).Count()
+                        })
+                        .OrderBy(x => x.TipDjela)) {
+
+                model.Add(new OmjerRjesenihUPerioduModel() {
+                    TipDjela = line.TipDjela,
+                    BrojRijesenih = line.BrojRijesenih,
+                    BrojNerjesenih = line.BrojNerjesenih
+                });
+            }
+
+
+            return Json(model);
+        }
+
+        [HttpGet]
+        [Route("DajOpstine")]
+        public IHttpActionResult DajOpstine() {
+            return Json(db.Prijava.Select(p => p.Opstina).Distinct());
+        }
 
 
 

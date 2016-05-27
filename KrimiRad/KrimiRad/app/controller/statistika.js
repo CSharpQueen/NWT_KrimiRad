@@ -154,6 +154,29 @@
         //END BrojDjelaPoDatumimaZaTipDjela--------------------
 
 
+        //OmjerRjesenihPoTipuUPeriodu----------------------------------
+
+         $scope.OmjerRjesenihPoTipuUPeriodu = function () {
+             $scope.labels = [];
+             $scope.data = [[], []];
+             $scope.series = ["Riješenih", "Nerješenih"];
+             $rootScope.loading = true;
+             statistikaService.dajOmjerRjesenihPoTipuUPeriodu($scope.tipDjelaId, $scope.datumOd.toJSON(), $scope.datumDo.toJSON()).success(function (data) {
+
+                 for (i = 0; i < data.length; i++) {
+                     $scope.labels.push(data[i].TipDjela);
+                     $scope.data[0].push(data[i].BrojRijesenih);
+                     $scope.data[1].push(data[i].BrojNerjesenih);
+                 }
+
+             }).finally(function (data) {
+                 $rootScope.loading = false;
+             });
+         }
+
+
+        //END OmjerRjesenihPoTipuUPeriodu------------------------------
+
 
          $scope.initTipoviDjela = function () {
             $rootScope.loading = true;
@@ -163,5 +186,14 @@
                 //kraj loadinga
                 $rootScope.loading = false;
             });
+         }
+
+         $scope.initOpstine = function () {
+             $rootScope.loading = true;
+            statistikaService.dajOpstine().success(function (data) {
+                $scope.opstine = data;
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            })
         }
     }]);

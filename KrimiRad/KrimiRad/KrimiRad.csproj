@@ -288,6 +288,7 @@
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoOpstinamaZaTipDjela.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\OmjerRjesenihUPeriodu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoDatumimaZaTipDjela.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\OmjerRjesenihPoTipuUPeriodu.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />

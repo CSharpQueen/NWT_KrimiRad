@@ -31,5 +31,8 @@ namespace KrimiRad.Areas.Statistika.Controllers
         public PartialViewResult BrojDjelaPoDatumimaZaTipDjela() {
             return PartialView();
         }
+        public PartialViewResult OmjerRjesenihPoTipuUPeriodu() {
+            return PartialView();
+        }
     }
 }

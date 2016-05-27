@@ -41,4 +41,10 @@ namespace KrimiRadServis.Models {
         public string Datum { get; set; }
         public int Count { get; set; }
     }
+
+    public class OmjerPocinjenihDjelaModel {
+        public string TipDjela { get; set; }
+        public List<string> Datumi { get; set; }
+        public List<int> Counts { get; set; }
+    }
 }

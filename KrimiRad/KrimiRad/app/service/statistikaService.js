@@ -13,7 +13,11 @@ angular.module("KrimiRad.Statistika")
     var dajOmjerRjesenihUPeriodu = function (datumOd, datumDo) { return $http.get(apiUrl + "OmjerRjesenihUPeriodu?datumOd=" + datumOd + "&datumDo=" + datumDo); }
     var dajBrojDjelaPoOpstinamaZaTipDjela = function (tipDjelaId) { return $http.get(apiUrl + "BrojDjelaPoOpstinamaZaTipDjela?tipDjelaId=" + tipDjelaId); };
     var dajBrojDjelaPoDatumimaZaTipDjela = function (tipDjelaId) { return $http.get(apiUrl + "BrojDjelaPoDatumimaZaTipDjela?tipDjelaId=" + tipDjelaId); };
+    var dajOmjerRjesenihPoTipuUPeriodu = function (tipDjelaId, datumOd, datumDo) { return $http.get(apiUrl + "OmjerRjesenihPoTipuUPeriodu?tipDjelaId=" + tipDjelaId + "&datumOd=" + datumOd + "&datumDo=" + datumDo); }
+    var dajOpstine = function () { return $http.get(apiUrl + "DajOpstine"); };
     return {
+        dajOpstine:dajOpstine,
+        dajOmjerRjesenihPoTipuUPeriodu: dajOmjerRjesenihPoTipuUPeriodu,
         dajBrojDjelaPoDatumimaZaTipDjela: dajBrojDjelaPoDatumimaZaTipDjela,
         dajBrojDjelaPoOpstinamaZaTipDjela: dajBrojDjelaPoOpstinamaZaTipDjela,
         dajOmjerRjesenihUPeriodu: dajOmjerRjesenihUPeriodu,
