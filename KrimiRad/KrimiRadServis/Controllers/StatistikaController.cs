@@ -148,7 +148,7 @@ namespace KrimiRadServis.Controllers
         [Route("BrojDjelaPoOpstinamaZaTipDjela")]
         public IHttpActionResult BrojDjelaPoOpstinamaZaTipDjela(int tipDjelaId) {
             var data = db.Prijava.Where(p => p.TipDjelaId == tipDjelaId);
-            var model = new List<BrojDjelaPoOpstinamaZaTipDjela>();
+            var model = new List<BrojDjelaPoOpstinamaZaTipDjelaModel>();
 
             foreach (var line in data.GroupBy(info => info.Opstina)
                         .Select(group => new {
@@ -157,7 +157,7 @@ namespace KrimiRadServis.Controllers
                         })
                         .OrderBy(x => x.Opstina)) {
 
-                model.Add(new BrojDjelaPoOpstinamaZaTipDjela() {
+                model.Add(new BrojDjelaPoOpstinamaZaTipDjelaModel() {
                     Opstina = line.Opstina,
                     Count = line.Count
                 });
@@ -168,33 +168,32 @@ namespace KrimiRadServis.Controllers
 
 
         [HttpGet]
-        [Route("PrijavePoOpstiniITipuDjela")]
-        public async Task<IHttpActionResult> PrijavePoOpstiniITipuDjela(int id, string opstina) {
-            List<Prijava> prijave = db.Prijava.Where(p => p.Opstina.Contains(opstina) && p.TipDjelaId.Equals(id)).ToList();
-            if (prijave == null) return Json("Ne postoje prijave za ovu opstinu i tip djela");
-            return Json<List<Prijava>>(prijave);
+        [Route("BrojDjelaPoDatumimaZaTipDjela")]
+        public IHttpActionResult BrojDjelaPoDatumimaZaTipDjela(int tipDjelaId) {
+            var data = db.Prijava.Where(p => p.TipDjelaId == tipDjelaId);
+            var model = new List<BrojDjelaPoDatumuZaOpstinuModel>();
+
+            foreach (var line in data.GroupBy(info => info.DatumIVrijemePocinjenjaDjela)
+                        .Select(group => new {
+                            Datum = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.Datum)) {
+
+                model.Add(new BrojDjelaPoDatumuZaOpstinuModel() {
+                    Datum = line.Datum.ToShortDateString(),
+                    Count = line.Count
+                });
+            }
+
+
+            return Json(model);
         }
 
-        //get: api/Statistika/PrijavePoDatumu?datum=nekidatum
-        [HttpGet]
-        [Route("PrijavePoDatumu")]
-        public async Task<IHttpActionResult> PrijavePoDatumu(DateTime datum) {
-            List<Prijava> prijave = db.Prijava.Where(p => p.DatumIVrijemePrijave.Equals(datum)).ToList();
-            if (prijave == null) return Json("Ne postoje prijave za ovaj datum.");
-            return Json<List<Prijava>>(prijave);
-        }
+      
 
-        //get: api/Statistika/PrijavePoDatumu?opstina=nekaopstina
-        
 
-        //get: api/Statistika/PrijavePoDatumu/3
-        [HttpGet]
-        [Route("PrijavePoTipuDjela")]
-        public async Task<IHttpActionResult> PrijavePoTipuDjela(int id) {
-            List<Prijava> prijave = db.Prijava.Where(p => p.TipDjelaId == id).ToList();
-            if (prijave == null) return Json("Ne postoje prijave za ovaj tip djela");
-            return Json<List<Prijava>>(prijave);
-        }
+
 
         protected override void Dispose(bool disposing) {
             if (disposing) {

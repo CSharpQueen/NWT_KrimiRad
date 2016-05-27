@@ -112,20 +112,9 @@
         }
 
         //END OmjerRjesenihUPeriodu-----------------------
-
-       
+                
 
         //BrojDjelaPoOpstinamaZaTipDjela-----------------
-
-        $scope.initBrojDjelaPoOpstinamaZaTipDjela = function () {
-            $rootScope.loading = true;
-            tipDjelaService.getAll().success(function (data) {
-                $scope.tipoviDjela = data;                                
-            }).finally(function (data) {
-                //kraj loadinga
-                $rootScope.loading = false;
-            });
-        }
 
         $scope.BrojDjelaPoOpstinamaZaTipDjela = function () {
             $scope.labels = [];
@@ -143,4 +132,36 @@
             });
         }
         //END BrojDjelaPoOpstinamaZaTipDjela-----------------
+
+        //BrojDjelaPoDatumimaZaTipDjela--------------------------
+
+         $scope.BrojDjelaPoDatumimaZaTipDjela = function () {
+            $scope.labels = [];
+            $scope.data = [[]];            
+            $rootScope.loading = true;
+            statistikaService.dajBrojDjelaPoDatumimaZaTipDjela($scope.tipDjelaId).success(function (data) {
+
+                for (i = 0; i < data.length; i++) {
+                    $scope.labels.push(data[i].Datum);
+                    $scope.data[0].push(data[i].Count);                    
+                }
+
+            }).finally(function (data) {
+                $rootScope.loading = false;
+            });
+        }
+
+        //END BrojDjelaPoDatumimaZaTipDjela--------------------
+
+
+
+         $scope.initTipoviDjela = function () {
+            $rootScope.loading = true;
+            tipDjelaService.getAll().success(function (data) {
+                $scope.tipoviDjela = data;                                
+            }).finally(function (data) {
+                //kraj loadinga
+                $rootScope.loading = false;
+            });
+        }
     }]);

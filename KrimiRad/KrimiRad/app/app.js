@@ -113,6 +113,9 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
         }).when("/statistika/BrojDjelaPoOpstinamaZaTipDjela", {
             templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinamaZaTipDjela",
             controller: "StatistikaCtrl"
+        }).when("/statistika/BrojDjelaPoDatumimaZaTipDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoDatumimaZaTipDjela",
+            controller: "StatistikaCtrl"
         }); 
 
 }]);
