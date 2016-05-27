@@ -144,7 +144,27 @@ namespace KrimiRadServis.Controllers
             return Json(model);
         }
 
+        [HttpGet]
+        [Route("BrojDjelaPoOpstinamaZaTipDjela")]
+        public IHttpActionResult BrojDjelaPoOpstinamaZaTipDjela(int tipDjelaId) {
+            var data = db.Prijava.Where(p => p.TipDjelaId == tipDjelaId);
+            var model = new List<BrojDjelaPoOpstinamaZaTipDjela>();
 
+            foreach (var line in data.GroupBy(info => info.Opstina)
+                        .Select(group => new {
+                            Opstina = group.Key,
+                            Count = group.Count()
+                        })
+                        .OrderBy(x => x.Opstina)) {
+
+                model.Add(new BrojDjelaPoOpstinamaZaTipDjela() {
+                    Opstina = line.Opstina,
+                    Count = line.Count
+                });
+            }
+
+            return Json(model);
+        }
 
 
         [HttpGet]

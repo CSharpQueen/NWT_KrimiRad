@@ -24,6 +24,8 @@ namespace KrimiRad.Areas.Statistika.Controllers
         public PartialViewResult OmjerRjesenihUPeriodu() {
             return PartialView();
         }
-        
+        public PartialViewResult BrojDjelaPoOpstinamaZaTipDjela() {
+            return PartialView();
+        }
     }
 }

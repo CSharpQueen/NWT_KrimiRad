@@ -281,11 +281,12 @@
     <Content Include="Areas\Statistika\Views\web.config" />
     <Content Include="Areas\Statistika\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Statistika\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Statistika\Views\GetView\PoOpstiniITipuDjela.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoOpstinama.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoDatumu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\PrijavePoTipovimaZaOpstinu.cshtml" />
     <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoTipuDjela.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\BrojDjelaPoOpstinamaZaTipDjela.cshtml" />
+    <Content Include="Areas\Statistika\Views\GetView\OmjerRjesenihUPeriodu.cshtml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\admin-krimirad - FTP.pubxml" />

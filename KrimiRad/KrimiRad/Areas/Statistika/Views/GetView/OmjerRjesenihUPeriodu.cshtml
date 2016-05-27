@@ -1,0 +1,25 @@
+﻿<div ng-controller="StatistikaCtrl">
+    <div class="form-group">
+        Datum od 
+        <p class="input-group">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datumOdOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="datumOd" is-open="popup1" datepicker-options="dateOptions" ng-required="true" close-text="Close"  />
+            
+        </p>
+        Datum do 
+        <p class="input-group">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datumDoOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="datumDo" is-open="popup2" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            
+        </p>        
+    </div>
+    <button class="btn btn-primary" ng-click="OmjerRjesenihUPeriodu()">Generiši</button>
+    <canvas id="bar" class="chart chart-bar"
+            chart-data="data" chart-labels="labels"
+            chart-series="series"></canvas>
+</div>
+

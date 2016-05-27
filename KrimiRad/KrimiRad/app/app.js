@@ -110,6 +110,9 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
         }).when("/statistika/OmjerRjesenihUPeriodu", {
             templateUrl: "/Statistika/GetView/OmjerRjesenihUPeriodu",
             controller: "StatistikaCtrl"
+        }).when("/statistika/BrojDjelaPoOpstinamaZaTipDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinamaZaTipDjela",
+            controller: "StatistikaCtrl"
         }); 
 
 }]);

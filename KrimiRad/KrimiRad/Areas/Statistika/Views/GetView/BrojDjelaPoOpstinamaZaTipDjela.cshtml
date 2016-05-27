@@ -1,0 +1,13 @@
+﻿<div ng-controller="StatistikaCtrl" ng-init="initBrojDjelaPoOpstinamaZaTipDjela()">
+    {{TIPDJELA | translate}} 
+    <select style="max-width:100%" class="form-control" ng-model="tipDjelaId" required>
+        <option value="{{''}}">Odaberite tip djela</option>
+        <option ng-repeat="t in tipoviDjela" value="{{t.ID}}">{{t.Naziv}}</option>
+    </select>
+    <button ng-disabled="tipDjelaId == ''" class="btn btn-primary" ng-click="BrojDjelaPoOpstinamaZaTipDjela()">Generiši</button>
+
+
+    <canvas id="doughnut" class="chart chart-doughnut"
+            chart-data="data" chart-labels="labels"></canvas>
+
+</div>

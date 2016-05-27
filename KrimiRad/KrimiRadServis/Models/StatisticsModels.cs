@@ -31,4 +31,9 @@ namespace KrimiRadServis.Models {
         public int BrojRijesenih { get; set; }
         public int BrojNerjesenih { get; set; }
     }
+
+    public class BrojDjelaPoOpstinamaZaTipDjela {
+        public string Opstina { get; set; }
+        public int Count { get; set; }
+    }
 }
