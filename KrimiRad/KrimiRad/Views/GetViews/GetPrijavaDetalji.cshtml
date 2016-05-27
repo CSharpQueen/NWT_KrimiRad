@@ -68,18 +68,29 @@
 <div class="container">
     <br />  
 
-    <div style="height: 500px">
-        <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-            <uib-slide ng-repeat="p in prijava.Medij" index="$index">
-                <img ng-if="p.TipMedija == 1 || p.TipMedija == 0" ng-src="{{p.Url}}" style="margin:auto;">
-                <embed style="height:500px; width:600px;" ng-if="p.TipMedija == 2" src="{{p.Url}}"/>
-                @*<video ng-if="p.TipMedija == 2" width="320" height="240" controls="controls">
-                    <source ng-src="{{p.Url}}" type="video/mp4" />                               
-                    <source ng-src="{{p.Url}}" type="video/ogg" />
-                    <source ng-src="{{p.Url}}" type="video/webm" />
-                </video>*@                
-            </uib-slide>
-        </uib-carousel>
+   
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Slike</div>
+        <div class="panel-body">
+            <div style="height: 500px">
+                <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                    <uib-slide ng-if="p.TipMedija == 1 || p.TipMedija == 0" ng-repeat="p in prijava.Medij" index="$index">
+                        <img ng-src="{{p.Url}}" style="margin:auto;">                                               
+                    </uib-slide>
+                </uib-carousel>
+            </div>
+        </div>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Video</div>
+        <div class="panel-body">
+            <div class="row" ng-if="p.TipMedija == 2" ng-repeat="p in prijava.Medij">
+                <object width="420" height="315" data="{{p.Url}}" style="height:500px; width:100%;" />                                    
+            </div>
+        </div>
+    </div>
+    
 
 </div>
