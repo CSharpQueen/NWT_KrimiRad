@@ -14,9 +14,9 @@ app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scop
 
 app.factory('KrimiRadUrl', function () {
     return {
-        serviceurl: 'http://localhost:58808',
-        publicsiteurl: 'http://localhost:58808',
-        adminsiteurl: 'http://localhost:51580',
+        serviceUrl: 'http://localhost:58808',
+        publicsiteUrl: 'http://localhost:58808',
+        adminsiteUrl: 'http://localhost:51580'
         //serviceUrl: 'http://service-krimirad.azurewebsites.net',
         //publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
         //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
