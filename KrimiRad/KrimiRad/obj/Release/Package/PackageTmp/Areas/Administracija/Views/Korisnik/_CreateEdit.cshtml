@@ -1,65 +1,69 @@
-﻿@using CaptchaMvc.HtmlHelpers
-@using CaptchaMvc
+﻿
+<div ng-show="formaZaUnos == true" class="panel panel-default">
+    <div ng-if="sta=='dodaj'" class="panel-heading">Dodavanje korisnika</div>
+    <div ng-if="sta=='uredi'" class="panel-heading">Uređivanje korisnika</div>    
 
-@model KrimiRad.Models.RegisterViewModel
-
-
-
-<form ng-show="formaZaUnos == true" name="korisnikForm" ng-submit="dodajTipDjela()">
-    <div class="row">
-        <div class="col-md-4">
-            @Html.LabelFor(m => m.ImeIPrezime)
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.ImeIPrezime, new { ng_model = "korisnik.ImeIPrezime", @class = "form-control", required = "Obavezno polje" })
-            </div>
-            @Html.LabelFor(m => m.JMBG)
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.JMBG, new { ng_model = "korisnik.JMBG", @class = "form-control", required = "Obavezno polje" })
-            </div>
-            @Html.LabelFor(m => m.TipKorisnika)
-            <div class="form-group">
-                <select ng-model="korisnik.TipKorisnika" class="form-control">
-                    <option value="">Odaberite tip korisnika</option>
-                    <option value="Administrator">Administrator</option>
-                    <option value="NadlezniOrgan">Nadležni organ</option>
-                </select>                
-            </div>
-        </div>
-        <div class="col-md-4">            
-            @Html.LabelFor(m => m.Username)
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.Username, new { ng_model = "korisnik.Username", @class = "form-control", required = "Obavezno polje" })
-            </div>
-            @Html.LabelFor(m => m.Email)
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.Email, new { ng_model = "korisnik.Email", @class = "form-control", required = "Obavezno polje" })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-            </div>
-            <div ng-if="sta=='dodaj'">
-                @Html.LabelFor(m => m.Password)
-                <div class="form-group">
-                    @Html.PasswordFor(m => m.Password, new { ng_model = "korisnik.Password", @class = "form-control", required = "Obavezno polje" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    <div class="panel-body">
+        <form name="korisnikForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Ime i prezime</label>
+                    <div class="form-group">
+                        <input class="form-control" ng-model="korisnik.ImeIPrezime" required />
+                    </div>
+                    <label>JMBG</label>
+                    <div class="form-group">
+                        <input class="form-control" ng-model="korisnik.JMBG" required />
+                    </div>
+                    <label>Tip korisnika</label>
+                    <div class="form-group">
+                        <select ng-model="korisnik.TipKorisnika" class="form-control">
+                            <option value="">Odaberite tip korisnika</option>
+                            <option value="Administrator">Administrator</option>
+                            <option value="NadlezniOrgan">Nadležni organ</option>
+                        </select>
+                    </div>
                 </div>
-                @Html.LabelFor(m => m.Password)
-                <div class="form-group">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { ng_model = "korisnik.ConfirmPassword", @class = "form-control", required = "Obavezno polje" })
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                <div class="col-md-4">
+                    <label>Korisničko ime</label>
+                    <div class="form-group">
+                        <input class="form-control" ng-model="korisnik.Username" required />
+                    </div>
+                    <label>Email</label>
+                    <div class="form-group">
+                        <input type="email" class="form-control" ng-model="korisnik.Email" required />
+                    </div>
+                    <div class="form-group" ng-if="sta=='uredi'">
+                        <label>Banovan</label>
+                        <input class="form-control" type="checkbox" ng-model="korisnik.Banovan" />
+                    </div>
+                    <div ng-if="sta=='dodaj'">
+                        <label>Lozinka</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" ng-model="korisnik.Password" required />
+                        </div>
+                        <label>Potvrdi lozinku</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" ng-model="korisnik.ConfirmPassword" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div ng-if="sta=='dodaj'" class="form-group">
+                        <div vc-recaptcha ng-model="korisnik.Captcha"> </div>
+                        <button href="" style="color:blue;" onclick="grecaptcha.reset()">Refresh</button>
+                    </div>                   
+                    <div class="form-group">
+
+                        <div class="form-group">
+                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="Dodaj" />
+                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="Uredi" />
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
+        </form>
 
-
-            <div ng-if="sta=='dodaj'" class="form-group">
-                @{var mathCaptcha = Html.MathCaptcha(); }
-                @mathCaptcha
-            </div>
-            <div class="form-group">
-                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="Dodaj" />
-                <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="Uredi" />
-
-            </div>
-        </div>
     </div>
-</form>
+</div>

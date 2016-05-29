@@ -4,24 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Krimi rad</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")    
         
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/angular-translate.min.js"></script>    
     <script src="~/Scripts/ng-map.min.js"></script>
-        
-    @*<script src="~/Scripts/angular-google-maps.min.js"></script>*@
+            
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/2.11.0/angular-translate-loader-static-files.min.js"></script>    
     <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
-    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-     @*@Scripts.Render("~/bundles/angular")*@
-    
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>     
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+    <script src="~/Scripts/angular-recaptcha.min.js"></script>
+
     @Scripts.Render("~/bundles/angularCustom")
 
     <base href="/" />
+    
 </head>
 <body ng-app="app">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -37,13 +38,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="prijava"  aria-expanded="false"> {{ 'PRIJAVI' | translate }}</a></li>
-                    <li class="right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ 'JEZIK' | translate }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu" ng-controller="appctrl">
-                            <li><a ng-click="switchLanguage('bs')" aria-expanded="false"> {{ 'BOSANSKI' | translate }} <span ng-show="selectedLanguage == 'bs'" class="glyphicon glyphicon-ok"></span></a></li>
-                            <li><a ng-click="switchLanguage('en')" aria-expanded="false"> {{ 'ENGLESKI' | translate }} <span ng-show="selectedLanguage == 'en'" class="glyphicon glyphicon-ok"></span></a></li>
-                        </ul>
-                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -67,9 +61,7 @@
     <footer>
         <p class="text-center">&copy; @DateTime.Now.Year - Krimi rad</p>
     </footer>
-   
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

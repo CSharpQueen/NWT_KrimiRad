@@ -138,7 +138,6 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\KrimiRad.dll.config
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\KrimiRad.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\KrimiRad.pdb
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\Antlr3.Runtime.dll
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\CaptchaMvc.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\DataAccess.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\EntityFramework.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\EntityFramework.SqlServer.dll
@@ -178,8 +177,6 @@ C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\System.Web.WebPages.Razor.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\WebGrease.dll
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\DataAccess.pdb
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\Antlr3.Runtime.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\CaptchaMvc.pdb
-C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\CaptchaMvc.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\Microsoft.AI.DependencyCollector.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\bin\Microsoft.AI.Web.xml

@@ -90,6 +90,7 @@ namespace KrimiRad.Models
         [Required]
         [Display(Name="Korisničko ime")]
         public string Username { get; set; }
+        public string Captcha { get; set; }
     }
 
     public class ResetPasswordViewModel

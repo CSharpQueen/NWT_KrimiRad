@@ -1,11 +1,12 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
 var TipDjela = angular.module('KrimiRad.TipDjela', ['ngAnimate', 'ui.bootstrap'])
-    .controller('TipDjelaCtrl', ['$scope', 'tipDjelaService', '$rootScope', function ($scope, tipDjelaService, $rootScope) {
+    .controller('TipDjelaCtrl', ['$scope', 'tipDjelaService', '$rootScope', '$location', function ($scope, tipDjelaService, $rootScope, $location) {
         $scope.poruka = '';
         $scope.tipDjela = '';
         //pocetak loadinga
         $rootScope.loading = true;
+        $scope.formaZaUnos = false;
 
         tipDjelaService.getPage(1).success(function (data) {
             $scope.tipoviDjela = data.tipoviDjela;            
@@ -31,8 +32,14 @@ var TipDjela = angular.module('KrimiRad.TipDjela', ['ngAnimate', 'ui.bootstrap']
         $scope.prikaziFormuZaCreate = function () {
             $scope.sta = "dodaj";
             $scope.tipDjela = ''
-            $("#myModal").modal("show");
+            $scope.formaZaUnos = true;
         }
+
+        $scope.$on('$routeChangeStart', function (next, current) {
+            if ($location.path() == "/administracija/tipovidjela") {
+                formaZaUnos = true;
+            }
+        });
 
         $scope.dodajTipDjela = function () {
             $rootScope.loading = true;
@@ -48,7 +55,7 @@ var TipDjela = angular.module('KrimiRad.TipDjela', ['ngAnimate', 'ui.bootstrap']
         $scope.prikaziFormuZaEdit = function (tip) {
             $scope.sta = "uredi";
             $scope.tipDjela = tip;
-            $("#myModal").modal("show");
+            $scope.formaZaUnos = true;
         }
 
         $scope.urediTipDjela = function () {
@@ -56,7 +63,7 @@ var TipDjela = angular.module('KrimiRad.TipDjela', ['ngAnimate', 'ui.bootstrap']
 
             tipDjelaService.update($scope.tipDjela)
             .success(function (data) {
-                alert("Spremljene izmjene!");
+                $scope.poruka = data.poruka;
             })
             .finally(function (data) {
                 $rootScope.loading = false;

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace KrimiRad.Areas.Administracija.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class KorisnikController : Controller
     {
         // GET: Administracija/Korisnik

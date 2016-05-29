@@ -14,6 +14,7 @@ namespace KrimiRadServis.Models {
         public string Komentar { get; set; }
         public DateTime DatumIVrijemePocinjenjaDjela { get; set; }        
         public int TipDjelaId { get; set; }        
-        public int AlbumId { get; set; }        
+        public int? AlbumId { get; set; }
+        public string Captcha { get; set; }
     }
 }

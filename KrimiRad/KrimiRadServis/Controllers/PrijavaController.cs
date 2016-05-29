@@ -66,9 +66,12 @@ namespace KrimiRadServis.Controllers {
                 Longituda = prijava.Longituda,
                 Opstina = prijava.Opstina,
                 Rijesen = prijava.Rijesen,
-                TipDjelaNaziv = prijava.TipDjela.Naziv,
-                Medij = prijava.Album.Medij.Select(s => new MedijModel() { TipMedija = s.TipMedija, Url = s.Url }).ToList()
+                TipDjelaNaziv = prijava.TipDjela.Naziv            
             };
+
+            if(prijava.Album != null && prijava.Album.Medij != null) {
+                model.Medij = prijava.Album.Medij.Select(s => new MedijModel() { TipMedija = s.TipMedija, Url = s.Url }).ToList();
+            }
 
             return Ok(model);
         }
@@ -137,6 +140,7 @@ namespace KrimiRadServis.Controllers {
 
         [Route("PostMedij")]        
         public async Task<IHttpActionResult> PostMedij() {
+
             using (var transaction = db.Database.BeginTransaction()) {
                 try {
                     if (Request.Content.IsMimeMultipartContent()) {
@@ -168,11 +172,25 @@ namespace KrimiRadServis.Controllers {
         // POST api/prijava
         [ResponseType(typeof(PrijavaCreateModel))]
         [HttpPost]
-        public async Task<IHttpActionResult> PostPrijava(PrijavaCreateModel model) {
+        public async Task<IHttpActionResult> PostPrijava(PrijavaCreateModel model) {            
+            string secret = ConfigurationManager.AppSettings.Get("captchaSecret").ToString();
+            var client = new WebClient();
+            var reply =
+                client.DownloadString(
+                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, model.Captcha));
 
-            if (!ModelState.IsValid) {
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);            
+
+            if(!captchaResponse.Success) {
+                return Json(new { poruka = "Captcha nije ispravna!" });
+            }
+
+            if (!ModelState.IsValid) {               
                 return BadRequest(ModelState);
-            }            
+            }
+
+            if (model.AlbumId == 0) model.AlbumId = null;
+
             var prijava = new Prijava() {
                 DatumIVrijemePrijave = DateTime.Now,
                 DatumIVrijemePocinjenjaDjela = model.DatumIVrijemePocinjenjaDjela,
@@ -193,7 +211,7 @@ namespace KrimiRadServis.Controllers {
                 await db.SaveChangesAsync();                
                 return Json(new { poruka = "Uspješna prijava!" });
             } catch (Exception ex) {                
-                return Json(new { poruka = ex.Message });
+                return Json(new { poruka = "Prijava nije uspjela, pokušajte ponovo!" });
             }
 
         }
@@ -272,5 +290,15 @@ namespace KrimiRadServis.Controllers {
             return db.Prijava.Count(e => e.ID == id) > 0;
         }
 
+    }
+
+
+
+    public class CaptchaResponse {
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("error-codes")]
+        public List<string> ErrorCodes { get; set; }
     }
 }

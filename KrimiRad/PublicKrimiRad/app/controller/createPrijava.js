@@ -78,8 +78,7 @@ angular.module('app').controller('CreatePrijavaCtrl', ['$scope', "NgMap", 'prija
         var fd = new FormData();
         for (var i = 0; i < $scope.medij.length; i++) {
             fd.append('file', $scope.medij[i]._file);
-        }
-                
+        }      
         //prvo upload slike/videa
         prijavaService.createMedij(fd).success(function (data) {
 

@@ -12,9 +12,11 @@ using KrimiRad.Models;
 using DataAccess.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using DataAccess;
-using CaptchaMvc.HtmlHelpers;
-using CaptchaMvc.Attributes;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net;
+using System.Configuration;
 
 namespace KrimiRad.Controllers
 {
@@ -166,11 +168,22 @@ namespace KrimiRad.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
-        //[CaptchaMvc.Attributes.CaptchaVerify("Captcha is not valid")]
+        [Authorize]        
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            
+
+            string secret = ConfigurationManager.AppSettings.Get("captchaSecret").ToString(); 
+            var client = new WebClient();
+            var reply =
+                client.DownloadString(
+                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, model.Captcha));
+
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
+
+            if (!captchaResponse.Success) {
+                return Json(new { poruka = "Captcha nije ispravna!" }, JsonRequestBehavior.AllowGet);
+            }
+
 
             if (ModelState.IsValid)
             {
@@ -186,14 +199,12 @@ namespace KrimiRad.Controllers
                 }
 
                 var check = await UserManager.FindByNameAsync(model.Username);
-                if(check != null) {
-                    Response.StatusCode = 400;
+                if(check != null) {                    
                     return Json(new { poruka = "Username zauzet!" }, JsonRequestBehavior.AllowGet);
                 }
 
                 if(model.Password != model.ConfirmPassword)
-                {
-                    Response.StatusCode = 400;
+                {                    
                     return Json(new { poruka = "Lozinka i potvrda lozinke se ne podudaraju!" }, JsonRequestBehavior.AllowGet);
                 }
                 if (!string.IsNullOrEmpty(model.Email))
@@ -203,8 +214,7 @@ namespace KrimiRad.Controllers
                                                 @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
                     Regex re = new Regex(emailRegex);
                     if (!re.IsMatch(model.Email))
-                    {
-                        Response.StatusCode = 400;
+                    {                        
                         return Json(new { poruka = "Email nije ispravan!" }, JsonRequestBehavior.AllowGet);
 
                     }
@@ -223,9 +233,7 @@ namespace KrimiRad.Controllers
                     return Json(new { poruka = "Korisnik je dodan u sistem. Poslan je konfirmacijski mail na: " + model.Email }, JsonRequestBehavior.AllowGet);
                 }               
             }
-
-            // If we got this far, something failed, redisplay form
-            Response.StatusCode = 400;
+                        
             return Json(new { poruka = "Neispravni podaci u formi!" }, JsonRequestBehavior.AllowGet);
         }
 
@@ -538,5 +546,14 @@ namespace KrimiRad.Controllers
             }
         }
         #endregion
+    }
+
+
+    public class CaptchaResponse {
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("error-codes")]
+        public List<string> ErrorCodes { get; set; }
     }
 }

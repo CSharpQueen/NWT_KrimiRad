@@ -64,17 +64,16 @@
             </ng-map>
         </div>
     </div>
+
 </div>
 <div class="container">
     <br />  
-
    
-
-    <div class="panel panel-default">
+    <div ng-if="prijava.Medij" class="panel panel-default">
         <div class="panel-heading">Slike</div>
         <div class="panel-body">
             <div style="height: 500px">
-                <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                <uib-carousel ng-if="prijava.Medij" active="active" interval="myInterval" no-wrap="noWrapSlides">
                     <uib-slide ng-if="p.TipMedija == 1 || p.TipMedija == 0" ng-repeat="p in prijava.Medij" index="$index">
                         <img ng-src="{{p.Url}}" style="margin:auto;">                                               
                     </uib-slide>
@@ -83,11 +82,16 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div ng-if="prijava.Medij" class="panel panel-default">
         <div class="panel-heading">Video</div>
-        <div class="panel-body">
-            <div class="row" ng-if="p.TipMedija == 2" ng-repeat="p in prijava.Medij">
-                <object width="420" height="315" data="{{p.Url}}" style="height:500px; width:100%;" />                                    
+        <div class="panel-body">            
+            <div class="row" ng-if="p.TipMedija == 2" ng-repeat="p in prijava.Medij">                
+                <object width="420" height="315" data="{{p.Url}}" style="height:500px; width:100%;">                     
+                </object> 
+                
+                @*<video width="576" height="320" controls>
+                    <source src="{{p.Url}}" type='video/mp4; codecs="avc1.42e01e, mp4a.40.2"'>                    
+                </video>*@                                   
             </div>
         </div>
     </div>

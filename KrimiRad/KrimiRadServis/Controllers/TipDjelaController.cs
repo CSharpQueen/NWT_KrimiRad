@@ -48,18 +48,17 @@ namespace KrimiRadServis.Controllers
             return Ok(tipDjela);
         }
 
-        // PUT: api/TipDjela/5
-        [ResponseType(typeof(void))]
+        // PUT: api/TipDjela/5        
         public async Task<IHttpActionResult> PutTipDjela(int id, TipDjela tipDjela)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Json(new { poruka = "Neispravni podaci u formi" });
             }
 
             if (id != tipDjela.ID)
             {
-                return BadRequest();
+                return Json(new { poruka = "Pogrešan id" });
             }
 
             db.Entry(tipDjela).State = EntityState.Modified;
@@ -67,21 +66,21 @@ namespace KrimiRadServis.Controllers
             try
             {
                 await db.SaveChangesAsync();
+                return Json(new { poruka = "Tip djela je uredjen!", tipDjela = tipDjela });
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!TipDjelaExists(id))
                 {
-                    return NotFound();
+                    return Json(new { poruka = "Desio se problm, probajte ponovo!" });
                 }
                 else
                 {
-                    throw;
+                    return Json(new { poruka = "Desio se problm, probajte ponovo!" });
                 }
             }
 
-            Json(new { poruka = "Tip djela je uredjen!", tipDjela = tipDjela });
-            return StatusCode(HttpStatusCode.NoContent);
+            
         }
 
         // POST: api/TipDjela

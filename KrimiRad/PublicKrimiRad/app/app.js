@@ -1,6 +1,6 @@
 ﻿/// <reference path="C:\OneDrive\GitHub\NWT_KrimiRad\KrimiRad\KrimiRad\Scripts/angular.js" />
 
-var app = angular.module('app', ["ngRoute", "ngMap", "pascalprecht.translate", "ngAnimate", "ui.bootstrap"]);
+var app = angular.module('app', ["ngRoute", "ngMap", "pascalprecht.translate", "ngAnimate", "ui.bootstrap", "vcRecaptcha"]);
 
 
 app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scope, $rootScope, $translate) {   
@@ -14,12 +14,12 @@ app.controller("appctrl", ["$rootScope", "$scope", "$translate", function ($scop
 
 app.factory('KrimiRadUrl', function () {
     return {
-        serviceUrl: 'http://localhost:58808',
-        publicsiteUrl: 'http://localhost:58808',
-        adminsiteUrl: 'http://localhost:51580'
-        //serviceUrl: 'http://service-krimirad.azurewebsites.net',
-        //publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
-        //adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
+        //serviceUrl: 'http://localhost:58808',
+        //publicsiteUrl: 'http://localhost:58808',
+        //adminsiteUrl: 'http://localhost:51580'
+        serviceUrl: 'http://service-krimirad.azurewebsites.net',
+        publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
+        adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
     };
 });
 
@@ -43,21 +43,6 @@ app.config(["$translateProvider", function ($translateProvider) {
     $translateProvider.preferredLanguage('bs');
 }]);
 
-//app.directive('fileModel', ['$parse', function ($parse) {
-//            return {
-//               restrict: 'A',
-//               link: function(scope, element, attrs) {
-//                  var model = $parse(attrs.fileModel);
-//                  var modelSetter = model.assign;
-                  
-//                  element.bind('change', function(){
-//                     scope.$apply(function(){
-//                        modelSetter(scope, element[0].files[0]);
-//                     });
-//                  });
-//               }
-//            };
-//         }]);
 
 app.directive('ngFileModel', ['$parse', function ($parse) {
     return {
@@ -93,6 +78,11 @@ app.directive('ngFileModel', ['$parse', function ($parse) {
     };
 }]);
 
+
+app.config(["vcRecaptchaServiceProvider", function (vcRecaptchaServiceProvider) {   
+    vcRecaptchaServiceProvider.setSiteKey('6LcxMCETAAAAABuJjJckenKxyVxcDo1vzGe1DAPo')
+    vcRecaptchaServiceProvider.setTheme('dark')    
+}]);
 
 //ANGULAR
 app.run(["$rootScope", function ($rootScope) {

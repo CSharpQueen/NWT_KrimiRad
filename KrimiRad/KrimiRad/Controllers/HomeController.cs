@@ -6,8 +6,8 @@ using System.Web.Mvc;
 
 namespace KrimiRad.Controllers {
     public class HomeController : Controller {
-        public ActionResult Index() {               
-            //if (!User.Identity.IsAuthenticated) return RedirectToAction("Login", "Account", new { returnUrl = "/" });
+        public ActionResult Index() {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login", "Account", new { returnUrl = "/" });
             return View();
         }
 

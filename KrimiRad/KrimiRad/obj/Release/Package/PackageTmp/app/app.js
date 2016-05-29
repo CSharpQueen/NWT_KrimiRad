@@ -26,7 +26,7 @@ app.factory('KrimiRadUrl', function () {
     return {
         //serviceUrl: 'http://localhost:58808',
         //publicSiteUrl: 'http://localhost:58808',
-        //adminSiteUrl: 'http://localhost:51580',
+        //adminSiteUrl: 'http://localhost:51580'
         serviceUrl: 'http://service-krimirad.azurewebsites.net',
         publicSiteUrl: 'http://public-krimirad.azurewebsites.net',
         adminSiteUrl: 'http://admin-krimirad.azurewebsites.net'
@@ -109,6 +109,15 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
 
         }).when("/statistika/OmjerRjesenihUPeriodu", {
             templateUrl: "/Statistika/GetView/OmjerRjesenihUPeriodu",
+            controller: "StatistikaCtrl"
+        }).when("/statistika/BrojDjelaPoOpstinamaZaTipDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoOpstinamaZaTipDjela",
+            controller: "StatistikaCtrl"
+        }).when("/statistika/BrojDjelaPoDatumimaZaTipDjela", {
+            templateUrl: "/Statistika/GetView/BrojDjelaPoDatumimaZaTipDjela",
+            controller: "StatistikaCtrl"
+        }).when("/statistika/OmjerRjesenihPoTipuUPeriodu", {
+            templateUrl: "/Statistika/GetView/OmjerRjesenihPoTipuUPeriodu",
             controller: "StatistikaCtrl"
         }); 
 

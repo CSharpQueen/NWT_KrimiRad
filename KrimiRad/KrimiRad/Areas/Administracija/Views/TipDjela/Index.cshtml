@@ -1,6 +1,14 @@
 ﻿<div ng-controller="TipDjelaCtrl">
 
     <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>    
+    <button type="button" ng-show="formaZaUnos == true" class="btn btn-info" ng-click="formaZaUnos = false;">Izađi</button>
+    <div ng-show="poruka != ''" class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" ng-click="poruka = ''" aria-hidden="true">×</button>
+        {{ poruka }}
+    </div>
+    
+    @Html.Partial("~/Areas/Administracija/Views/TipDjela/_CreateEdit.cshtml")
+
     <table class="table">
         <tr>
             <th>
@@ -35,5 +43,5 @@
     </table>
     <uib-pagination items-per-page="7" previous-text="&lsaquo;" next-text="&rsaquo;" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
 
-@Html.Partial("~/Areas/Administracija/Views/TipDjela/_CreateEdit.cshtml")
+
 </div>
