@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
 using System.Configuration;
+using System.Net.Mail;
 
 namespace KrimiRad.Controllers
 {
@@ -228,7 +229,14 @@ namespace KrimiRad.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Potvrdite vaš account", "Potvrdite vaš account klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
+
+                    try {
+
+                        await UserManager.SendEmailAsync(user.Id, "Potvrdite vaš account", "Potvrdite vaš account klikom <a href=\"" + callbackUrl + "\">ovdje</a>");
+                    } catch (SmtpException ex) {
+                        UserManager.Delete(user);
+                        return Json(new { poruka = "Problem sa slanjem maila, pokušajte kasnije!", ex = ex.Message }, JsonRequestBehavior.AllowGet);
+                    }
                     Response.StatusCode = 200;
                     return Json(new { poruka = "Korisnik je dodan u sistem. Poslan je konfirmacijski mail na: " + model.Email }, JsonRequestBehavior.AllowGet);
                 }               

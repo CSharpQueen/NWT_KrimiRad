@@ -2,7 +2,6 @@
 
 var korisnikModul = angular.module('KrimiRad.Korisnik', ['ngAnimate', 'ui.bootstrap', 'vcRecaptcha'])
     .controller('KorisnikCtrl', ['$scope', '$http', '$rootScope', 'KrimiRadUrl', '$location', function ($scope, $http, $rootScope, KrimiRadUrl, $location) {
-        $scope.korisnik = '';
         $scope.poruka = '';
         $rootScope.loading = true;
 
@@ -30,7 +29,14 @@ var korisnikModul = angular.module('KrimiRad.Korisnik', ['ngAnimate', 'ui.bootst
         $scope.prikaziFormuZaCreate = function () {
 
             $scope.sta = "dodaj";
-            $scope.korisnik = ''
+            $scope.korisnik = {
+                Password: '',
+                ConfirmPassword: '',
+                Username: '',
+                Email: '',
+                ImeIPrezime: '',
+                JMBG: ''
+            };
             $scope.formaZaUnos = true;
         }
 
@@ -42,8 +48,8 @@ var korisnikModul = angular.module('KrimiRad.Korisnik', ['ngAnimate', 'ui.bootst
 
         $scope.dodajKorisnika = function () {
             $rootScope.loading = true;
-
-            $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {
+            console.log($scope.korisnik);
+            $http.post(KrimiRadUrl.adminSiteUrl + "/account/register", $scope.korisnik).success(function (data, status, headers, config) {                
                 $scope.poruka = data.poruka;
                 $scope.korisnici.push($scope.korisnik);
             }).error(function (data, status, headers, config) {
