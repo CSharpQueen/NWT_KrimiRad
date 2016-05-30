@@ -29,10 +29,12 @@ namespace KrimiRad
             msg.Subject = message.Subject;
             msg.IsBodyHtml = true;
           
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));            
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
+            smtpClient.UseDefaultCredentials = false;     
             smtpClient.Credentials = new System.Net.NetworkCredential("sitim52014", "2014tim5si");
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             return Task.FromResult(0);
         }
     }
