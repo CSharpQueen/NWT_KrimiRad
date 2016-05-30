@@ -7,7 +7,7 @@
         <option value="{{''}}">{{ 'ODABERITEOPŠTINU' | translate }}</option>
         <option ng-repeat="o in opstine" value="{{o}}">{{o}}</option>
     </select>    
-    <button ng-disabled="opstina == ''" class="btn btn-primary" ng-click="PrijavePoTipovimaZaOpstinu(opstina)">{{GENERIŠI | translate}}</button>
+    <button ng-disabled="opstina == ''" class="btn btn-primary" ng-click="PrijavePoTipovimaZaOpstinu(opstina)">{{'GENERIŠI' | translate}}</button>
     <canvas id="radar" class="chart chart-radar" chart-data="data" chart-labels="labels"></canvas> 
 
 </div>

@@ -42,7 +42,15 @@ app.config(['$httpProvider', function($httpProvider) {
 
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
-    $routeProvider       
+    $routeProvider  
+        .when("/", {
+            templateUrl: "/Home/Pocetna",
+            controller: ""
+        })
+        .when("/home", {
+            templateUrl: "/Home/Pocetna",
+            controller: ""
+        })
         .when("/administracija", {
             templateUrl: "/GetViews/GetAdministracija",
             controller: ""

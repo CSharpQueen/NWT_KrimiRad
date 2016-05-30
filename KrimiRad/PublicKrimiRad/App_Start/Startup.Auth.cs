@@ -48,9 +48,9 @@ namespace PublicKrimiRad
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "f1517776-d4b3-4b06-ae15-882cd326162b",
+                clientSecret: "LhzCZALU6ZUTz8P79adwOUU");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",

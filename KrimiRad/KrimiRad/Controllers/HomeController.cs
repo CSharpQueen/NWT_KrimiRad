@@ -11,6 +11,10 @@ namespace KrimiRad.Controllers {
             return View();
         }
 
+        public PartialViewResult Pocetna() {
+            return PartialView();
+        }
+
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
 

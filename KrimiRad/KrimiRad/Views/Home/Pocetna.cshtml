@@ -1,0 +1,18 @@
+﻿<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+        @if (User.Identity.IsAuthenticated) {
+                if (User.IsInRole("NadlezniOrgan")) {
+                <a class="jumbotron" href="prijave">{{'PRIJAVE' | translate}}</a>
+                    <a class="jumbotron" href="statistika">{{ 'STATISTIKA' | translate }}</a>
+            }
+            if (User.IsInRole("Administrator")) {
+                <a class="jumbotron" href="administracija">{{'ADMINISTRACIJA' | translate}}</a>
+            }
+        }
+
+    </div>
+</div>
+<br />
+<br />

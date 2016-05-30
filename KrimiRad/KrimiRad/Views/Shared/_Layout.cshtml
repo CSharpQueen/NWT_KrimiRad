@@ -67,12 +67,15 @@
             <div class="cssload-circle"></div>
         </div>
         @RenderBody()
+        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Krimi rad</p>
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
