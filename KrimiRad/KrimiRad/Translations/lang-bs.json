@@ -32,5 +32,55 @@
   "DA": "Da",
   "NE": "Ne",
   "RIJESI": "Riješi",
-  "VOZDRA": "Vozdra"
+  "VOZDRA": "Vozdra",
+
+
+
+  "TIPOVIDJELA": "Tipovi djela",
+  "KORISNICI": "Korisnici",
+  "BROJDJELAPOOPŠTINAMA": "Broj djela po opštinama",
+  "BROJDJELAPODATUMIMA": "Broj djela po datumima",
+  "BROJDJELAPOTIPUDJELA": "Broj djela po tipu djela",
+  "PRIJAVEPOTIPOVIMAZAOPŠTINU": "Prijave po tipovima za opštinu",
+  "OMJERRJEŠENINERJEŠENIUPERIODU": "Omjer rješeni/nerješeni u periodu",
+  "BROJDJELAPOOPŠTINAMAZATIPDJELA": "Broj djela po opštinama za tip djela",
+  "BROJDJELAPODATUMIMAZATIPDJELA": "Broj djela po datumima za tip djela",
+  "OMJERRJEŠENINERJEŠENIPOTIPUUPERIODU": "Omjer rješeni/nerješeni po tipu u periodu",
+
+
+
+
+
+  "GENERIŠI": "Generiši",
+  "DATUMOD": "Datum od",
+  "DATUMDO": "Datum do",
+  "ODABERITETIPDJELA": "Odaberite tip djela",
+  "ODABERITEOPŠTINU": "Odaberite opštinu",
+
+
+  "DODAVANJEKORISNIKA": "Dodavanje korisnika",
+  "UREĐIVANJEKORISNIKA": "Uređivanje korisnika",
+  "NAZIV": "Naziv",
+  "STRUČNINAZIV": "Stručni naziv", 
+  "VRSTADJELA": "Vrsta djela",
+  "OPISDJELA": "Opis djela ",
+  "UREDI": "Uredi",
+  "OBRIŠI": "Obriši",
+  "IMEIPREZIME": "Ime i prezime",
+  "JMBG": "JMBG",
+  "TIPKORISNIKA": "Tip korisnika",
+  "ODABERITETIPKORISNIKA":"Odaberite tip korisnika",
+  "ADMINISTRATOR": "Administrator",
+  "NADLEŽNIORGAN": "Nadležni organ",
+  "KORISNIČKOIME": "Korisničko ime", 
+  "EMAIL": "Email",
+  "BANOVAN": "Banovan",
+  "LOZINKA": "Lozinka",
+  "POTVRDILOZINKU": "Potvrdi lozinku",
+  "DODAJNOVI": "Dodaj novi",
+  "IZAĐI": "Izađi",
+
+  "OSVJEŽI": "Osvježi",
+  "DODAJ": "Dodaj"
+ 
 }

@@ -1,8 +1,8 @@
 ﻿
 <div ng-controller="KorisnikCtrl">
 
-    <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">Dodaj novi</a>
-    <button type="button" ng-show="formaZaUnos == true" class="btn btn-info" ng-click="formaZaUnos = false;" >Izađi</button>
+    <a ng-click="prikaziFormuZaCreate()" class="btn btn-primary">{{ 'DODAJNOVI' | translate }}</a>
+    <button type="button" ng-show="formaZaUnos == true" class="btn btn-info" ng-click="formaZaUnos = false;" >{{ 'IZAĐI' | translate }}</button>
 
 
     <div ng-show="poruka !== ''" class="alert alert-warning alert-dismissable">
@@ -14,16 +14,16 @@
     <table class="table">
         <tr>
             <th>
-                Ime i prezime
+               {{ 'IMEIPREZIME' | translate }}
             </th>
             <th>
-                Korisničko ime
+                {{ 'KORISNIČKOIME' | translate }}
             </th>
             <th>
-                E-mail
+               {{ 'EMAIL' | translate }}
             </th>
             <th>
-                Tip korisnika
+                {{ 'TIPKORISNIKA' | translate }}
             </th>
             <th></th>
         </tr>
@@ -42,8 +42,8 @@
                 {{ k.TipKorisnika }}
             </td>
             <td>
-                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(k)">Uredi</button> |
-                <button class="btn btn-danger" ng-click="obrisiKorisnika(k)">Obriši</button>
+                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(k)">{{ 'UREDI' | translate }}</button> |
+                <button class="btn btn-danger" ng-click="obrisiKorisnika(k)">{{ 'OBRIŠI' | translate }}</button>
             </td>
         </tr>
 

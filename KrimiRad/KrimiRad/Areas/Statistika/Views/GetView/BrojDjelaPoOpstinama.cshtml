@@ -1,8 +1,8 @@
 ﻿<div class="jumbotron">
-    <h3>Broj djela po opštinama</h3>
+    <h3>{{ 'BROJDJELAPOOPŠTINAMA' | translate }}</h3>
 </div>
 <div ng-controller="StatistikaCtrl">
-    <button class="btn btn-primary" ng-click="BrojDjelaPoOpstinama()">Generiši</button>    
+    <button class="btn btn-primary" ng-click="BrojDjelaPoOpstinama()">{{GENERIŠI | translate}}</button>    
     <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels"></canvas>
 
 </div>

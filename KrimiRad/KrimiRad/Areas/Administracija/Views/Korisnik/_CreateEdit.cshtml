@@ -1,48 +1,48 @@
 ﻿
 <div ng-show="formaZaUnos == true" class="panel panel-default">
-    <div ng-if="sta=='dodaj'" class="panel-heading">Dodavanje korisnika</div>
-    <div ng-if="sta=='uredi'" class="panel-heading">Uređivanje korisnika</div>    
+    <div ng-if="sta=='dodaj'" class="panel-heading">{{ 'DODAVANJEKORISNIKA' | translate }}</div>
+    <div ng-if="sta=='uredi'" class="panel-heading">{{ 'UREĐIVANJEKORISNIKA' | translate }}</div>    
 
     <div class="panel-body">
         <form name="korisnikForm">
             <div class="row">
                 <div class="col-md-4">
-                    <label>Ime i prezime</label>
+                    <label>{{ 'IMEIPREZIME' | translate }}</label>
                     <div class="form-group">
                         <input class="form-control" ng-model="korisnik.ImeIPrezime" required />
                     </div>
-                    <label>JMBG</label>
+                    <label>{{ 'JMBG' | translate }}</label>
                     <div class="form-group">
                         <input class="form-control" ng-model="korisnik.JMBG" required />
                     </div>
-                    <label>Tip korisnika</label>
+                    <label>{{ 'TIPKORISNIKA' | translate }}</label>
                     <div class="form-group">
                         <select ng-model="korisnik.TipKorisnika" class="form-control">
-                            <option value="">Odaberite tip korisnika</option>
-                            <option value="Administrator">Administrator</option>
-                            <option value="NadlezniOrgan">Nadležni organ</option>
+                            <option value="">{{ 'ODABERITETIPKORISNIKA' | translate }}</option>
+                            <option value="Administrator">{{ 'ADMINISTRATOR' | translate }}</option>
+                            <option value="NadlezniOrgan">{{ 'NADLEŽNIORGAN' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label>Korisničko ime</label>
+                    <label>{{ 'KORISNIČKOIME' | translate }}</label>
                     <div class="form-group">
                         <input class="form-control" ng-model="korisnik.Username" required />
                     </div>
-                    <label>Email</label>
+                    <label>{{ 'EMAIL' | translate }}</label>
                     <div class="form-group">
                         <input type="email" class="form-control" ng-model="korisnik.Email" required />
                     </div>
                     <div class="form-group" ng-if="sta=='uredi'">
-                        <label>Banovan</label>
+                        <label>{{ 'BANOVAN' | translate }}</label>
                         <input class="form-control" type="checkbox" ng-model="korisnik.Banovan" />
                     </div>
                     <div ng-if="sta=='dodaj'">
-                        <label>Lozinka</label>
+                        <label>{{ 'LOZINKA' | translate }}</label>
                         <div class="form-group">
                             <input type="password" class="form-control" ng-model="korisnik.Password" required />
                         </div>
-                        <label>Potvrdi lozinku</label>
+                        <label>{{ 'POTVRDILOZINKU' | translate }}</label>
                         <div class="form-group">
                             <input type="password" class="form-control" ng-model="korisnik.ConfirmPassword" required />
                         </div>
@@ -51,13 +51,13 @@
                 <div class="col-md-4">
                     <div ng-if="sta=='dodaj'" class="form-group">
                         <div vc-recaptcha ng-model="korisnik.Captcha"> </div>
-                        <button href="" style="color:blue;" onclick="grecaptcha.reset()">Refresh</button>
+                        <button href="" style="color:blue;" onclick="grecaptcha.reset()">{{ 'OSVJEŽI' | translate }}</button>
                     </div>                   
                     <div class="form-group">
 
                         <div class="form-group">
-                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="Dodaj" />
-                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="Uredi" />
+                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='dodaj'" type="submit" ng-click="dodajKorisnika()" class="btn btn-primary" value="{{ 'DODAJ' | translate }}" />
+                            <input ng-disabled="korisnikForm.$invalid" ng-if="sta=='uredi'" type="submit" ng-click="urediKorisnika()" class="btn btn-primary" value="{{ 'UREDI' | translate }}" />
 
                         </div>
                     </div>
