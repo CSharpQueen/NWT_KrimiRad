@@ -1,7 +1,7 @@
 ﻿@model PublicKrimiRad.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Prijava</h4>
+<h4>Prije slanja prijave morate se prijaviti u sistem.</h4>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
@@ -15,7 +15,7 @@
     else {
         using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
             @Html.AntiForgeryToken()
-            <div class="btn-group-vertical" role="group" id="socialLoginList">                
+            <div class="btn-group" role="group" id="socialLoginList">                
                     @foreach (AuthenticationDescription p in loginProviders) {
                         <button type="submit" class="btn btn-primary btn-lg" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
                     }                                

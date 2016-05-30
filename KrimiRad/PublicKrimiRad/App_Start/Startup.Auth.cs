@@ -60,11 +60,10 @@ namespace PublicKrimiRad
                appId: "260877480928507",
                appSecret: "324060e05582f2d9a3b82d1912c497bf");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions() {
+                ClientId = "21068908932-snst35enkosa27j1a4mjm3c80jdmk6dh.apps.googleusercontent.com",
+                ClientSecret = "_zUkHi9dXowz65vpw2bOXkwK"
+            });
         }
     }
 }

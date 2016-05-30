@@ -31,7 +31,7 @@ namespace KrimiRad
           
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
             smtpClient.UseDefaultCredentials = false;     
-            smtpClient.Credentials = new System.Net.NetworkCredential("sitim52014", "2014tim5si");
+            smtpClient.Credentials = new System.Net.NetworkCredential("nermina.agovic", "Nermina121193");
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
