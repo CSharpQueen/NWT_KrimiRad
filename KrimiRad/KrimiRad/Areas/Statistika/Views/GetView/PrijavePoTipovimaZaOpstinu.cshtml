@@ -1,13 +1,13 @@
 ﻿<div class="jumbotron">
-    <h3>Prijave po tipovima djela za opštinu</h3>
+    <h3>{{ 'PRIJAVEPOTIPOVIMAZAOPŠTINU' | translate }}</h3>
 </div>
 <div ng-controller="StatistikaCtrl" ng-init="initOpstine()">
     {{OPSTINA | translate}}
     <select style="max-width:100%" class="form-control" ng-model="opstina" required>
-        <option value="{{''}}">Odaberite opštinu</option>
+        <option value="{{''}}">{{ 'ODABERITEOPŠTINU' | translate }}</option>
         <option ng-repeat="o in opstine" value="{{o}}">{{o}}</option>
     </select>    
-    <button ng-disabled="opstina == ''" class="btn btn-primary" ng-click="PrijavePoTipovimaZaOpstinu(opstina)">Generiši</button>
+    <button ng-disabled="opstina == ''" class="btn btn-primary" ng-click="PrijavePoTipovimaZaOpstinu(opstina)">{{GENERIŠI | translate}}</button>
     <canvas id="radar" class="chart chart-radar" chart-data="data" chart-labels="labels"></canvas> 
 
 </div>

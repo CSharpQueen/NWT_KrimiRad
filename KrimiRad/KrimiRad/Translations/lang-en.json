@@ -32,5 +32,50 @@
   "DA": "Da",
   "NE": "Ne",
   "RIJESI": "Resolve",
-  "VOZDRA": "Yo"
+  "VOZDRA": "Yo",
+
+  "TIPOVIDJELA": "Types of crimes",
+  "KORISNICI": "Users",
+  "BROJDJELAPOOPŠTINAMA": "Number of crimes by municipalities",
+  "BROJDJELAPODATUMIMA": "Number of crimes by dates",
+  "BROJDJELAPOTIPUDJELA": "Number of crimes by type of crime",
+  "PRIJAVEPOTIPOVIMAZAOPŠTINU": "Entries by type of crimes for the municipality",
+  "OMJERRJEŠENINERJEŠENIUPERIODU": "The ratio of solved / unsolved crimes in certain period",
+  "BROJDJELAPOOPŠTINAMAZATIPDJELA": "Number of crimes by municipalities for the certain type of crime",
+  "BROJDJELAPODATUMIMAZATIPDJELA": "Number of crimes by dates for the certain type of crime",
+  "OMJERRJEŠENINERJEŠENIPOTIPUUPERIODU": "The ratio of solved / unsolved by type of crimee in the certain period",
+
+
+
+  "GENERIŠI": "Generate",
+  "DATUMOD": "From date",
+  "DATUMDO": "To date",
+  "ODABERITETIPDJELA": "Select type of crime",
+  "ODABERITEOPŠTINU": "Select municipality",
+  
+
+  "DODAVANJEKORISNIKA": "Add user",
+  "UREĐIVANJEKORISNIKA": "Edit user",
+  "NAZIV": "Title",
+  "STRUČNINAZIV": "Title by definition", 
+  "VRSTADJELA": "Type of crime",
+  "OPISDJELA": "Description od crime",
+  "UREDI": "Edit",
+  "OBRIŠI": "Delete",
+  "IMEIPREZIME": "Name and surname",
+  "JMBG": "JMBG",
+  "TIPKORISNIKA": "Type of user",
+  "ODABERITETIPKORISNIKA":"Select type of user",
+  "ADMINISTRATOR": "Administrator",
+  "NADLEŽNIORGAN": "Competent authority",
+  "KORISNIČKOIME": "Username", 
+  "EMAIL": "Email",
+  "BANOVAN": "Banned",
+  "LOZINKA": "Password",
+  "POTVRDILOZINKU": "Confirm password",
+  "DODAJNOVI": "Add new",
+  "IZAĐI": "Exit",
+  
+  "OSVJEŽI": "Refresh",
+  "DODAJ": "Add"
 }

@@ -12,13 +12,13 @@
     <table class="table">
         <tr>
             <th>
-                Naziv
+                {{ 'NAZIV' | translate }}
             </th>
             <th>
-                Stručni naziv
+                {{ 'STRUČNINAZIV' | translate }}
             </th>
             <th>
-                Vrsta djela
+                {{ 'VRSTADJELA' | translate }}
             </th>
             <th></th>
         </tr>
@@ -34,8 +34,8 @@
                 {{ tip.VrstaDjela }}
             </td>
             <td>
-                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(tip)">Uredi</button> |
-                <button class="btn btn-danger" ng-click="obrisiTipDjela(tip)">Obriši</button>
+                <button class="btn btn-success" ng-click="prikaziFormuZaEdit(tip)"> {{ 'UREDI' | translate }}</button> |
+                <button class="btn btn-danger" ng-click="obrisiTipDjela(tip)">{{ 'OBRIŠI' | translate }}</button>
             </td>
         </tr>
         
