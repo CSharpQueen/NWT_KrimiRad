@@ -22,14 +22,14 @@
                         on-click="showDetail(event, id)"></marker>
                 <info-window id="foo-iw">
                     <div ng-non-bindable="">                        
-                        Tip djela: {{prijava.TipDjelaNaziv}}<br />
-                        Opština: {{prijava.Opstina}}<br />
-                        Adresa: {{prijava.Adresa}}<br />        
+                        {{ 'TIPDJELA' | translate }}: {{prijava.TipDjelaNaziv}}<br />
+                        {{ 'OPSTINA' | translate }}: {{prijava.Opstina}}<br />
+                        {{ 'ADRESA' | translate }}: {{prijava.Adresa}}<br />        
                         <p ng-if="prijava.Rijesen">
-                           Rješen: {{ 'DA' | translate  }}
+                            {{ 'RIJESEN' | translate }}: {{ 'DA' | translate  }}
                         </p>
                         <p ng-if="!prijava.Rijesen">
-                            Rješen:
+                            {{ 'RIJESEN' | translate }}:
                             {{'NE' | translate}}
                         </p>                                 
                     </div>
