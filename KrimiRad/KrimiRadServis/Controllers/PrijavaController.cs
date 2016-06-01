@@ -265,8 +265,7 @@ namespace KrimiRadServis.Controllers {
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE api/prijava/5
-        [ResponseType(typeof(Prijava))]
+        // DELETE api/prijava/5        
         public async Task<IHttpActionResult> DeletePrijava(int id) {
             Prijava prijava = await db.Prijava.FindAsync(id);
             if (prijava == null) {
@@ -276,7 +275,7 @@ namespace KrimiRadServis.Controllers {
             db.Prijava.Remove(prijava);
             await db.SaveChangesAsync();
 
-            return Ok(prijava);
+            return Json(new { poruka = "Prijava je obrisana!" });
         }
 
         //protected override void Dispose(bool disposing) {

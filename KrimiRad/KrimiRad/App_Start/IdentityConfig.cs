@@ -14,6 +14,7 @@ using KrimiRad.Models;
 using DataAccess.Entity;
 using DataAccess;
 using System.Net.Mail;
+using System.Configuration;
 
 namespace KrimiRad
 {
@@ -28,10 +29,13 @@ namespace KrimiRad
             msg.Body = message.Body;
             msg.Subject = message.Subject;
             msg.IsBodyHtml = true;
-          
+
+            string user = ConfigurationManager.AppSettings.Get("EmailUser");
+            string pass = ConfigurationManager.AppSettings.Get("EmailPass");
+
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
             smtpClient.UseDefaultCredentials = false;     
-            smtpClient.Credentials = new System.Net.NetworkCredential("nermina.agovic", "Nermina121193");
+            smtpClient.Credentials = new System.Net.NetworkCredential(user, pass);
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;

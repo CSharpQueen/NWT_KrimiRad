@@ -63,7 +63,18 @@ angular.module('KrimiRad.PregledPrijava')
 
     $scope.rijesi = function() {
         $rootScope.loading = true;
-        prijavaService.rijesi($scope.prijava.ID).success(function (data) {            
+        prijavaService.rijesi($scope.prijava.ID).success(function (data) {                        
+            $scope.poruka = data.poruka;
+        }).error(function (data) {            
+            $scope.poruka = data;
+        }).finally(function (data) {            
+            $rootScope.loading = false;
+        });
+    }
+
+    $scope.obrisi = function() {
+        $rootScope.loading = true;
+        prijavaService.delete($scope.prijava.ID).success(function (data) {            
             console.log(data);
             $scope.poruka = data.poruka;
         }).error(function (data) {
@@ -72,9 +83,9 @@ angular.module('KrimiRad.PregledPrijava')
         }).finally(function (data) {
             console.log(data);
             $rootScope.loading = false;
-        });
+        });    
+    
     }
-
     
     $scope.sakrijAlert = function() {
             $scope.poruka = '';

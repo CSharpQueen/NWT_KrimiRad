@@ -41,7 +41,7 @@ app.config(['$httpProvider', function($httpProvider) {
 
 
 app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+
     $routeProvider  
         .when("/", {
             templateUrl: "/Home/Pocetna",
@@ -128,7 +128,11 @@ app.config(['$routeProvider', '$locationProvider',function ($routeProvider, $loc
             templateUrl: "/Statistika/GetView/OmjerRjesenihPoTipuUPeriodu",
             controller: "StatistikaCtrl"
         }); 
-
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false,
+        hashPrefix: '!'
+    });
 }]);
 
 //ANGULAR
